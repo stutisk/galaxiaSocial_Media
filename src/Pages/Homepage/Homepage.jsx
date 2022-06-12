@@ -7,8 +7,8 @@ const Homepage=() => {
 
 return(
     <>
-   <div>homee</div>
- 
+
+ <h1>hey i m navabar</h1>
     </>
 )
 }
