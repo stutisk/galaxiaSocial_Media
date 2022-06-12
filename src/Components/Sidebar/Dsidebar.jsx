@@ -1,27 +1,78 @@
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
-import {Colors} from "../../styes/theme/index"
-import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { VscHome, MdOutlineExplore, BsBookmark } from "../../utils/Icons/Icons";
+import { ThemeProvider } from "@mui/system";
+import { theme } from "../../styes/theme/index";
+import { Typography, List, ListItem, ListItemIcon, ListItemText,Box } from "../../utils/material-ui/materialComponents";
+
 const Dsidebar = () => {
   return (
     <>
-      <Box  m-0 bgcolor="#19191B" >
-        <List>
-          <ListItem component={Link} to="/">
-            <ListItemIcon></ListItemIcon>
-            <ListItemText color="Colors.primary" primary="Home"></ListItemText>
-          </ListItem>
-          <ListItem component={Link} to="explore">
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary="Explore"></ListItemText>
-          </ListItem>
-          <ListItem component={Link} to="bookmarks">
-            <ListItemIcon></ListItemIcon>
-            <ListItemText primary="Bookmarks"></ListItemText>
-          </ListItem>
-         
-        </List>
-      </Box>
+      <ThemeProvider theme={theme}>
+        <Box m-0 bgcolor="#19191B">
+          <List>
+            <ListItem component={Link} to="/">
+              <ListItemIcon>
+                <VscHome />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="myVariant" sx={{ color: "common.white" }}>
+                   Home
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem component={Link} to="bookmarks">
+              <ListItemIcon>
+                <BsBookmark />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="myVariant" sx={{ color: "common.white" }}>
+                    Bookmarks
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem component={Link} to="explore">
+              <ListItemIcon>
+                <MdOutlineExplore />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="myVariant" sx={{ color: "common.white" }}>
+                    Explore
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem component={Link} to="explore">
+              <ListItemIcon>
+                <MdOutlineExplore />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="myVariant" sx={{ color: "common.white" }}>
+                    Notification
+                  </Typography>
+                }
+              />
+            </ListItem>
+            <ListItem component={Link} to="explore">
+              <ListItemIcon>
+                <MdOutlineExplore />
+              </ListItemIcon>
+              <ListItemText
+                primary={
+                  <Typography variant="myVariant" sx={{ color: "common.white" }}>
+                   Profile
+                  </Typography>
+                }
+              />
+            </ListItem>
+          </List>
+        </Box>
+      </ThemeProvider>
     </>
   );
 };

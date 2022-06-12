@@ -8,12 +8,20 @@ const Colors = {
 export { Colors };
 
 export const theme = createTheme({
-    palette:{
-        primary:{
-            main:Colors.primary,
-        },
-        secondry:{
-            main:Colors.lightGray
-        },
-    }
+  palette: {
+    primary: {
+      main: Colors.primary,
+    },
+    secondry: {
+      main: Colors.lightGray,
+    },
+    common: {
+      white: Colors.white,
+    },
+  },
+  typography: {
+    myVariant: {
+      fontSize: "1.5rem",
+    },
+  },
 });
