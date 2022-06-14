@@ -61,7 +61,7 @@ const Dsidebar = () => {
                 }
               />
             </ListItem>
-            <ListItem component={Link} to="explore">
+            <ListItem component={Link} to="notifications">
               <ListItemIcon sx={{ color: "primary.main" }}>
                 <MdNotifications size={30} />
               </ListItemIcon>

@@ -5,7 +5,7 @@ import { theme } from "../../styes/theme/index";
 import {
   Typography,
   Button,
-  Link,
+  RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
 
@@ -101,10 +101,9 @@ const Login = () => {
                   variant="subtitle1"
                   sx={{ color: "common.white" }}
                 >
-                  Dont have an account ? 
-                  <Link href="signup" underline="none">
-                    {'SignUp'}
-                  </Link>
+                  Dont have an account ?  {" "}
+                  <RouterLink  color="common.white" to="/signup" >SignUp</RouterLink>
+                  
                 </Typography>
               </Box>
             </Grid>

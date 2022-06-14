@@ -5,7 +5,7 @@ import { theme } from "../../styes/theme/index";
 import {
   Typography,
   Button,
-  Link,
+  RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
 
@@ -48,25 +48,21 @@ const Signup = () => {
                   p: 3,
                 }}
               >
-                 <TextField
-               
-               sx={{
-                 mb: 2,
-                 input: { color: "common.white"},
-             
-               }}
-               type="text"
-               required
-               label="Name"
-               fullWidth
-               focused
-             />
                 <TextField
-               
                   sx={{
                     mb: 2,
-                    input: { color: "common.white"},
-                
+                    input: { color: "common.white" },
+                  }}
+                  type="text"
+                  required
+                  label="Name"
+                  fullWidth
+                  focused
+                />
+                <TextField
+                  sx={{
+                    mb: 2,
+                    input: { color: "common.white" },
                   }}
                   type="email"
                   required
@@ -76,7 +72,7 @@ const Signup = () => {
                 />
                 <TextField
                   sx={{
-                    input: { color: "common.white"},
+                    input: { color: "common.white" },
                     mb: 2,
                   }}
                   type="password"
@@ -85,9 +81,9 @@ const Signup = () => {
                   fullWidth
                   focused
                 />
-                 <TextField
+                <TextField
                   sx={{
-                    input: { color: "common.white"},
+                    input: { color: "common.white" },
                     mb: 2,
                   }}
                   type="password"
@@ -106,18 +102,16 @@ const Signup = () => {
                   variant="contained"
                   size="large"
                 >
-                 Create New account
+                  Create New account
                 </Button>
-            
+
                 <Typography
                   align="center"
                   variant="subtitle1"
                   sx={{ color: "common.white" }}
                 >
-                  Allready have an account ? 
-                  <Link href="login" underline="none">
-                    {'Login'}
-                  </Link>
+                  Allready have an account ?{" "}
+                  <RouterLink to="/login">Login</RouterLink>
                 </Typography>
               </Box>
             </Grid>

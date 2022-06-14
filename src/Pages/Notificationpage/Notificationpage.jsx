@@ -1,8 +1,8 @@
 import React, { useEffect} from "react";
 import { Box,Typography,Toolbar, } from "../../utils/material-ui/materialComponents";
-const Bookmarkpage = () =>{
+const Notificationpage= () =>{
     useEffect(() => {
-        document.title = "Bookmarks | Galaxia ";  
+        document.title = "Notifications | Galaxia ";  
       }, [])
     return (
         <Box
@@ -22,7 +22,7 @@ const Bookmarkpage = () =>{
             }}
           >
             <Toolbar>
-              <Typography variant="h6">Bookmark</Typography>
+              <Typography variant="h6">Notifications</Typography>
             </Toolbar>
           </Box>
          
@@ -66,4 +66,4 @@ const Bookmarkpage = () =>{
         </Box>
     )
 }
-export {Bookmarkpage}
+export {Notificationpage}
