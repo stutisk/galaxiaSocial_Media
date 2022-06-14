@@ -4,26 +4,17 @@ import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import { Typography, List, ListItem, ListItemIcon, ListItemText,Box } from "../../utils/material-ui/materialComponents";
 
-const Dsidebar = () => {
+const ReSidebar = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Box   sx={{
-        position: "sticky",
-        top: "1rem",
-      }}>
+        <Box m-0 bgcolor="#19191B">
           <List>
           <ListItem component={Link} to="/">
               <ListItemIcon  sx={{ color: "primary.main" }}>
-               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_83/v1655102354/Social_Builders_1_stx0ww.png"></img>
+               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_93/v1655102525/Social_Builders_2_nym7yl.png"></img>
               </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography variant="myVariant2" sx={{ color: "common.white" }}>
-                   Galax!a
-                  </Typography>
-                }
-              />
+            
             </ListItem>
             <ListItem component={Link} to="/">
               <ListItemIcon  sx={{ color: "primary.main" }}>
@@ -91,4 +82,4 @@ const Dsidebar = () => {
     </>
   );
 };
-export { Dsidebar };
+export { ReSidebar };

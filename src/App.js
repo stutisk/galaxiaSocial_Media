@@ -1,40 +1,21 @@
-import { Homepage, Bookmarkpage, Explorepage } from "../src/Pages/index";
-import { Sidebar } from "../src/Components/index";
-import {Grid,Container} from "./utils/material-ui/materialComponents";
+import { Homepage, Bookmarkpage, Explorepage, Login ,Signup} from "../src/Pages/index";
+import {PrivateRoute} from "../src/Components/index"
+import {  Container } from "./utils/material-ui/materialComponents";
 import { Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "@mui/system";
-import { theme } from "./styes/theme";
-
-
 
 
 function App() {
   return (
     <Container>
-    <Grid container spacing={4} maxWidth="xl"  className="App" >
-      <ThemeProvider theme={theme}>
-        <Grid item xs >
-        
-            <Sidebar />
-        
-        </Grid>
-        <Grid item xs={6}>
-          
-         <Homepage/>
-            <Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="explore" element={<Explorepage />} />
-              <Route path="bookmarks" element={<Bookmarkpage />} />
-            </Routes>
-          
-        </Grid>
-        <Grid item xs>
-      
-            <Sidebar />
-         
-        </Grid>
-      </ThemeProvider>
-    </Grid>
+      <Routes>
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup/>}/>
+        <Route path="/" element={<PrivateRoute/>} >
+         <Route path="/" element={<Homepage />} />
+        <Route path="explore" element={<Explorepage />} />
+        <Route path="bookmarks" element={<Bookmarkpage />} />
+        </Route>
+      </Routes>
     </Container>
   );
 }
