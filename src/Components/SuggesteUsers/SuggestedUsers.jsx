@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
-import { MdHome, MdExplore, MdBookmark,FaUserAlt,MdNotifications} from "../../utils/Icons/Icons";
+
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
-import { Typography, List, ListItem, ListItemIcon, ListItemText,Box } from "../../utils/material-ui/materialComponents";
+import { Typography,Box } from "../../utils/material-ui/materialComponents";
 
 const SuggestedUsers = () => {
   return (

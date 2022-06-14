@@ -12,7 +12,7 @@ const ReSidebar = () => {
           <List>
           <ListItem component={Link} to="/">
               <ListItemIcon  sx={{ color: "primary.main" }}>
-               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_93/v1655102525/Social_Builders_2_nym7yl.png"></img>
+               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_93/v1655102525/Social_Builders_2_nym7yl.png" alt="galaxia-logo"></img>
               </ListItemIcon>
             
             </ListItem>

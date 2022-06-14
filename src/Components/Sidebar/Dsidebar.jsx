@@ -15,7 +15,7 @@ const Dsidebar = () => {
           <List>
           <ListItem component={Link} to="/">
               <ListItemIcon  sx={{ color: "primary.main" }}>
-               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_83/v1655102354/Social_Builders_1_stx0ww.png"></img>
+               <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_83/v1655102354/Social_Builders_1_stx0ww.png" alt="galaxia-logo"></img>
               </ListItemIcon>
               <ListItemText
                 primary={
