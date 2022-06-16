@@ -1,11 +1,12 @@
-import { Box } from "@mui/system";
-import Grid from "@mui/material/Grid";
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import {
   Typography,
   Button,
   RouterLink,
+  Grid,
+  Box,
+
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
 
@@ -44,7 +45,7 @@ const Login = () => {
                   border: 1,
                   borderRadius: 1,
                   borderColor: "border.main",
-                  width: "25rem",
+                  // width: "25rem",
                   p: 3,
                 }}
               >

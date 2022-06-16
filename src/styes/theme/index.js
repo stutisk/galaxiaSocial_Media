@@ -35,4 +35,7 @@ export const theme = createTheme({
         "5rem"   
     }
   },
+  multilineColor:{
+    color:'red'
+}
 });
