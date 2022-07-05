@@ -8,8 +8,37 @@ import {
   RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
+import { useState,useEffect } from "react";
+import { loginHandler } from "../../features/auth/authSlice";
+import { useDispatch, useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const initialValue = {
+    email: "",
+    password: "",
+  };
+  const [login, setLogin] = useState(initialValue);
+
+
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+
+  const LogIn = () => {
+    const { email, password} = login;
+    if (email && password  !== "") {
+      dispatch(loginHandler({ login,setLogin }));
+      
+    }
+  };
+
+  const fillFormValue = (event, fieldName) => {
+    console.log(event.target.value, [fieldName]);
+    setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
+  };
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -49,11 +78,11 @@ const Login = () => {
                 }}
               >
                 <TextField
-               
+                  value={login.email}
+                  onChange={(e) => fillFormValue(e, "email")}
                   sx={{
                     mb: 2,
-                    input: { color: "common.white"},
-                
+                    input: { color: "common.white" },
                   }}
                   type="email"
                   required
@@ -62,8 +91,10 @@ const Login = () => {
                   focused
                 />
                 <TextField
+                value={login.password}
+                onChange={(e) => fillFormValue(e, "password")}
                   sx={{
-                    input: { color: "common.white"},
+                    input: { color: "common.white" },
                     mb: 2,
                   }}
                   type="password"
@@ -81,6 +112,7 @@ const Login = () => {
                   }}
                   variant="contained"
                   size="large"
+                  onClick={() => LogIn(login,setLogin)}
                 >
                   Login
                 </Button>
@@ -101,9 +133,10 @@ const Login = () => {
                   variant="subtitle1"
                   sx={{ color: "common.white" }}
                 >
-                  Dont have an account ?  {" "}
-                  <RouterLink  color="common.white" to="/signup" >SignUp</RouterLink>
-                  
+                  Dont have an account ?{" "}
+                  <RouterLink color="common.white" to="/signup">
+                    SignUp
+                  </RouterLink>
                 </Typography>
               </Box>
             </Grid>

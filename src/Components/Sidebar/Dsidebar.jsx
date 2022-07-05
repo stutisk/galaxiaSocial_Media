@@ -73,7 +73,7 @@ const Dsidebar = () => {
                 }
               />
             </ListItem>
-            <ListItem component={Link} to="login">
+            <ListItem component={Link} to="profile">
               <ListItemIcon  sx={{ color: "primary.main" }}>
                 <FaUserAlt size={30} />
               </ListItemIcon>

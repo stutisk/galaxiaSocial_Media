@@ -4,4 +4,5 @@ import { Explorepage } from "./Explorepage/Explorepage";
 import {Notificationpage} from "./Notificationpage/Notificationpage"
 import {Login} from "./Auth/Login";
 import {Signup} from "./Auth/Signup"
-export {Homepage,Bookmarkpage,Explorepage,Login,Signup,Notificationpage}
+import { Profilepage } from "./Profilepage/Profilepage";
+export {Homepage,Bookmarkpage,Explorepage,Login,Signup,Notificationpage,Profilepage }
