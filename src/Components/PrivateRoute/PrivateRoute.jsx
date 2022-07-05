@@ -4,6 +4,7 @@ import { theme } from "../../styes/theme/index"
 import { Grid} from "../../utils/material-ui/materialComponents";
 import { Sidebar, SuggestedUsers } from "../index";
 const PrivateRoute = () => {
+ 
   return (
     <>
       <Grid container spacing={3} className="App">
