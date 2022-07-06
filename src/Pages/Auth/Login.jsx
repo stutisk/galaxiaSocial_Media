@@ -14,31 +14,33 @@ import { useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
   const initialValue = {
     email: "",
     password: "",
   };
+
   const [login, setLogin] = useState(initialValue);
-
-
+  const { token } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
 
-  const LogIn = () => {
-    const { email, password} = login;
-    if (email && password  !== "") {
-      dispatch(loginHandler({ login,setLogin }));
-      
-    }
-  };
+  const guestLogin = () => {
+    setLogin((input)=> ({
+      ...input,email:"stuti1799@gmail.com",
+      password:"StutiSk123"
+    }))
+    dispatch(loginHandler({ login }))
+  } 
 
   const fillFormValue = (event, fieldName) => {
     console.log(event.target.value, [fieldName]);
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
+  useEffect(() => token && navigate("/"), [token]);
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -112,11 +114,14 @@ const Login = () => {
                   }}
                   variant="contained"
                   size="large"
-                  onClick={() => LogIn(login,setLogin)}
+                  onClick={() => dispatch(loginHandler({ login}))}
                 >
                   Login
                 </Button>
                 <Button
+                 onClick={() => 
+                  guestLogin(login)}
+
                   sx={{
                     mx: "auto",
                     width: "100%",

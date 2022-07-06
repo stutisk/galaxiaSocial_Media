@@ -29,6 +29,7 @@ const Signup = () => {
   const [Signup, setSignUp] = useState(initialValues);
 
   const signUp = () => {
+   
     const { email, password, fullName } = Signup;
     if (email && password && fullName !== "") {
       dispatch(signUpHandler({ Signup, setSignUp }));

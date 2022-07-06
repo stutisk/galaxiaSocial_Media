@@ -3,6 +3,8 @@ import { signUpService, loginService } from "../../services/authServices";
 import {
   CircularProgress 
 } from "../../utils/material-ui/materialComponents";
+
+
 export const signUpHandler = createAsyncThunk(
   "auth/signupHandler",
   async ({ fullName, email, password }, thunkAPI) => {
@@ -26,7 +28,7 @@ export const loginHandler = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const res = await loginService(email, password);
-      return res.data;
+     console.log(email)
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -37,8 +39,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-      logoutHandler:() => {
-      
+      logoutHandler:() => {   
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         return{
@@ -66,17 +67,17 @@ export const authSlice = createSlice({
     // login
     [loginHandler.pending]:(state) => {
       state.status="pending";
-      <CircularProgress />
+    
     },
-    [loginHandler.fulfilled]: (state, { payload }) => {
+    [loginHandler.fulfilled]: (state,action) => {
       state.status = "fullfilled";
-      state.token = payload.encodedToken;
-      state.user = payload.createdUser;
-      localStorage.setItem("token", payload.encodedToken);
-      localStorage.setItem("user", JSON.stringify(payload.foundUser));
+      localStorage.setItem("token", action.payload.encodedToken);
+      localStorage.setItem("user", JSON.stringify(action.payload.foundUser));
     },
     [loginHandler.rejected]: (state) => {
       state.status = "rejected";
+     
+     
     },
   },
 });
