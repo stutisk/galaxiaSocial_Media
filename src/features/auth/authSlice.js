@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { signUpService, loginService } from "../../services/authServices";
-
+import {
+  CircularProgress 
+} from "../../utils/material-ui/materialComponents";
 export const signUpHandler = createAsyncThunk(
   "auth/signupHandler",
   async ({ fullName, email, password }, thunkAPI) => {
     try {
       const res = await signUpService(fullName, email, password);
       return res.data;
+      
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -33,7 +36,18 @@ export const loginHandler = createAsyncThunk(
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+      logoutHandler:() => {
+      
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        return{
+          user:null,
+          token:null,
+        }
+      
+    }
+  },
   extraReducers: {
     // signup
     [signUpHandler.pending]: (state) => {
@@ -52,6 +66,7 @@ export const authSlice = createSlice({
     // login
     [loginHandler.pending]:(state) => {
       state.status="pending";
+      <CircularProgress />
     },
     [loginHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
@@ -66,4 +81,5 @@ export const authSlice = createSlice({
   },
 });
 
+export const {logoutHandler} = authSlice.actions;
 export default authSlice.reducer;
