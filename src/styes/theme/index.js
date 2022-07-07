@@ -33,6 +33,9 @@ export const theme = createTheme({
     myVariant3:{
       fontSize:
         "5rem"   
-    }
+    },
+    multilineColor:{
+      color:'red'
+  }
   },
 });

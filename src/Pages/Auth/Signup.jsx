@@ -134,7 +134,7 @@ const Signup = () => {
                       mb: 2,
                     }}
                     onChange={(e) => fillFormValue(e, "confirmpassword")}
-                    type="confirmpassword"
+                    type="password"
                     required
                     label=" Confirm Password"
                     fullWidth

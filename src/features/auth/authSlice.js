@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { signUpService, loginService } from "../../services/authServices";
-import {
-  CircularProgress 
-} from "../../utils/material-ui/materialComponents";
+
 
 
 export const signUpHandler = createAsyncThunk(
@@ -28,12 +26,14 @@ export const loginHandler = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const res = await loginService(email, password);
-     console.log(email)
+     
+    return res.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
 
 export const authSlice = createSlice({
   name: "auth",
@@ -67,15 +67,19 @@ export const authSlice = createSlice({
     // login
     [loginHandler.pending]:(state) => {
       state.status="pending";
+      console.log((state))
     
     },
-    [loginHandler.fulfilled]: (state,action) => {
+    [loginHandler.fulfilled]: (state,{payload}) => {
       state.status = "fullfilled";
-      localStorage.setItem("token", action.payload.encodedToken);
-      localStorage.setItem("user", JSON.stringify(action.payload.foundUser));
+      localStorage.setItem("token", payload.encodedToken);
+      localStorage.setItem("user", JSON.stringify(payload.foundUser));
+      console.log((state))
     },
-    [loginHandler.rejected]: (state) => {
-      state.status = "rejected";
+    [loginHandler.rejected]: (state,{payload}) => {
+      state.authStatus = "rejected";
+      
+      console.log((state))
      
      
     },

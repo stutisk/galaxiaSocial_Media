@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Box,Typography,Toolbar, } from "../../utils/material-ui/materialComponents";
-
+import { CreatePost } from "../../Components";
 
 const Homepage = () => {
   useEffect(() => {
@@ -29,6 +29,7 @@ const Homepage = () => {
           <Typography variant="h6">Home</Typography>
         </Toolbar>
       </Box>
+      <CreatePost/>
      
       <p>
         Why do we use it? It is a long established fact that a reader will be

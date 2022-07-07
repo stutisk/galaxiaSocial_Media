@@ -40,7 +40,9 @@ const Login = () => {
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
-  useEffect(() => token && navigate("/"), [token]);
+  // useEffect(() => token && navigate("/"), [token,navigate]);
+
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -120,7 +122,7 @@ const Login = () => {
                 </Button>
                 <Button
                  onClick={() => 
-                  guestLogin(login)}
+                  guestLogin()}
 
                   sx={{
                     mx: "auto",
