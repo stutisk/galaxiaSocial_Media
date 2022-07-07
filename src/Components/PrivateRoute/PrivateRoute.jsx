@@ -19,10 +19,10 @@ const PrivateRoute = () => {
           <Grid item  lg={3} xs={12}>
             <Sidebar />
           </Grid>
-          <Grid item  lg={6} xs={12}>
+          <Grid item  lg={7} xs={12}>
             <Outlet />
           </Grid>
-          <Grid item  lg={3} xs={12}>
+          <Grid item  lg={2} xs={12}>
             <SuggestedUsers />
           </Grid>
         </ThemeProvider>

@@ -38,4 +38,14 @@ export const theme = createTheme({
       color:'red'
   }
   },
+  button: {
+    "&:hover": {
+      boxShadow: "none",
+      background: "red"
+    },
+    "&:active": {
+      borderBottom: "1",
+      background: "black"
+    }
+  }
 });

@@ -1,5 +1,5 @@
 
-import {MdNotifications,MdHome,MdBookmark,MdExplore,MdPhotoCamera} from "react-icons/md";
+import {MdNotifications,MdHome,MdBookmark,MdExplore,MdPhotoCamera,MdLogout} from "react-icons/md";
 import {FaUserAlt} from "react-icons/fa";
-
-export {MdHome,MdExplore,MdBookmark,FaUserAlt,MdNotifications,MdPhotoCamera} 
+import {BiLink} from "react-icons/bi"
+export {MdHome,MdExplore,MdBookmark,FaUserAlt,MdNotifications,MdPhotoCamera,BiLink,MdLogout} 
