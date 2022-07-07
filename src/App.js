@@ -2,13 +2,14 @@ import { Homepage, Bookmarkpage, Explorepage, Login ,Signup,Notificationpage,Pro
 import {PrivateRoute} from "../src/Components/index"
 import {  Container } from "./utils/material-ui/materialComponents";
 import { Routes, Route } from "react-router-dom";
-
+import Mockman from "mockman-js";
 
 
 function App() {
   return (
     <Container>
       <Routes>
+      <Route path="/mockman" element={<Mockman />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/" element={<PrivateRoute/>} >
