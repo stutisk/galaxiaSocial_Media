@@ -10,14 +10,10 @@ import {
 
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
-import { styled } from "@mui/material/styles";
+
 
 const EditUserModal = () => {
-  const SmallAvatar = styled(Avatar)(({ theme }) => ({
-    width: 10,
-    height: 10,
-    border: `2px solid ${theme.palette.background.paper}`,
-  }));
+  
   return (
     <>
       <Box
