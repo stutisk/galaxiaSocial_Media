@@ -13,11 +13,13 @@ import {
 import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
-
+import { useSelector } from "react-redux";
 
 const UserProfile = () => {
- 
   const dispatch = useDispatch();
+  const { user} = useSelector((state) => state.auth);
+  const{users} =useSelector((state) => state.user)
+  console.log(users)
   return (
     <>
       <Box
@@ -52,10 +54,10 @@ const UserProfile = () => {
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                Stuti Sk
+                {user.fullName}
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
-                @StutiSk
+             {user.username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
                 Web Developer

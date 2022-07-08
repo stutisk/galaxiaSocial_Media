@@ -21,21 +21,21 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const initialValues = {
-    fullName: "",
+    firstName: "",
     email: "",
     password: "",
+    lastName:"",
   };
 
   const [Signup, setSignUp] = useState(initialValues);
 
   const signUp = () => {
    
-    const { email, password, fullName } = Signup;
-    if (email && password && fullName !== "") {
-      dispatch(signUpHandler({ Signup, setSignUp }));
-    }
-    else{
-      console.log("hj")
+    const { email, password, firstName, lastName } = Signup;
+    if (email && password && firstName  && lastName!== "") {
+      (async () => {
+        await dispatch(signUpHandler(Signup));
+      })();
     }
   };
 
@@ -87,15 +87,29 @@ const Signup = () => {
               >
                 <Box component="form">
                   <TextField
-                    value={Signup.fullName}
-                    onChange={(e) => fillFormValue(e, "fullName")}
+                    value={Signup.firstName}
+                    onChange={(e) => fillFormValue(e, "firstName")}
                     sx={{
                       mb: 2,
                       input: { color: "common.white" },
                     }}
                     type="text"
                     required
-                    label="FullName"
+                    label="FirstName"
+                    fullWidth
+                    focused
+                   
+                  />
+                    <TextField
+                    value={Signup.lastName}
+                    onChange={(e) => fillFormValue(e, "lastName")}
+                    sx={{
+                      mb: 2,
+                      input: { color: "common.white" },
+                    }}
+                    type="text"
+                    required
+                    label="lastName"
                     fullWidth
                     focused
                    
@@ -148,7 +162,7 @@ const Signup = () => {
                       width: "100%",
                       mb: 1,
                     }}
-                    onClick={() => signUp(Signup, setSignUp)}
+                    onClick={() => signUp(Signup,setSignUp)}
                     variant="contained"
                     size="large"
                   >

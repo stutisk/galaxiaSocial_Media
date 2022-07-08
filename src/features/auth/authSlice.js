@@ -5,9 +5,10 @@ import { signUpService, loginService } from "../../services/authServices";
 
 export const signUpHandler = createAsyncThunk(
   "auth/signupHandler",
-  async ({ fullName, email, password }, thunkAPI) => {
+  async ({ firstName,lastName,email,password}, thunkAPI) => {
     try {
-      const res = await signUpService(fullName, email, password);
+      const res = await signUpService(firstName,lastName,email,password);
+      console.log(res)
       return res.data;
       
     } catch (error) {
@@ -58,8 +59,10 @@ export const authSlice = createSlice({
       state.status = "fullfilled";
       state.token = payload.encodedToken;
       state.user = payload.createdUser;
+      console.log(state.user)
       localStorage.setItem("token", payload.encodedToken);
       localStorage.setItem("user", JSON.stringify(payload.createdUser));
+      console.log(state)
     },
     [signUpHandler.rejected]: (state) => {
       state.status = "rejected";
@@ -77,8 +80,7 @@ export const authSlice = createSlice({
       console.log((state))
     },
     [loginHandler.rejected]: (state,{payload}) => {
-      state.authStatus = "rejected";
-      
+      state.authStatus = "rejected";    
       console.log((state))
      
      

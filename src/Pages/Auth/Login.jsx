@@ -8,13 +8,12 @@ import {
   RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { loginHandler } from "../../features/auth/authSlice";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
   const initialValue = {
     email: "",
     password: "",
@@ -26,22 +25,40 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const guestLogin = () => {
-    setLogin((input)=> ({
-      ...input,email:"stuti1799@gmail.com",
-      password:"StutiSk123"
-    }))
-    dispatch(loginHandler({ login }))
-  } 
+    setLogin((input) => ({
+      ...input,
+      email: "stuti1799@gmail.com",
+      password: "StutiSk123",
+    }));
+  };
+
+  const handleLogin = async () => {
+   
+    try {
+			const res =  dispatch(loginHandler(login));
+
+            console.log(res);
+
+            if(res?.error) {
+                throw new Error("Signup Failed");
+            }
+
+			if (res?.payload.encodedToken) {
+               
+                return navigate("/");
+			}
+		} catch (error) {
+			
+		}
+  };
 
   const fillFormValue = (event, fieldName) => {
-    console.log(event.target.value, [fieldName]);
+    // console.log(event.target.value, [fieldName]);
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
   // useEffect(() => token && navigate("/"), [token,navigate]);
-
 
   return (
     <>
@@ -95,8 +112,8 @@ const Login = () => {
                   focused
                 />
                 <TextField
-                value={login.password}
-                onChange={(e) => fillFormValue(e, "password")}
+                  value={login.password}
+                  onChange={(e) => fillFormValue(e, "password")}
                   sx={{
                     input: { color: "common.white" },
                     mb: 2,
@@ -116,14 +133,12 @@ const Login = () => {
                   }}
                   variant="contained"
                   size="large"
-                  onClick={() => dispatch(loginHandler({ login}))}
+                  onClick={ ()=>handleLogin()}
                 >
                   Login
                 </Button>
                 <Button
-                 onClick={() => 
-                  guestLogin()}
-
+                  onClick={() => guestLogin()}
                   sx={{
                     mx: "auto",
                     width: "100%",

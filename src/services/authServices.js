@@ -7,10 +7,11 @@ export const loginService = (email, password) => {
   });
 };
 
-export const signUpService = (email, password,fullName) => {
+export const signUpService = (firstName,lastName,email,password) => {
   return axios.post("api/auth/signup", {
-    fullName: fullName,
-    email: email,
+    firstName: firstName,
+    username: email,
     password: password,
+    lastName:lastName
   });
 };
