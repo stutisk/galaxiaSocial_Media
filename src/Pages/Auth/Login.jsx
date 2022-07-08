@@ -28,37 +28,25 @@ const Login = () => {
   const guestLogin = () => {
     setLogin((input) => ({
       ...input,
-      email: "stuti1799@gmail.com",
+      username: "stutiSk",
       password: "StutiSk123",
     }));
   };
 
-  const handleLogin = async () => {
-   
-    try {
-			const res =  dispatch(loginHandler(login));
-
-            console.log(res);
-
-            if(res?.error) {
-                throw new Error("Signup Failed");
-            }
-
-			if (res?.payload.encodedToken) {
-               
-                return navigate("/");
-			}
-		} catch (error) {
-			
-		}
+  const LoginHandler = () => {
+    const { username, password } = login;
+    if (username && password !== "") {
+      (async () => {
+        await dispatch(loginHandler(login));
+      })();
+    }
   };
-
   const fillFormValue = (event, fieldName) => {
     // console.log(event.target.value, [fieldName]);
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
-  // useEffect(() => token && navigate("/"), [token,navigate]);
+  useEffect(() => token && navigate("/"), [token, navigate]);
 
   return (
     <>
@@ -99,15 +87,15 @@ const Login = () => {
                 }}
               >
                 <TextField
-                  value={login.email}
-                  onChange={(e) => fillFormValue(e, "email")}
+                  value={login.username}
+                  onChange={(e) => fillFormValue(e, "username")}
                   sx={{
                     mb: 2,
                     input: { color: "common.white" },
                   }}
-                  type="email"
+                  type="text"
                   required
-                  label="Email"
+                  label="username"
                   fullWidth
                   focused
                 />
@@ -126,6 +114,7 @@ const Login = () => {
                 />
 
                 <Button
+                  onClick={() => LoginHandler(login, setLogin)}
                   sx={{
                     mx: "auto",
                     width: "100%",
@@ -133,7 +122,6 @@ const Login = () => {
                   }}
                   variant="contained"
                   size="large"
-                  onClick={ ()=>handleLogin()}
                 >
                   Login
                 </Button>

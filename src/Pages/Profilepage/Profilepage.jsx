@@ -24,7 +24,9 @@ const Profilepage = () => {
         McClintock, a Latin professor at Hampden-Sydney College in Virginia,
    s, combined with a handful of model
         sentence structures, to generate Lorem Ipsum which looks reasonable. The
-        generated Lorem Ipsum is</p>
+        generated Lorem Ipsum is
+        v
+        </p>
       </Box>
 
      

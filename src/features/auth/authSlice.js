@@ -24,9 +24,9 @@ const initialState = {
 
 export const loginHandler = createAsyncThunk(
   "auth/loginHandler",
-  async ({ email, password }, thunkAPI) => {
+  async ({ username, password }, thunkAPI) => {
     try {
-      const res = await loginService(email, password);
+      const res = await loginService(username, password);
      
     return res.data
     } catch (error) {
