@@ -5,9 +5,9 @@ import { signUpService, loginService } from "../../services/authServices";
 
 export const signUpHandler = createAsyncThunk(
   "auth/signupHandler",
-  async ({ firstName,lastName,email,password}, thunkAPI) => {
+  async ({ firstName,lastName,username,password}, thunkAPI) => {
     try {
-      const res = await signUpService(firstName,lastName,email,password);
+      const res = await signUpService(firstName,lastName,username,password);
       console.log(res)
       return res.data;
       

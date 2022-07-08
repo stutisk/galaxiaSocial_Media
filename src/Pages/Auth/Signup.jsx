@@ -24,15 +24,14 @@ const Signup = () => {
     firstName: "",
     email: "",
     password: "",
-    lastName:"",
+    lastName: "",
   };
 
   const [Signup, setSignUp] = useState(initialValues);
 
   const signUp = () => {
-   
-    const { email, password, firstName, lastName } = Signup;
-    if (email && password && firstName  && lastName!== "") {
+    const { username, password, firstName, lastName } = Signup;
+    if (username && password && firstName && lastName !== "") {
       (async () => {
         await dispatch(signUpHandler(Signup));
       })();
@@ -40,12 +39,9 @@ const Signup = () => {
   };
 
   const fillFormValue = (event, fieldName) => {
-    console.log(event.target.value,[fieldName])
+    console.log(event.target.value, [fieldName]);
     setSignUp((input) => ({ ...input, [fieldName]: event.target.value }));
-    
   };
-
- 
 
   return (
     <>
@@ -98,9 +94,8 @@ const Signup = () => {
                     label="FirstName"
                     fullWidth
                     focused
-                   
                   />
-                    <TextField
+                  <TextField
                     value={Signup.lastName}
                     onChange={(e) => fillFormValue(e, "lastName")}
                     sx={{
@@ -112,21 +107,19 @@ const Signup = () => {
                     label="lastName"
                     fullWidth
                     focused
-                   
                   />
                   <TextField
-                    value={Signup.email}
-                    onChange={(e) => fillFormValue(e, "email")}
+                    value={Signup.username}
+                    onChange={(e) => fillFormValue(e, "username")}
                     sx={{
                       mb: 2,
                       input: { color: "common.white" },
                     }}
-                    type="email"
+                    type="username"
                     required
-                    label="Email"
+                    label="Username"
                     fullWidth
                     focused
-                  
                   />
                   <TextField
                     value={Signup.password}
@@ -140,7 +133,6 @@ const Signup = () => {
                     label="Password"
                     fullWidth
                     focused
-                   
                   />
                   <TextField
                     sx={{
@@ -153,7 +145,6 @@ const Signup = () => {
                     label=" Confirm Password"
                     fullWidth
                     focused
-                
                   />
 
                   <Button
@@ -162,7 +153,7 @@ const Signup = () => {
                       width: "100%",
                       mb: 1,
                     }}
-                    onClick={() => signUp(Signup,setSignUp)}
+                    onClick={() => signUp(Signup, setSignUp)}
                     variant="contained"
                     size="large"
                   >

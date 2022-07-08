@@ -14,6 +14,7 @@ import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
+import { MdStayPrimaryLandscape } from "react-icons/md";
 
 const UserProfile = () => {
   const dispatch = useDispatch();
@@ -46,15 +47,16 @@ const UserProfile = () => {
         >
           <Grid container lg={12} item spacing={5}>
             <Grid item lg={2} xs={2}>
-              <Avatar
+              {/* <Avatar
                 sx={{ width: 90, height: 90 }}
                 alt="profile "
                 src="https://stutikumari17.netlify.app/images/my.jpg"
-              />
+              /> */}
+<Avatar sx={{ bgcolor: "primary.main" ,width: 90, height: 90 }}>{user.firstName.charAt(0)}{user.lastName.charAt(0)}</Avatar>
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                {user.fullName}
+                {user.firstName} {user.lastName}
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
              {user.username}
@@ -124,7 +126,7 @@ const UserProfile = () => {
               }}
               size="large"
             >
-              10 Following
+             {user.following.length} following
             </Button>
             <Button
               sx={{
@@ -134,7 +136,7 @@ const UserProfile = () => {
               variant="text"
               size="large"
             >
-              10 Followers
+          {user.followers.length} followers
             </Button>
             <Button
               sx={{
