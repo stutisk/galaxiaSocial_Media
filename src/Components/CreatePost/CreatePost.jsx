@@ -8,9 +8,13 @@ import {
   Box,
   Avatar,
   IconButton,
+
 } from "../../utils/material-ui/materialComponents";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
+import { useSelector } from "react-redux";
+
 const CreatePost = () => {
+  const {user} = useSelector((state)=> state.auth)
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -23,10 +27,7 @@ const CreatePost = () => {
         >
           <Grid container lg={12} item spacing={4}>
             <Grid item lg={1} xs={1}>
-              <Avatar
-                alt="Remy Sharp"
-                src="https://res.cloudinary.com/dvbw8xujd/image/upload/v1652635707/w-1_c_mev7zg.jpg"
-              />
+            <Avatar sx={{ bgcolor: "primary.main" ,fontSize:20}}>{user.firstName.charAt(0)}{user.lastName.charAt(0)}</Avatar>
             </Grid>
             <Grid item lg={11} xs={11}>
               <TextField

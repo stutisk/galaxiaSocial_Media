@@ -6,7 +6,8 @@ export const getUserHandler = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await getUser();
-      return res.data.user;
+      // return res.data.user;
+      console.log(res.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

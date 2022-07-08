@@ -19,8 +19,8 @@ import { MdStayPrimaryLandscape } from "react-icons/md";
 const UserProfile = () => {
   const dispatch = useDispatch();
   const { user} = useSelector((state) => state.auth);
-  const{users} =useSelector((state) => state.user)
-  console.log(users)
+  // const {users} =useSelector((state) => state.user)
+  console.log(user)
   return (
     <>
       <Box
@@ -52,7 +52,7 @@ const UserProfile = () => {
                 alt="profile "
                 src="https://stutikumari17.netlify.app/images/my.jpg"
               /> */}
-<Avatar sx={{ bgcolor: "primary.main" ,width: 90, height: 90 }}>{user.firstName.charAt(0)}{user.lastName.charAt(0)}</Avatar>
+<Avatar sx={{ bgcolor: "primary.main" ,width: 90, height: 90 ,fontSize:50}}>{user.firstName.charAt(0)}{user.lastName.charAt(0)}</Avatar>
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
