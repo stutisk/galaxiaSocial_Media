@@ -1,8 +1,9 @@
-import { UserProfile } from "../../Components";
+import { EditUserModal, UserProfile } from "../../Components";
 import {
   Box,
   Typography,
   Toolbar,
+ 
 } from "../../utils/material-ui/materialComponents";
 const Profilepage = () => {
   return (
@@ -27,6 +28,7 @@ const Profilepage = () => {
         generated Lorem Ipsum is
         v
         </p>
+        <EditUserModal></EditUserModal>
       </Box>
 
      

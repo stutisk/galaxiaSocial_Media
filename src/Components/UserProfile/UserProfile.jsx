@@ -31,6 +31,7 @@ const UserProfile = () => {
             border: 1,
             borderTop: 0,
             borderColor: "border.main",
+            zIndex: 2
           }}
         >
           <Toolbar>
