@@ -32,7 +32,7 @@ const Profilepage = () => {
           handful of model sentence structures, to generate Lorem Ipsum which
           looks reasonable. The generated Lorem Ipsum is v
         </p>
-        <EditUserModal></EditUserModal>
+        {/* <EditUserModal></EditUserModal> */}
       </Box>
     </>
   );
