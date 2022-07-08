@@ -10,8 +10,10 @@ import {
 
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
 
-const EditUserModal = ({ modal,setModal }) => {
+const EditUserModal = ({ modal, setModal }) => {
+  const{user} = useSelector((state) => state.auth)
   const closemodal = () => {
     setModal(false);
   };
@@ -68,7 +70,7 @@ const EditUserModal = ({ modal,setModal }) => {
                   Save
                 </Button>
                 <Button
-                onClick={closemodal}
+                  onClick={closemodal}
                   sx={{
                     mx: "auto",
                     width: "50%",
@@ -99,14 +101,25 @@ const EditUserModal = ({ modal,setModal }) => {
               overlap="circular"
               anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
               badgeContent={
-                <IconButton
-                  sx={{
-                    color: "common.white",
-                  }}
-                >
-                  {" "}
-                  <MdPhotoCamera size={22} />
-                </IconButton>
+                
+                 <label htmlFor="icon-button-file">
+              <input
+                hidden
+                accept="image/*"
+                id="icon-button-file"
+                type="file"
+              />
+              <IconButton
+              sx={{
+                color:"common.white"
+              }}
+                aria-label="upload picture"
+                component="span"
+              >
+                <MdPhotoCamera color="common.white" />
+              </IconButton>
+            </label>
+                
               }
             >
               <Avatar
@@ -117,7 +130,8 @@ const EditUserModal = ({ modal,setModal }) => {
                   fontSize: 50,
                 }}
               >
-                Sk
+              
+                {user.firstName.charAt(0)}{user.lastName.charAt(0)}
               </Avatar>
             </Badge>
 
