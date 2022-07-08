@@ -14,7 +14,7 @@ import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { MdStayPrimaryLandscape } from "react-icons/md";
+
 
 const UserProfile = () => {
   const dispatch = useDispatch();

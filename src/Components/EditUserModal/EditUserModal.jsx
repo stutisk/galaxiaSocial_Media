@@ -7,11 +7,11 @@ import {
   Badge,
   IconButton,
 } from "../../utils/material-ui/materialComponents";
-import Tooltip from "@mui/material/Tooltip";
+
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
 import { styled } from "@mui/material/styles";
-import { MdStayPrimaryLandscape } from "react-icons/md";
+
 const EditUserModal = () => {
   const SmallAvatar = styled(Avatar)(({ theme }) => ({
     width: 10,

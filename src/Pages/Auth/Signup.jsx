@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const { token } = useSelector((state) => state.auth);
 
-  useEffect(() => token && navigate("/"), [token]);
+  useEffect(() => token && navigate("/"), [token,navigate]);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
