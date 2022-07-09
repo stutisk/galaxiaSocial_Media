@@ -8,8 +8,44 @@ import {
   RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
-
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signUpHandler } from "../../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { token } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    token && navigate("/");
+  }, [token, navigate]);
+
+  
+  const initialValues = {
+    firstName: "",
+    username: "",
+    password: "",
+    lastName: "",
+  };
+
+  const [Signup, setSignUp] = useState(initialValues);
+
+  const signUp = () => {
+    const { username, password, firstName, lastName } = Signup;
+    if (username && password && firstName && lastName !== "") {
+      (async () => {
+        await dispatch(signUpHandler(Signup));
+      })();
+    }
+  };
+
+  const fillFormValue = (event, fieldName) => {
+    console.log(event.target.value, [fieldName]);
+    setSignUp((input) => ({ ...input, [fieldName]: event.target.value }));
+  };
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -48,63 +84,85 @@ const Signup = () => {
                   p: 3,
                 }}
               >
-                <TextField
-                  sx={{
-                    mb: 2,
-                    input: { color: "common.white" },
-                  }}
-                  type="text"
-                  required
-                  label="Name"
-                  fullWidth
-                  focused
-                />
-                <TextField
-                  sx={{
-                    mb: 2,
-                    input: { color: "common.white" },
-                  }}
-                  type="email"
-                  required
-                  label="Email"
-                  fullWidth
-                  focused
-                />
-                <TextField
-                  sx={{
-                    input: { color: "common.white" },
-                    mb: 2,
-                  }}
-                  type="password"
-                  required
-                  label="Password"
-                  fullWidth
-                  focused
-                />
-                <TextField
-                  sx={{
-                    input: { color: "common.white" },
-                    mb: 2,
-                  }}
-                  type="password"
-                  required
-                  label=" Confirm Password"
-                  fullWidth
-                  focused
-                />
+                <Box component="form">
+                  <TextField
+                    value={Signup.firstName}
+                    onChange={(e) => fillFormValue(e, "firstName")}
+                    sx={{
+                      mb: 2,
+                      input: { color: "common.white" },
+                    }}
+                    type="text"
+                    required
+                    label="FirstName"
+                    fullWidth
+                    focused
+                  />
+                  <TextField
+                    value={Signup.lastName}
+                    onChange={(e) => fillFormValue(e, "lastName")}
+                    sx={{
+                      mb: 2,
+                      input: { color: "common.white" },
+                    }}
+                    type="text"
+                    required
+                    label="lastName"
+                    fullWidth
+                    focused
+                  />
+                  <TextField
+                    value={Signup.username}
+                    onChange={(e) => fillFormValue(e, "username")}
+                    sx={{
+                      mb: 2,
+                      input: { color: "common.white" },
+                    }}
+                    type="username"
+                    required
+                    label="Username"
+                    fullWidth
+                    focused
+                  />
+                  <TextField
+                    value={Signup.password}
+                    onChange={(e) => fillFormValue(e, "password")}
+                    sx={{
+                      input: { color: "common.white" },
+                      mb: 2,
+                    }}
+                    type="password"
+                    required
+                    label="Password"
+                    fullWidth
+                    focused
+                  />
+                  <TextField
+                    sx={{
+                      input: { color: "common.white" },
+                      mb: 2,
+                    }}
+                    onChange={(e) => fillFormValue(e, "confirmpassword")}
+                    type="password"
+                    required
+                    label=" Confirm Password"
+                    fullWidth
+                    focused
+                  />
 
-                <Button
-                  sx={{
-                    mx: "auto",
-                    width: "100%",
-                    mb: 1,
-                  }}
-                  variant="contained"
-                  size="large"
-                >
-                  Create New account
-                </Button>
-
+                  <Button
+                    sx={{
+                      mx: "auto",
+                      width: "100%",
+                      mb: 1,
+                    }}
+                    onClick={() => signUp(Signup, setSignUp)}
+                    variant="contained"
+                    size="large"
+                  >
+                    Create New account
+                  </Button>
+                </Box>
                 <Typography
                   align="center"
                   variant="subtitle1"

@@ -33,6 +33,19 @@ export const theme = createTheme({
     myVariant3:{
       fontSize:
         "5rem"   
-    }
+    },
+    multilineColor:{
+      color:'red'
+  }
   },
+  button: {
+    "&:hover": {
+      boxShadow: "none",
+      background: "red"
+    },
+    "&:active": {
+      borderBottom: "1",
+      background: "black"
+    }
+  }
 });

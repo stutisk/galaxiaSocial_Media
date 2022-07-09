@@ -8,8 +8,50 @@ import {
   RouterLink,
 } from "../../utils/material-ui/materialComponents";
 import TextField from "@mui/material/TextField";
+import { useState, useEffect } from "react";
+import { loginHandler } from "../../features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const initialValue = {
+    username: "",
+    password: "",
+  };
+
+  const [login, setLogin] = useState(initialValue);
+  const { token } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const guestLogin = () => {
+    setLogin((input) => ({
+      ...input,
+      username: "stutiSk",
+      password: "StutiSk123",
+    }));
+  };
+
+  const LoginHandler = () => {
+    const { username, password } = login;
+    if (username && password !== "") {
+      (async () => {
+        await dispatch(loginHandler(login));
+      })();
+    }
+  };
+  
+
+  const fillFormValue = (event, fieldName) => {
+    // console.log(event.target.value, [fieldName]);
+    setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
+  };
+
+  useEffect(() => {
+    token && navigate("/");
+  }, [token, navigate]);
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -39,6 +81,7 @@ const Login = () => {
               </p>
             </Grid>
             <Grid item lg={6} xs={12}>
+            
               <Box
                 sx={{
                   border: 1,
@@ -48,22 +91,26 @@ const Login = () => {
                   p: 3,
                 }}
               >
+                <form id="login"  onSubmit={LoginHandler(login,setLogin)}>
                 <TextField
-               
+                  value={login.username}
+                  onChange={(e) => fillFormValue(e, "username")}
+                
                   sx={{
                     mb: 2,
-                    input: { color: "common.white"},
-                
+                    input: { color: "common.white" },
                   }}
-                  type="email"
+                  type="text"
                   required
-                  label="Email"
+                  label="username"
                   fullWidth
                   focused
                 />
                 <TextField
+                  value={login.password}
+                  onChange={(e) => fillFormValue(e, "password")}
                   sx={{
-                    input: { color: "common.white"},
+                    input: { color: "common.white" },
                     mb: 2,
                   }}
                   type="password"
@@ -74,6 +121,8 @@ const Login = () => {
                 />
 
                 <Button
+                
+                  type="submit"
                   sx={{
                     mx: "auto",
                     width: "100%",
@@ -85,6 +134,7 @@ const Login = () => {
                   Login
                 </Button>
                 <Button
+                  onClick={() => guestLogin()}
                   sx={{
                     mx: "auto",
                     width: "100%",
@@ -96,14 +146,16 @@ const Login = () => {
                 >
                   Login As Guest
                 </Button>
+                </form>
                 <Typography
                   align="center"
                   variant="subtitle1"
                   sx={{ color: "common.white" }}
                 >
-                  Dont have an account ?  {" "}
-                  <RouterLink  color="common.white" to="/signup" >SignUp</RouterLink>
-                  
+                  Dont have an account ?{" "}
+                  <RouterLink color="common.white" to="/signup">
+                    SignUp
+                  </RouterLink>
                 </Typography>
               </Box>
             </Grid>
