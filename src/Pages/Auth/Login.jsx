@@ -46,7 +46,9 @@ const Login = () => {
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
-  useEffect(() => token && navigate("/"), [token, navigate]);
+  useEffect(() => {
+    token && navigate("/");
+  }, [token, navigate]);
 
   return (
     <>

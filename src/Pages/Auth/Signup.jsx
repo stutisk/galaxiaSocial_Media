@@ -18,7 +18,9 @@ const Signup = () => {
 
   const { token } = useSelector((state) => state.auth);
 
-  useEffect(() => token && navigate("/"), [token,navigate]);
+  useEffect(() => {
+    token && navigate("/");
+  }, [token, navigate]);
 
   
   const initialValues = {
