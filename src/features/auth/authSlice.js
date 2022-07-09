@@ -22,12 +22,12 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
+
 export const loginHandler = createAsyncThunk(
   "auth/loginHandler",
   async ({ username, password }, thunkAPI) => {
     try {
       const res = await loginService(username, password);
-     
     return res.data
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

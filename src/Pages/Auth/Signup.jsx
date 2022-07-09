@@ -25,7 +25,7 @@ const Signup = () => {
   
   const initialValues = {
     firstName: "",
-    email: "",
+    username: "",
     password: "",
     lastName: "",
   };

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const initialValue = {
-    email: "",
+    username: "",
     password: "",
   };
 
@@ -41,6 +41,8 @@ const Login = () => {
       })();
     }
   };
+  
+
   const fillFormValue = (event, fieldName) => {
     // console.log(event.target.value, [fieldName]);
     setLogin((input) => ({ ...input, [fieldName]: event.target.value }));
@@ -79,6 +81,7 @@ const Login = () => {
               </p>
             </Grid>
             <Grid item lg={6} xs={12}>
+            
               <Box
                 sx={{
                   border: 1,
@@ -88,9 +91,11 @@ const Login = () => {
                   p: 3,
                 }}
               >
+                <form id="login"  onSubmit={LoginHandler(login,setLogin)}>
                 <TextField
                   value={login.username}
                   onChange={(e) => fillFormValue(e, "username")}
+                
                   sx={{
                     mb: 2,
                     input: { color: "common.white" },
@@ -116,7 +121,8 @@ const Login = () => {
                 />
 
                 <Button
-                  onClick={() => LoginHandler(login, setLogin)}
+                
+                  type="submit"
                   sx={{
                     mx: "auto",
                     width: "100%",
@@ -140,6 +146,7 @@ const Login = () => {
                 >
                   Login As Guest
                 </Button>
+                </form>
                 <Typography
                   align="center"
                   variant="subtitle1"
