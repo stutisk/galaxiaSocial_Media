@@ -1,4 +1,4 @@
-import { EditUserModal, UserProfile } from "../../Components";
+import {  UserProfile } from "../../Components";
 import React, { useEffect } from "react";
 import { Box } from "../../utils/material-ui/materialComponents";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ const Profilepage = () => {
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     document.title = `${user.firstName} ${user.lastName} || Galaxia`  ;
-  }, []);
+  }, [user.firstName,user.lastName]);
 
   return (
     <>
