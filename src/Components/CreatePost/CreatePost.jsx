@@ -63,7 +63,7 @@ const CreatePost = () => {
                 <MdPhotoCamera />
               </IconButton>
             </label>
-            <Button variant="contained">Post</Button>
+            <Button variant="contained" sx={{borderRadius:"100px"}}>Post</Button>
           </Box>
         </Box>
       </ThemeProvider>
