@@ -15,6 +15,8 @@ export const users = [
     email:'stuti1799@gmail.com',
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    Bio:"Frontend Developer ",
+    link:"https://peerlist.io/stutisk",
     followers:[
       {
         _id:uuid(),

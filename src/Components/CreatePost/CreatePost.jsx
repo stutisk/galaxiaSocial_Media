@@ -11,6 +11,7 @@ import {
 } from "../../utils/material-ui/materialComponents";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { useSelector } from "react-redux";
+import React  from 'react';
 
 const CreatePost = () => {
   const {user} = useSelector((state)=> state.auth)

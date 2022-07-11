@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 
 const Profilepage = () => {
   const { user } = useSelector((state) => state.auth);
+  // const { users } = useSelector((state) => state.user);
   useEffect(() => {
     document.title = `${user.firstName} ${user.lastName} || Galaxia`  ;
   }, [user.firstName,user.lastName]);
 
+ 
   return (
     <>
       <Box

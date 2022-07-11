@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import { Typography,Box } from "../../utils/material-ui/materialComponents";

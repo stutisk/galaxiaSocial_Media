@@ -1,3 +1,4 @@
+import React  from 'react';
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import {
@@ -14,9 +15,9 @@ import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
-
+import { updateuserHandler } from "../../features/user/userSlice";
 const UserProfile = () => {
   const [modal, setModal] = useState(false);
 
@@ -26,8 +27,14 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  // const {users} =useSelector((state) => state.user)
-  console.log(user);
+  const {users} =useSelector((state) => state.user)
+
+  useEffect(() => {
+    dispatch(updateuserHandler(user.username));
+  }, [users,dispatch,user.username]);
+
+
+
   return (
     <>
       <Box
@@ -74,17 +81,17 @@ const UserProfile = () => {
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                {user.firstName} {user.lastName}
+                {user.firstName} 
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
                 {user.username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
-                Web Developer
+               {user.Bio}
               </Typography>
-              <Link href="https://stutikumari17.netlify.app/" target="blank">
+              <Link href={user.link} target="blank">
                 {" "}
-                <BiLink /> stutikumari17.netlify
+                <BiLink /> {user.link}
               </Link>
               <Box
                 sx={{
