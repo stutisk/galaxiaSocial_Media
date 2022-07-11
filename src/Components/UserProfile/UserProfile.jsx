@@ -81,7 +81,7 @@ const UserProfile = () => {
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                {user.firstName} 
+                {user.firstName} {user.lastName}
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
                 {user.username}

@@ -17,6 +17,7 @@ const EditUserModal = ({ modal, setModal }) => {
 
   const initialValue = {
     firstName: "",
+    lastName:"",
     username: "",
     Bio:"",
     link:"",
@@ -177,6 +178,19 @@ const EditUserModal = ({ modal, setModal }) => {
                 onChange={(e) => fillFormValue(e, "firstName")}
                 type="text"
                 label="FirstName"
+                fullWidth
+                focused
+              />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                name="lastName"
+                value={form.lastName}
+                onChange={(e) => fillFormValue(e, "lastName")}
+                type="text"
+                label="lastName"
                 fullWidth
                 focused
               />
