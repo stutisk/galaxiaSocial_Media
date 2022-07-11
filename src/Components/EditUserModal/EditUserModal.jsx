@@ -14,26 +14,32 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateuserHandler } from "../../features/user/userSlice";
 import React from 'react';
 const EditUserModal = ({ modal, setModal }) => {
-  const [form, setForm] = useState("");
+
+  const initialValue = {
+    firstName: "",
+    username: "",
+    Bio:"",
+    link:"",
+    
+  };
+
+  const [form, setForm] = useState(initialValue);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
   const fillFormValue = (event, fieldName) => {
-    // console.log(event.target.value, [fieldName]);
+    console.log(event.target.value, [fieldName]);
     setForm((input) => ({ ...input, [fieldName]: event.target.value }));
   };
 
   const updateHandler = () => {
-    dispatch(updateuserHandler({ ...form }));
+    (async () => {
+      await  dispatch(updateuserHandler(form ));
+    })()  
     setModal(false);
   };
 
-  // const updateHandler = () => {
-  //   (async () => {
-  //     await dispatch(updateuserHandler({ ...form }));
-  //   })();
-  //   setModal(false);
-  // };
+
 
   useEffect(() => {
     setForm(user);
@@ -47,9 +53,6 @@ const EditUserModal = ({ modal, setModal }) => {
     <>
       {modal ? (
         <Box
-          onClick={() => {
-            setForm(user);
-          }}
           sx={{
             border: 1,
             borderRadius: 3,
@@ -89,7 +92,7 @@ const EditUserModal = ({ modal, setModal }) => {
                 }}
               >
                 <Button
-                  onClick={() => updateHandler()}
+                  onClick={() => updateHandler(form,setForm)}
                   sx={{
                     mx: "auto",
                     width: "50%",
