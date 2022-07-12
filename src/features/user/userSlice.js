@@ -1,25 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getUser } from "../../services/userServices";
+import { getAllUser } from "../../services/userServices";
 import { editUser } from "../../services/userServices";
 
 export const getUserHandler = createAsyncThunk(
-  "user/getUserHandler",
+  "post/getUserHandler",
   async (_, thunkAPI) => {
     try {
-      const res = await getUser();
-      // return res.data.user;
-      console.log(res);
+      const res = await getAllUser();
+      return res.data;
+     
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   }
 );
+
 const initialState = {
   users: [],
 };
 
 export const updateuserHandler = createAsyncThunk(
-  "auth/updateuserHandler",
+  "user/updateuserHandler",
   async (userData, thunkAPI) => {
     try {
       const token = localStorage.getItem("token");
@@ -37,18 +38,19 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getUserHandler.pending]: (state) => {
-      state.status = "rejected";
+      state.status = "pending";
     },
     [getUserHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.users = payload;
-      console.log(state);
+      state.users = payload.users;
+      console.log(state)
+    
     },
     [getUserHandler.rejected]: (state) => {
       state.status = "rejected";
     },
     [updateuserHandler.pending]: (state) => {
-      state.status = "rejected";
+      state.status = "pending";
     },
     [updateuserHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";

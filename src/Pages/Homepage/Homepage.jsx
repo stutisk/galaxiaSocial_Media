@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Box,Typography,Toolbar, } from "../../utils/material-ui/materialComponents";
 import { CreatePost,SinglePost } from "../../Components";
-
+import { PostsList } from "../../Components/PostList";
 const Homepage = () => {
   useEffect(() => {
     document.title = "Galaxia  ";
@@ -31,14 +31,9 @@ const Homepage = () => {
         </Toolbar>
       </Box>
       <CreatePost/>
-     
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
-      <SinglePost/>
+     {/* <SinglePost/> */}
+     <PostsList/>
+    
       
     </Box>
   );

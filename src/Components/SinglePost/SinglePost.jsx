@@ -9,10 +9,22 @@ import {
   IconButton,
   Typography,
 } from "../../utils/material-ui/materialComponents";
-import { BiLike, BiComment,BiBookmark,BiDotsVerticalRounded} from "../../utils/Icons/Icons";
-
+import {
+  BiLike,
+  BiComment,
+  BiBookmark,
+  BiDotsVerticalRounded,
+} from "../../utils/Icons/Icons";
+import { useSelector, useDispatch } from "react-redux";
 import React from "react";
+
 const SinglePost = () => {
+  const { user } = useSelector((state) => state.auth);
+console.log(user)
+  // const { users } = useSelector((state) => state.user);
+  
+  
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -41,7 +53,8 @@ const SinglePost = () => {
                   component="div"
                   gutterBottom
                 >
-                  Stuti Kumari
+                  {user.firstName}
+                  {user.lastName}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -51,7 +64,7 @@ const SinglePost = () => {
                   component="div"
                   gutterBottom
                 >
-                  @stutisk
+                  {user.username}
                 </Typography>
               </Box>
             </Grid>
@@ -68,7 +81,7 @@ const SinglePost = () => {
               </Typography>
             </Grid>
             <Grid item lg={1} sm={1} md={1}>
-            <IconButton
+              <IconButton
                 color="primary"
                 aria-label="upload picture"
                 component="span"
@@ -76,13 +89,10 @@ const SinglePost = () => {
                 <BiDotsVerticalRounded />
               </IconButton>
             </Grid>
-          
           </Grid>
           <Typography variant="subtitle1" mb="0" component="div" gutterBottom>
-            Stuti Kumari Why do we use it? It is a long established fact that a
-            reader will be distracted by the readable content of a page when
-            looking at its layout. The point of using Lorem Ipsum is that it has
-            
+           {user.content}
+         
           </Typography>
 
           <Box
@@ -99,7 +109,7 @@ const SinglePost = () => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "flex-start",
-gap:1,
+                gap: 1,
                 p: 1,
               }}
             >

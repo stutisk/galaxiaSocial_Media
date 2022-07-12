@@ -17,6 +17,29 @@ export const users = [
     updatedAt: formatDate(),
     Bio:"Frontend Developer ",
     link:"https://peerlist.io/stutisk",
+    profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
+    followers:[
+      {
+        _id:uuid(),
+        firstName:"priya",
+        lastName:"Sharma",
+        username: "Priyasharma",
+
+      },
+    ]
+  },
+  {
+    _id: uuid(),
+    firstName: "shreya",
+    lastName: "thakur",
+    username: "ShreyaT",
+    password: 'Shreya123',
+    email:'shreya1799@gmail.com',
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    Bio:"Dancer ",
+    link:"https://peerlist.io/stutisk",
+    profilePic: "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
     followers:[
       {
         _id:uuid(),

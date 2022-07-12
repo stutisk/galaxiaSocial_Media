@@ -28,6 +28,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const {users} =useSelector((state) => state.user)
+  const{newuserPost,allPosts} = useSelector((state)=> state.post)
 
   useEffect(() => {
     dispatch(updateuserHandler(user.username));
@@ -62,12 +63,13 @@ const UserProfile = () => {
         >
           <Grid container lg={12} item spacing={5}>
             <Grid item lg={2} xs={2}>
-              {/* <Avatar
+              <Avatar
                 sx={{ width: 90, height: 90 }}
                 alt="profile "
-                src="https://stutikumari17.netlify.app/images/my.jpg"
-              /> */}
-              <Avatar
+                src={user.profilePic}
+              />
+              
+              {/* <Avatar
                 sx={{
                   bgcolor: "primary.main",
                   width: 90,
@@ -76,8 +78,8 @@ const UserProfile = () => {
                 }}
               >
                 {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)}
-              </Avatar>
+                {user.lastName.charAt(0)} */}
+              {/* </Avatar> */}
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
@@ -166,12 +168,12 @@ const UserProfile = () => {
             <Button
               sx={{
                 color: "common.white",
-                borderBottom: 1,
+             
               }}
               variant="text"
               size="large"
             >
-              0 Posts
+              {newuserPost.length} Posts
             </Button>
            
           </Box>

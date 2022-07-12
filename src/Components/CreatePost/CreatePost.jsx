@@ -7,14 +7,46 @@ import {
   Box,
   Avatar,
   IconButton,
-
 } from "../../utils/material-ui/materialComponents";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
-import { useSelector } from "react-redux";
-import React  from 'react';
+import { useSelector,useDispatch } from "react-redux";
+import React from "react";
+import { createNewPost } from "../../features/post/postSlice";
+import { useState } from "react";
+
+
+
 
 const CreatePost = () => {
-  const {user} = useSelector((state)=> state.auth)
+  
+  const [postData, setPostData] = useState("");
+  const dispatch = useDispatch();
+  const { user,token } = useSelector((state) => state.auth);
+  const {posts} = useSelector((state) => state.post )
+
+ 
+    
+  // };
+  const postHandler = async (event) => {
+		event.preventDefault();
+		try {
+			const response = await dispatch(
+				createNewPost({ token, postData: { content: postData } })
+			);
+           
+		} catch (error) {
+			console.log(error)
+		}
+	};
+
+
+
+
+  const fillFormValue = (event) => {
+    console.log(event.target.value);
+    setPostData( event.target.value );
+  };
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -27,10 +59,15 @@ const CreatePost = () => {
         >
           <Grid container lg={12} item spacing={4}>
             <Grid item lg={1} xs={1}>
-            <Avatar sx={{ bgcolor: "primary.main" ,fontSize:20}}>{user.firstName.charAt(0)}{user.lastName.charAt(0)}</Avatar>
+              <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
+                {user.firstName.charAt(0)}
+                {user.lastName.charAt(0)}
+              </Avatar>
             </Grid>
             <Grid item lg={11} xs={11}>
               <TextField
+              value={postData}
+              onChange={fillFormValue}
                 inputProps={{ style: { color: "white" } }}
                 multiline
                 rows={4}
@@ -63,7 +100,14 @@ const CreatePost = () => {
                 <MdPhotoCamera />
               </IconButton>
             </label>
-            <Button variant="contained" sx={{borderRadius:"100px"}}>Post</Button>
+            <Button
+              onClick={ postHandler}
+              variant="contained"
+              sx={{ borderRadius: "100px" }}
+            >
+              Post
+            </Button>
+
           </Box>
         </Box>
       </ThemeProvider>
