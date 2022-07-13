@@ -18,12 +18,22 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 
-const SinglePost = () => {
+const SinglePost = ({post}) => {
   const { user } = useSelector((state) => state.auth);
-console.log(user)
+  console.log(user);
   // const { users } = useSelector((state) => state.user);
-  
-  
+
+  const {
+    firstName,
+    lastName,
+    content,
+    username,
+    _id,
+    likes: { likeCount, likedBy },
+    comments,
+    createdAt,
+    postImage,
+  } = post;
 
   return (
     <>
@@ -53,8 +63,8 @@ console.log(user)
                   component="div"
                   gutterBottom
                 >
-                  {user.firstName}
-                  {user.lastName}
+                  {firstName}
+                  {lastName}
                 </Typography>
                 <Typography
                   variant="subtitle1"
@@ -64,7 +74,7 @@ console.log(user)
                   component="div"
                   gutterBottom
                 >
-                  {user.username}
+                  {username}
                 </Typography>
               </Box>
             </Grid>
@@ -91,8 +101,7 @@ console.log(user)
             </Grid>
           </Grid>
           <Typography variant="subtitle1" mb="0" component="div" gutterBottom>
-           {user.content}
-         
+            {content}
           </Typography>
 
           <Box

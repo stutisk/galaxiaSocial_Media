@@ -3,8 +3,8 @@ import { createPost ,getAllPost,getUserPost} from "../../services/postServices";
 
 
 const initialState = {
-  newuserPost:[],
-  allPosts:[]
+  posts:[],
+ 
 };
 
 export const createNewPost = createAsyncThunk(
@@ -51,7 +51,7 @@ export const postSlice = createSlice({
     },
     [createNewPost.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.allPosts = payload;
+      state.posts = payload;
 
     },
     [createNewPost.rejected]:(state)=> {
@@ -63,7 +63,7 @@ export const postSlice = createSlice({
     },
     [getAllPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.allPosts = payload;
+      state.posts = payload;
 
     },
     [getAllPostHandler.rejected]:(state)=> {
@@ -75,7 +75,7 @@ export const postSlice = createSlice({
     },
     [getUserPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.newuserPost = payload;
+      state.posts = payload;
       console.log(state)
 
     },

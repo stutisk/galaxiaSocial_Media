@@ -2,10 +2,11 @@ import { SinglePost, UserProfile } from "../../Components";
 import React, { useEffect } from "react";
 import { Box } from "../../utils/material-ui/materialComponents";
 import { useSelector } from "react-redux";
+import { PostsList } from "../../Components/PostList";
 
 const Profilepage = () => {
   const { user } = useSelector((state) => state.auth);
-  const { newuserPost, allPosts } = useSelector((state) => state.post);
+  const { posts } = useSelector((state) => state.post);
 
   useEffect(() => {
     document.title = `${user.firstName} ${user.lastName} || Galaxia`;
@@ -26,8 +27,8 @@ const Profilepage = () => {
             borderColor: "border.main",
           }}
         >
-          {newuserPost.length > 0 ? (
-            newuserPost.map((post) => <SinglePost key={post._id} post={post} />)
+          {posts.length > 0 ? (
+            posts.map((post) => <SinglePost key={post._id} post={post} />)
           ) : (
             <Box
               

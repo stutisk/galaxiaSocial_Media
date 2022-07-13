@@ -28,7 +28,7 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const {users} =useSelector((state) => state.user)
-  const{newuserPost,allPosts} = useSelector((state)=> state.post)
+  const{posts} = useSelector((state)=> state.post)
 
   useEffect(() => {
     dispatch(updateuserHandler(user.username));
@@ -173,7 +173,7 @@ const UserProfile = () => {
               variant="text"
               size="large"
             >
-              {newuserPost.length} Posts
+              {posts.length} Posts
             </Button>
            
           </Box>
