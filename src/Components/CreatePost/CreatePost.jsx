@@ -54,20 +54,24 @@ const CreatePost = () => {
       <form id="postData"  onSubmit={ postHandler}>
         <Box
           sx={{
-            border: 1,
+            // border: 1,
             borderColor: "border.main",
-            p: 1,
+            py: 4,
+            px:2,
+            backgroundColor:"#242526",
+            m:2,
+            borderRadius: '10px' 
           }}
         >
           
-          <Grid container lg={12} item spacing={4}>
+          <Grid container lg={12} item spacing={6}>
             <Grid item lg={1} xs={1}>
               {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
                 {user.firstName.charAt(0)}
                 {user.lastName.charAt(0)}
               </Avatar> */}
               <Avatar
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 47, height: 47 }}
                 alt="profile "
                 src={user.profilePic}
               />
@@ -82,6 +86,8 @@ const CreatePost = () => {
                 rows={4}
                 fullWidth
                 placeholder="Whats on your mind ?"
+               
+                
               />
             </Grid>
           </Grid>
@@ -113,7 +119,7 @@ const CreatePost = () => {
             type="submit"
             
               variant="contained"
-              sx={{ borderRadius: "100px" }}
+              sx={{ borderRadius: "10px" }}
             >
               Post
             </Button>

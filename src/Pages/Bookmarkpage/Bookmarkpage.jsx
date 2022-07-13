@@ -5,22 +5,15 @@ const Bookmarkpage = () =>{
         document.title = "Bookmarks | Galaxia ";  
       }, [])
     return (
-        <Box
+      <Box>
+      <Box
         sx={{
-          border: 1,  
-          borderColor: "border.main",
-        }} >
-          <Box
-            sx={{
-              position: "sticky",
-              top: 0,
-              bgcolor: "#19191B",
-              border: 1,
-              borderTop: 0,
-              borderColor: "border.main",
-              
-            }}
-          >
+          position: "sticky",
+          top: 0,
+          bgcolor: "#18191A",
+          zIndex: 2,
+        }}
+      >
             <Toolbar>
               <Typography variant="h6">Bookmark</Typography>
             </Toolbar>

@@ -101,21 +101,7 @@ const Dsidebar = () => {
                 }
               />
             </ListItem>
-            <ListItem component={Link} to="notifications">
-              <ListItemIcon sx={{ color: "primary.main" }}>
-                <MdNotifications size={30} />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  <Typography
-                    variant="myVariant"
-                    sx={{ color: "common.white" }}
-                  >
-                    Notification
-                  </Typography>
-                }
-              />
-            </ListItem>
+
             <ListItem component={Link} to="profile">
               <ListItemIcon sx={{ color: "primary.main" }}>
                 <FaUserAlt size={30} />

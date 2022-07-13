@@ -34,21 +34,12 @@ const Homepage = () => {
   },[dispatch])
 
   return (
-    <Box
-      sx={{
-        border: 1,
-
-        borderColor: "border.main",
-      }}
-    >
+    <Box>
       <Box
         sx={{
           position: "sticky",
           top: 0,
-          bgcolor: "#19191B",
-          border: 1,
-          borderTop: 0,
-          borderColor: "border.main",
+          bgcolor: "#18191A",
           zIndex: 2,
         }}
       >

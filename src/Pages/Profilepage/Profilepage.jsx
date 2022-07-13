@@ -15,17 +15,11 @@ const Profilepage = () => {
   return (
     <>
       <Box
-        sx={{
-          border: 1,
-          borderColor: "border.main",
-        }}
+        
       >
         <UserProfile />
         <Box
-          sx={{
-            border: 1,
-            borderColor: "border.main",
-          }}
+         
         >
           {posts.length > 0 ? (
             posts.map((post) => <SinglePost key={post._id} post={post} />)

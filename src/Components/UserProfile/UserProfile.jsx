@@ -46,10 +46,7 @@ const UserProfile = () => {
         sx={{
           position: "sticky",
           top: 0,
-          bgcolor: "#19191B",
-          border: 1,
-          borderTop: 0,
-          borderColor: "border.main",
+          bgcolor: "#18191A",
           zIndex: 2,
         }}
       >
@@ -58,11 +55,13 @@ const UserProfile = () => {
         </Toolbar>
       </Box>
       <ThemeProvider theme={theme}>
-        <Box
+      <Box
           sx={{
-            border: 1,
-            borderColor: "border.main",
-            p: 1,
+            py: 4,
+            px:2,
+            backgroundColor:"#242526",
+            m:2,
+            borderRadius: '10px' 
           }}
         >
           <Grid container lg={12} item spacing={5}>

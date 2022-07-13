@@ -42,16 +42,17 @@ const SinglePost = ({post}) => {
       <ThemeProvider theme={theme}>
         <Box
           sx={{
-            border: 1,
-            borderColor: "border.main",
             p: 1,
+            backgroundColor:"#242526",
+            m:2,
+            borderRadius: '10px' 
           }}
         >
-          <Grid container lg={12} item spacing={1}>
+          <Grid container lg={12} item spacing={3}>
             <Grid item lg={1} sm={1} md={1}>
-              {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }} ></Avatar> */}
+            
               <Avatar
-                sx={{ width: 50, height: 50 }}
+                sx={{ width: 47, height: 47}}
                 alt="profile "
                 src={profilePic}
               />

@@ -14,7 +14,7 @@ const PrivateRoute = () => {
     
     <>
 
-      <Grid container spacing={3} className="App">
+      <Grid container spacing={1} className="App">
         <ThemeProvider theme={theme}>
           <Grid item  lg={3} xs={12}>
             <Sidebar />
