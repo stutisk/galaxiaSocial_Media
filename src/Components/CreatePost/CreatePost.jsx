@@ -49,7 +49,9 @@ const CreatePost = () => {
 
   return (
     <>
+    
       <ThemeProvider theme={theme}>
+      <form id="postData"  onSubmit={ postHandler}>
         <Box
           sx={{
             border: 1,
@@ -57,6 +59,7 @@ const CreatePost = () => {
             p: 1,
           }}
         >
+          
           <Grid container lg={12} item spacing={4}>
             <Grid item lg={1} xs={1}>
               {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
@@ -70,6 +73,7 @@ const CreatePost = () => {
               />
             </Grid>
             <Grid item lg={11} xs={11}>
+              
               <TextField
               value={postData}
               onChange={fillFormValue}
@@ -106,7 +110,8 @@ const CreatePost = () => {
               </IconButton>
             </label>
             <Button
-              onClick={ postHandler}
+            type="submit"
+            
               variant="contained"
               sx={{ borderRadius: "100px" }}
             >
@@ -115,7 +120,9 @@ const CreatePost = () => {
 
           </Box>
         </Box>
+        </form>
       </ThemeProvider>
+     
     </>
   );
 };

@@ -15,10 +15,11 @@ import {
   BiBookmark,
   BiDotsVerticalRounded,
 } from "../../utils/Icons/Icons";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import React from "react";
 
 const SinglePost = ({post}) => {
+  
   const { user } = useSelector((state) => state.auth);
  
   // const { users } = useSelector((state) => state.user);

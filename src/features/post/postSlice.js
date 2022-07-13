@@ -8,11 +8,11 @@ const initialState = {
 };
 
 export const createNewPost = createAsyncThunk(
-  "post/createNewPost",
-  async ({token,post}, thunkAPI) => {
+  "posts/createNewPost",
+  async ({token,postData}, thunkAPI) => {
     try {
       // const token = localStorage.getItem("token");
-      const res = await createPost (token, post);
+      const res = await createPost (token, postData);
       console.log(res.data.posts)
       return res.data.posts;
     } catch (error) {
@@ -21,7 +21,7 @@ export const createNewPost = createAsyncThunk(
   }
 );
 
-export const getAllPostHandler = createAsyncThunk("post/getAllPosts", async (token, thunkAPI) => {
+export const getAllPostHandler = createAsyncThunk("posts/getAllPosts", async (token, thunkAPI) => {
   try {
     const res = await getAllPost(token);
     console.log(res.data.posts)
@@ -30,6 +30,8 @@ export const getAllPostHandler = createAsyncThunk("post/getAllPosts", async (tok
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+
 
 export const getUserPostHandler = createAsyncThunk("post/getUserPosts", async (username, thunkAPI) => {
   try {
