@@ -13,7 +13,7 @@ export const createNewPost = createAsyncThunk(
     try {
       // const token = localStorage.getItem("token");
       const res = await createPost (token, postData);
-      console.log(res.data.posts)
+
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -24,7 +24,7 @@ export const createNewPost = createAsyncThunk(
 export const getAllPostHandler = createAsyncThunk("posts/getAllPosts", async (token, thunkAPI) => {
   try {
     const res = await getAllPost(token);
-    console.log(res.data.posts)
+    
     return res.data.posts;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

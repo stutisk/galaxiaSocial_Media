@@ -20,34 +20,7 @@ export const users = [
     profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
 
       followers: [
-        {
-          firstName: "Shubham",
-          lastName: "Soni",
-          username: "shubhamsoni",
-          profileImage:
-            "https://res.cloudinary.com/dylkclyom/image/upload/v1652721963/photo-1633332755192-727a05c4013d_qo2tty.jpg",
-        },
-        {
-          firstName: "Bharati",
-          lastName: "Subramanian",
-          username: "bhaaratii",
-          profileImage:
-            "https://res.cloudinary.com/dylkclyom/image/upload/v1652721980/Bharati2_qxscpm.png",
-        },
-        {
-          firstName: "John",
-          lastName: "Doe",
-          username: "johndoe",
-          profileImage:
-            "https://res.cloudinary.com/dylkclyom/image/upload/v1652721997/photo-1531427186611-ecfd6d936c79_tmpw71.jpg",
-        },
-        {
-          firstName: "Jane",
-          lastName: "Doe",
-          username: "janedoe",
-          profileImage:
-            "https://res.cloudinary.com/dylkclyom/image/upload/v1652722016/landingImg_dff0ku.png",
-        },
+       
       ],
     
   },
