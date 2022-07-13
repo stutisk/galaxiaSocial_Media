@@ -4,16 +4,16 @@ import { createPost ,getAllPost,getUserPost} from "../../services/postServices";
 
 const initialState = {
   posts:[],
- 
+ userPosts:[]
 };
 
 export const createNewPost = createAsyncThunk(
   "post/createNewPost",
-  async (post, thunkAPI) => {
+  async ({token,post}, thunkAPI) => {
     try {
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
       const res = await createPost (token, post);
-      console.log(res)
+      console.log(res.data.posts)
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -21,11 +21,11 @@ export const createNewPost = createAsyncThunk(
   }
 );
 
-export const getAllPostHandler = createAsyncThunk("post/getAllPosts", async (_, thunkAPI) => {
+export const getAllPostHandler = createAsyncThunk("post/getAllPosts", async (token, thunkAPI) => {
   try {
-    const res = await getAllPost();
-    console.log(res.data)
-    return res.data;
+    const res = await getAllPost(token);
+    console.log(res.data.posts)
+    return res.data.posts;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
@@ -34,7 +34,7 @@ export const getAllPostHandler = createAsyncThunk("post/getAllPosts", async (_, 
 export const getUserPostHandler = createAsyncThunk("post/getUserPosts", async (username, thunkAPI) => {
   try {
     const res = await getUserPost(username);
-    console.log(res.data.posts)
+    console.log(res.data)
     return res.data.posts;
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -51,7 +51,9 @@ export const postSlice = createSlice({
     },
     [createNewPost.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.posts= payload.reverse();
+    
+      
 
     },
     [createNewPost.rejected]:(state)=> {
@@ -63,7 +65,7 @@ export const postSlice = createSlice({
     },
     [getAllPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.posts = payload.reverse();
 
     },
     [getAllPostHandler.rejected]:(state)=> {
@@ -75,7 +77,7 @@ export const postSlice = createSlice({
     },
     [getUserPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.userPosts = payload;
       console.log(state)
 
     },

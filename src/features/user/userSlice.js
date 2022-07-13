@@ -17,6 +17,7 @@ export const getUserHandler = createAsyncThunk(
 
 const initialState = {
   users: [],
+ 
 };
 
 export const updateuserHandler = createAsyncThunk(

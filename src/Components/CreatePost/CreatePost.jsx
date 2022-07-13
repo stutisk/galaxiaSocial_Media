@@ -33,7 +33,7 @@ const CreatePost = () => {
 			const response = await dispatch(
 				createNewPost({ token, postData: { content: postData } })
 			);
-           
+          
 		} catch (error) {
 			console.log(error)
 		}
@@ -59,10 +59,15 @@ const CreatePost = () => {
         >
           <Grid container lg={12} item spacing={4}>
             <Grid item lg={1} xs={1}>
-              <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
+              {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
                 {user.firstName.charAt(0)}
                 {user.lastName.charAt(0)}
-              </Avatar>
+              </Avatar> */}
+              <Avatar
+                sx={{ width: 50, height: 50 }}
+                alt="profile "
+                src={user.profilePic}
+              />
             </Grid>
             <Grid item lg={11} xs={11}>
               <TextField

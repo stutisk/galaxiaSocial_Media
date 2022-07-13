@@ -20,7 +20,7 @@ import React from "react";
 
 const SinglePost = ({post}) => {
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+ 
   // const { users } = useSelector((state) => state.user);
 
   const {
@@ -33,6 +33,7 @@ const SinglePost = ({post}) => {
     comments,
     createdAt,
     postImage,
+    profilePic
   } = post;
 
   return (
@@ -47,7 +48,13 @@ const SinglePost = ({post}) => {
         >
           <Grid container lg={12} item spacing={1}>
             <Grid item lg={1} sm={1} md={1}>
-              <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}></Avatar>
+              {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }} ></Avatar> */}
+              <Avatar
+                sx={{ width: 50, height: 50 }}
+                alt="profile "
+                src={profilePic}
+              />
+              
             </Grid>
             <Grid item lg={2} sm={3} md={2}>
               <Box
@@ -87,7 +94,7 @@ const SinglePost = ({post}) => {
                 component="div"
                 gutterBottom
               >
-                .20 min ago
+               {createdAt}
               </Typography>
             </Grid>
             <Grid item lg={1} sm={1} md={1}>
@@ -135,7 +142,7 @@ const SinglePost = ({post}) => {
                 component="div"
                 gutterBottom
               >
-                30
+                {likeCount}
               </Typography>
             </Box>
             <Box

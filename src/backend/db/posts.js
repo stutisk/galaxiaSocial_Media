@@ -9,10 +9,9 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
-    content:
-      "hey.",
+    content: "The purpose of our lives is to be happy. — Dalai Lamaz",
     likes: {
-      likeCount: 0,
+      likeCount: 4,
       likedBy: [],
       dislikedBy: [],
     },
@@ -21,6 +20,7 @@ export const posts = [
     lastName: "balika",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profilePic: "https://picsum.photos/id/1027/200/300",
     comments: [
       {
         _id: uuid(),
@@ -45,15 +45,16 @@ export const posts = [
   {
     _id: uuid(),
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking",
     likes: {
-      likeCount: 0,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "stutiSk",
-    firstName: "stuti",
-    lastName: "Skk",
+    username: "shaurya",
+    firstName: "shaurya",
+    lastName: "kumar",
+    profilePic: "https://picsum.photos/id/27/200/300",
     comments: [
       {
         _id: uuid(),
@@ -76,5 +77,77 @@ export const posts = [
     ],
     createdAt: formatDate(),
     updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content: "hey i love dancing ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "shreyaaThakur",
+    firstName: "Shreya",
+    lastName: "Thakur",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profilePic:
+      "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "hey i love dancing ",
+    likes: {
+      likeCount: 20,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName: "stuti",
+    lastName: "Skk",
+    username: "stutiSkk",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profilePic:
+      "https://stutikumari17.netlify.app/images/my.jpg",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
   },
 ];
