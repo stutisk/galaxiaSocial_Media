@@ -30,7 +30,6 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { users} = useSelector((state) => state.user);
-console.log(user)
 
 
   useEffect(() => {

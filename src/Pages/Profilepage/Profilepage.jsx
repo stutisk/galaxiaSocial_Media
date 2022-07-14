@@ -17,7 +17,7 @@ const dispatch =useDispatch();
 
   useEffect(() => {
     dispatch(getUserPostHandler (user.username));
-  }, [userPosts ]);
+  }, []);
 
   return (
     <>

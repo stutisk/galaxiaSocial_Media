@@ -29,6 +29,7 @@ export const updateuserHandler = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await editUser(token, userData);
+      console.log(res.data.user)
       return res.data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

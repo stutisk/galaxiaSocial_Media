@@ -8,6 +8,11 @@ import {
   Avatar,
   IconButton,
   Typography,
+  
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
 } from "../../utils/material-ui/materialComponents";
 import {
   BiLike,
@@ -18,10 +23,20 @@ import {
 import { CommentList } from "../index";
 import { useSelector } from "react-redux";
 import React from "react";
+// import { PostModal } from "../PostModal/PostModal";
+import { useState } from "react";
+
+
+import { BsPencilSquare, MdDeleteOutline } from "../../utils/Icons/Icons";
+
+
+
+import { deletePostHandler } from "../../features/post/postSlice";
+import { useDispatch } from "react-redux";
 
 const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
-  const { user } = useSelector((state) => state.auth);
+  const { user,token } = useSelector((state) => state.auth);
   const {
     content,
     username,
@@ -30,10 +45,28 @@ const SinglePost = ({ post }) => {
     comments,
     createdAt,
   } = post;
-
+const dispatch = useDispatch();
   const currentUser =
     users && users?.find((user) => user.username === username);
 
+  const [modal, setModal] = useState(false);
+
+  const openmodal = () => {
+    setModal((prev) => !prev);
+  };
+
+    //  const handleDeletePost = async (event) => {
+    // 		event.stopPropagation();
+    // 		try {
+    // 			const response = await dispatch(
+    // 				deletePostHandler({ token, postId: _id })
+    // 			);
+    //     return response
+        
+    // 		} catch (error) {
+        
+    // 		}
+    // 	};
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -45,7 +78,7 @@ const SinglePost = ({ post }) => {
             borderRadius: "10px",
           }}
         >
-          <Grid container lg={12} item spacing={3}>
+          <Grid container lg={12} item>
             <Grid item lg={1} sm={1} md={1}>
               <Avatar
                 sx={{ width: 47, height: 47 }}
@@ -83,7 +116,7 @@ const SinglePost = ({ post }) => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item lg={7} sm={6} md={7}>
+            <Grid item lg={4} sm={4} md={4}>
               <Typography
                 variant="subtitle1"
                 sx={{
@@ -95,8 +128,66 @@ const SinglePost = ({ post }) => {
                 {createdAt}
               </Typography>
             </Grid>
+
+            <Grid item lg={3} sm={2} md={2}>
+              {modal ? (
+                <Box
+                  sx={{
+                    borderRadius: 3,
+
+                    width: "8rem",
+
+                    // py: 2,
+                    zIndex: 3,
+                    position: "absolute",
+                    gap: 2,
+                    bgcolor: "#19191B",
+                  }}
+                >
+                  <List>
+                    <ListItem to="/">
+                      <ListItemIcon sx={{ color: "primary.main" }}>
+                        <BsPencilSquare size={20} />
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Typography
+                            variant="body1"
+                            sx={{ color: "common.white", cursor: "pointer" }}
+                          >
+                            Edit
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                    <ListItem to="/">
+                      <ListItemIcon
+                        sx={{ color: "primary.main" }}
+                       
+                      >
+                        <MdDeleteOutline size={25} />
+                      </ListItemIcon>
+                      <ListItemText
+                       onClick={() => dispatch(deletePostHandler(_id))}
+                        primary={
+                          <Typography
+                            variant="body1"
+                            sx={{ color: "common.white", cursor: "pointer" }}
+                          >
+                            Delete
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                  </List>
+                </Box>
+              ) : null}
+              {/* <PostModal modal={modal} setModal={setModal} /> */}
+            </Grid>
             <Grid item lg={1} sm={1} md={1}>
               <IconButton
+                sx={{ position: "absolute" }}
+                onClick={openmodal}
                 color="primary"
                 aria-label="upload picture"
                 component="span"
@@ -105,6 +196,7 @@ const SinglePost = ({ post }) => {
               </IconButton>
             </Grid>
           </Grid>
+
           <Typography
             sx={{
               pl: 1,
@@ -177,9 +269,9 @@ const SinglePost = ({ post }) => {
               </Typography>
             </Box>
           </Box>
-          <CommentList/>
-          <CommentList/>
-        
+
+          <CommentList />
+
           <Box
             sx={{
               display: "flex",
@@ -189,7 +281,6 @@ const SinglePost = ({ post }) => {
               p: 1,
             }}
           >
-            
             <Grid container lg={12} item spacing={2}>
               <Grid item lg={1} sm={1} md={1}>
                 <Avatar
@@ -214,7 +305,6 @@ const SinglePost = ({ post }) => {
               </Grid>
             </Grid>
           </Box>
-         
         </Box>
       </ThemeProvider>
     </>

@@ -35,7 +35,7 @@ const EditUserModal = ({ modal, setModal }) => {
 
   const updateHandler = () => {
     (async () => {
-      await  dispatch(updateuserHandler(form ));
+      await  dispatch(updateuserHandler({...form} ));
     })()  
     setModal(false);
   };
@@ -44,8 +44,10 @@ const EditUserModal = ({ modal, setModal }) => {
 
   useEffect(() => {
     setForm(user);
+   
   }, [user]);
 
+ 
   const closemodal = () => {
     setModal(false);
   };
@@ -93,7 +95,7 @@ const EditUserModal = ({ modal, setModal }) => {
                 }}
               >
                 <Button
-                  onClick={() => updateHandler(form,setForm)}
+                  onClick={() => updateHandler()}
                   sx={{
                     mx: "auto",
                     width: "50%",

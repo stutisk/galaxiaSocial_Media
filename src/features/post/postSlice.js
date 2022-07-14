@@ -3,6 +3,7 @@ import {
   createPost,
   getAllPost,
   getUserPost,
+  deletePost,
 } from "../../services/postServices";
 
 const initialState = {
@@ -25,7 +26,7 @@ export const createNewPost = createAsyncThunk(
 );
 
 export const getAllPostHandler = createAsyncThunk(
-  "posts/getAllPosts",
+  "posts/ getAllPostHandler",
   async (token, thunkAPI) => {
     try {
       const res = await getAllPost(token);
@@ -38,7 +39,7 @@ export const getAllPostHandler = createAsyncThunk(
 );
 
 export const getUserPostHandler = createAsyncThunk(
-  "post/getUserPosts",
+  "post/getUserPostHandler",
   async (username, thunkAPI) => {
     try {
       const res = await getUserPost(username);
@@ -48,6 +49,19 @@ export const getUserPostHandler = createAsyncThunk(
     }
   }
 );
+
+export const deletePostHandler = createAsyncThunk(
+  "post/deletePostHandler", 
+  async (postId, thunkAPI) => {
+  try {
+    const token = localStorage.getItem("token");
+    const res = await deletePost(postId, token);
+    console.log(res.data.posts)
+    return res.data.posts;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 export const postSlice = createSlice({
   name: "counter",
@@ -83,6 +97,19 @@ export const postSlice = createSlice({
     
     },
     [getUserPostHandler.rejected]: (state) => {
+      state.status = "rejected";
+    },
+    
+    [deletePostHandler.pending]: (state) => {
+      state.status = "rejected";
+    },
+    [deletePostHandler.fulfilled]: (state, { payload }) => {
+      state.status = "fullfilled";
+      state.posts = payload;
+      console.log(state)
+    
+    },
+    [deletePostHandler.rejected]: (state) => {
       state.status = "rejected";
     },
   },
