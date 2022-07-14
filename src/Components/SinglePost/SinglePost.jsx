@@ -8,7 +8,6 @@ import {
   Avatar,
   IconButton,
   Typography,
-  
   List,
   ListItem,
   ListItemText,
@@ -16,27 +15,20 @@ import {
 } from "../../utils/material-ui/materialComponents";
 import {
   BiLike,
-  BiComment,
   BiBookmark,
   BiDotsVerticalRounded,
+  BsPencilSquare, MdDeleteOutline 
 } from "../../utils/Icons/Icons";
 import { CommentList } from "../index";
 import { useSelector } from "react-redux";
 import React from "react";
-// import { PostModal } from "../PostModal/PostModal";
 import { useState } from "react";
-
-
-import { BsPencilSquare, MdDeleteOutline } from "../../utils/Icons/Icons";
-
-
-
 import { deletePostHandler } from "../../features/post/postSlice";
 import { useDispatch } from "react-redux";
 
 const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
-  const { user,token } = useSelector((state) => state.auth);
+  const { user} = useSelector((state) => state.auth);
   const {
     content,
     username,
@@ -45,7 +37,8 @@ const SinglePost = ({ post }) => {
     comments,
     createdAt,
   } = post;
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const currentUser =
     users && users?.find((user) => user.username === username);
 
@@ -54,19 +47,6 @@ const dispatch = useDispatch();
   const openmodal = () => {
     setModal((prev) => !prev);
   };
-
-    //  const handleDeletePost = async (event) => {
-    // 		event.stopPropagation();
-    // 		try {
-    // 			const response = await dispatch(
-    // 				deletePostHandler({ token, postId: _id })
-    // 			);
-    //     return response
-        
-    // 		} catch (error) {
-        
-    // 		}
-    // 	};
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -161,14 +141,11 @@ const dispatch = useDispatch();
                       />
                     </ListItem>
                     <ListItem to="/">
-                      <ListItemIcon
-                        sx={{ color: "primary.main" }}
-                       
-                      >
+                      <ListItemIcon sx={{ color: "primary.main" }}>
                         <MdDeleteOutline size={25} />
                       </ListItemIcon>
                       <ListItemText
-                       onClick={() => dispatch(deletePostHandler(_id))}
+                        onClick={() => dispatch(deletePostHandler(_id))}
                         primary={
                           <Typography
                             variant="body1"
@@ -182,18 +159,19 @@ const dispatch = useDispatch();
                   </List>
                 </Box>
               ) : null}
-              {/* <PostModal modal={modal} setModal={setModal} /> */}
             </Grid>
             <Grid item lg={1} sm={1} md={1}>
-              <IconButton
-                sx={{ position: "absolute" }}
-                onClick={openmodal}
-                color="primary"
-                aria-label="upload picture"
-                component="span"
-              >
-                <BiDotsVerticalRounded />
-              </IconButton>
+              {user.username === username ? (
+                <IconButton
+                  sx={{ position: "absolute" }}
+                  onClick={openmodal}
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <BiDotsVerticalRounded />
+                </IconButton>
+              ) : <></>}
             </Grid>
           </Grid>
 
