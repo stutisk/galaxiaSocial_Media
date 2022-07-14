@@ -9,7 +9,7 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
-    content: "The purpose of our lives is to be happy. — Dalai Lamaz",
+    content: "Haar kar jeetne waale ko hi baazigar kehte hai.",
     likes: {
       likeCount: 4,
       likedBy: [],
@@ -21,6 +21,41 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/1027/200/300",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "And God said 'let there be cutenes on Earth ' . Thats when Dogs came on this planet   ",
+    likes: {
+      likeCount: 4,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    username: "kailey",
+    firstName: "kailey",
+
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profilePic: "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
     comments: [
       {
         _id: uuid(),
@@ -80,17 +115,20 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "hey i love dancing ",
+    content: "Almost nobody dances sober, unless they happen to be insane.",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shreyaaThakur",
-    firstName: "Shreya",
-    lastName: "Thakur",
+    firstName: "shreya",
+    lastName: "thakur",
+    username: "ShreyaT",
+
     createdAt: formatDate(),
     updatedAt: formatDate(),
+
+    link: "https://peerlist.io/stutisk",
     profilePic:
       "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
     comments: [
@@ -116,7 +154,7 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "hey i love dancing ",
+    content: "Code is like humor. When you have to explain it, its bad. ",
     likes: {
       likeCount: 20,
       likedBy: [],
@@ -124,11 +162,11 @@ export const posts = [
     },
     firstName: "stuti",
     lastName: "Skk",
-    username: "stutiSkk",
+    username: "stutiSk",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profilePic:
-      "https://stutikumari17.netlify.app/images/my.jpg",
+
+    profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
     comments: [
       {
         _id: uuid(),

@@ -22,20 +22,19 @@ const SinglePost = ({post}) => {
   
   const { user } = useSelector((state) => state.auth);
  
-  // const { users } = useSelector((state) => state.user);
+  const { users } = useSelector((state) => state.user);
+  console.log(users)
 
   const {
-    firstName,
-    lastName,
     content,
     username,
     _id,
     likes: { likeCount, likedBy },
     comments,
-    createdAt,
-    postImage,
-    profilePic
+    createdAt,  
   } = post;
+
+  const currentUser = users && users?.find((user) => user.username === username);
 
   return (
     <>
@@ -54,7 +53,7 @@ const SinglePost = ({post}) => {
               <Avatar
                 sx={{ width: 47, height: 47}}
                 alt="profile "
-                src={profilePic}
+                src={currentUser?.profilePic}
               />
               
             </Grid>
@@ -72,8 +71,8 @@ const SinglePost = ({post}) => {
                   component="div"
                   gutterBottom
                 >
-                  {firstName}
-                  {lastName}
+                  {currentUser?.firstName}
+                  {currentUser?.lastName}
                 </Typography>
                 <Typography
                   variant="subtitle1"
