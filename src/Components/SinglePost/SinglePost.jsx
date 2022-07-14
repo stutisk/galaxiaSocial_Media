@@ -15,26 +15,24 @@ import {
   BiBookmark,
   BiDotsVerticalRounded,
 } from "../../utils/Icons/Icons";
-import { useSelector} from "react-redux";
+import { CommentList } from "../index";
+import { useSelector } from "react-redux";
 import React from "react";
 
-const SinglePost = ({post}) => {
-  
-  const { user } = useSelector((state) => state.auth);
- 
+const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
-  console.log(users)
-
+  const { user } = useSelector((state) => state.auth);
   const {
     content,
     username,
     _id,
     likes: { likeCount, likedBy },
     comments,
-    createdAt,  
+    createdAt,
   } = post;
 
-  const currentUser = users && users?.find((user) => user.username === username);
+  const currentUser =
+    users && users?.find((user) => user.username === username);
 
   return (
     <>
@@ -42,22 +40,20 @@ const SinglePost = ({post}) => {
         <Box
           sx={{
             p: 1,
-            backgroundColor:"#242526",
-            m:2,
-            borderRadius: '10px' 
+            backgroundColor: "#242526",
+            m: 2,
+            borderRadius: "10px",
           }}
         >
           <Grid container lg={12} item spacing={3}>
             <Grid item lg={1} sm={1} md={1}>
-            
               <Avatar
-                sx={{ width: 47, height: 47}}
+                sx={{ width: 47, height: 47 }}
                 alt="profile "
                 src={currentUser?.profilePic}
               />
-              
             </Grid>
-            <Grid item lg={2} sm={3} md={2}>
+            <Grid item lg={3} sm={4} md={3}>
               <Box
                 sx={{
                   display: "flex",
@@ -70,8 +66,9 @@ const SinglePost = ({post}) => {
                   mb="0"
                   component="div"
                   gutterBottom
+                  sx={{ fontWeight: 900, letterSpacing: 1, lineHeight: 2 }}
                 >
-                  {currentUser?.firstName}
+                  {currentUser?.firstName} {""}
                   {currentUser?.lastName}
                 </Typography>
                 <Typography
@@ -86,7 +83,7 @@ const SinglePost = ({post}) => {
                 </Typography>
               </Box>
             </Grid>
-            <Grid item lg={8} sm={7} md={8}>
+            <Grid item lg={7} sm={6} md={7}>
               <Typography
                 variant="subtitle1"
                 sx={{
@@ -95,7 +92,7 @@ const SinglePost = ({post}) => {
                 component="div"
                 gutterBottom
               >
-               {createdAt}
+                {createdAt}
               </Typography>
             </Grid>
             <Grid item lg={1} sm={1} md={1}>
@@ -108,7 +105,15 @@ const SinglePost = ({post}) => {
               </IconButton>
             </Grid>
           </Grid>
-          <Typography variant="subtitle1" mb="0" component="div" gutterBottom>
+          <Typography
+            sx={{
+              pl: 1,
+            }}
+            variant="subtitle1"
+            mb="0"
+            component="div"
+            gutterBottom
+          >
             {content}
           </Typography>
 
@@ -118,7 +123,6 @@ const SinglePost = ({post}) => {
               flexDirection: "row",
               justifyContent: "flex-start",
               gap: 4,
-              p: 1,
             }}
           >
             <Box
@@ -146,31 +150,7 @@ const SinglePost = ({post}) => {
                 {likeCount}
               </Typography>
             </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                gap: 1,
-                p: 1,
-              }}
-            >
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="span"
-              >
-                <BiComment />
-              </IconButton>
-              <Typography
-                variant="subtitle1"
-                sx={{ mt: 1 }}
-                component="div"
-                gutterBottom
-              >
-                3
-              </Typography>
-            </Box>
+
             <Box
               sx={{
                 display: "flex",
@@ -197,6 +177,44 @@ const SinglePost = ({post}) => {
               </Typography>
             </Box>
           </Box>
+          <CommentList/>
+          <CommentList/>
+        
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              gap: 1,
+              p: 1,
+            }}
+          >
+            
+            <Grid container lg={12} item spacing={2}>
+              <Grid item lg={1} sm={1} md={1}>
+                <Avatar
+                  sx={{ width: 37, height: 37 }}
+                  alt="profile "
+                  src={user.profilePic}
+                />
+              </Grid>
+              <Grid item lg={9} sm={9} md={9}>
+                <TextField
+                  inputProps={{ style: { color: "white" } }}
+                  multiline
+                  rows={1}
+                  fullWidth
+                  placeholder="Write a Comment...."
+                ></TextField>
+              </Grid>
+              <Grid item lg={1} sm={1} md={1}>
+                <Button variant="text" sx={{ padding: 2 }}>
+                  Reply
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+         
         </Box>
       </ThemeProvider>
     </>

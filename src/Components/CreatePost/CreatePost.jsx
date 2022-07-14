@@ -9,126 +9,105 @@ import {
   IconButton,
 } from "../../utils/material-ui/materialComponents";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { createNewPost } from "../../features/post/postSlice";
-import { useState } from "react";
-
-
-
+import { useState, useRef } from "react";
 
 const CreatePost = () => {
-  
   const [postData, setPostData] = useState("");
+  const textInput = useRef(null);
   const dispatch = useDispatch();
-  const { user,token } = useSelector((state) => state.auth);
-  const {posts} = useSelector((state) => state.post )
+  const { user, token } = useSelector((state) => state.auth);
+  const { posts } = useSelector((state) => state.post);
 
- 
-    
   // };
   const postHandler = async (event) => {
-		event.preventDefault();
-		try {
-			const response = await dispatch(
-				createNewPost({ token, postData: { content: postData } })
-			);
-          
-		} catch (error) {
-			console.log(error)
-		}
-	};
-
-
-
+    event.preventDefault();
+    try {
+      const response = await dispatch(
+        createNewPost({ token, postData: { content: postData } })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    textInput.current.value = "";
+  };
 
   const fillFormValue = (event) => {
-    console.log(event.target.value);
-    setPostData( event.target.value );
+    setPostData(event.target.value);
   };
 
   return (
     <>
-    
       <ThemeProvider theme={theme}>
-      <form id="postData"  onSubmit={ postHandler}>
-        <Box
-          sx={{
-            // border: 1,
-            borderColor: "border.main",
-            py: 4,
-            px:2,
-            backgroundColor:"#242526",
-            m:2,
-            borderRadius: '10px' 
-          }}
-        >
-          
-          <Grid container lg={12} item spacing={6}>
-            <Grid item lg={1} xs={1}>
-              {/* <Avatar sx={{ bgcolor: "primary.main", fontSize: 20 }}>
-                {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)}
-              </Avatar> */}
-              <Avatar
-                sx={{ width: 47, height: 47 }}
-                alt="profile "
-                src={user.profilePic}
-              />
-            </Grid>
-            <Grid item lg={11} xs={11}>
-              
-              <TextField
-              value={postData}
-              onChange={fillFormValue}
-                inputProps={{ style: { color: "white" } }}
-                multiline
-                rows={4}
-                fullWidth
-                placeholder="Whats on your mind ?"
-               
-                
-              />
-            </Grid>
-          </Grid>
+        <form id="postData" onSubmit={postHandler}>
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              gap: 2,
-              p: 1,
+             
+              borderColor: "border.main",
+              py: 4,
+              px: 2,
+              backgroundColor: "#242526",
+              m: 2,
+              borderRadius: "10px",
             }}
           >
-            <label htmlFor="icon-button-file">
-              <input
-                hidden
-                accept="image/*"
-                id="icon-button-file"
-                type="file"
-              />
-              <IconButton
-                color="primary"
-                aria-label="upload picture"
-                component="span"
-              >
-                <MdPhotoCamera />
-              </IconButton>
-            </label>
-            <Button
-            type="submit"
-            
-              variant="contained"
-              sx={{ borderRadius: "10px" }}
+            <Grid container lg={12} item spacing={6}>
+              <Grid item lg={1} xs={1}>
+                <Avatar
+                  sx={{ width: 47, height: 47 }}
+                  alt="profile "
+                  src={user.profilePic}
+                />
+              </Grid>
+              <Grid item lg={11} xs={11}>
+                <TextField
+                  inputRef={textInput}
+                  onChange={fillFormValue}
+                  inputProps={{ style: { color: "white" } }}
+                  multiline
+                  rows={4}
+                  fullWidth
+                  placeholder="Whats on your mind ?"
+                />
+              </Grid>
+            </Grid>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+                gap: 2,
+                p: 1,
+              }}
             >
-              Post
-            </Button>
-
+              <label htmlFor="icon-button-file">
+                <input
+                  hidden
+                  accept="image/*"
+                  id="icon-button-file"
+                  type="file"
+                />
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <MdPhotoCamera />
+                </IconButton>
+              </label>
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{ borderRadius: "10px" }}
+              >
+                Post
+              </Button>
+            </Box>
           </Box>
-        </Box>
         </form>
       </ThemeProvider>
-     
     </>
   );
 };

@@ -42,7 +42,6 @@ export const getUserPostHandler = createAsyncThunk(
   async (username, thunkAPI) => {
     try {
       const res = await getUserPost(username);
-      // console.log(res.data);
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -81,7 +80,7 @@ export const postSlice = createSlice({
     [getUserPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
       state.userPosts = payload;
-      console.log(state);
+    
     },
     [getUserPostHandler.rejected]: (state) => {
       state.status = "rejected";

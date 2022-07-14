@@ -5,4 +5,5 @@ import { CreatePost } from "./CreatePost/CreatePost";
 import { UserProfile } from "./UserProfile/UserProfile";
 import { EditUserModal } from "./EditUserModal/EditUserModal";
 import { SinglePost } from "./SinglePost/SinglePost";
-export {Sidebar,SuggestedUsers,PrivateRoute,CreatePost,UserProfile,EditUserModal,SinglePost};
+import { CommentList } from "./CommentList";
+export {Sidebar,SuggestedUsers,PrivateRoute,CreatePost,UserProfile,EditUserModal,SinglePost,CommentList};

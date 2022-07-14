@@ -34,14 +34,7 @@ export const users = [
     link: "https://peerlist.io/stutisk",
     profilePic:
       "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
-    followers: [
-      {
-        _id: uuid(),
-        firstName: "priya",
-        lastName: "Sharma",
-        username: "Priyasharma",
-      },
-    ],
+    followers: [],
   },
   {
     _id: uuid(),
@@ -55,14 +48,7 @@ export const users = [
     Bio: "adarsh student ",
     link: "https://peerlist.io/stutisk",
     profilePic: "https://picsum.photos/id/1027/200/300",
-    followers: [
-      {
-        _id: uuid(),
-        firstName: "priya",
-        lastName: "Sharma",
-        username: "Priyasharma",
-      },
-    ],
+    followers: [],
   },
   {
     _id: uuid(),
@@ -77,14 +63,7 @@ export const users = [
     link: "https://peerlist.io/stutisk",
     profilePic:
       "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-    followers: [
-      {
-        _id: uuid(),
-        firstName: "priya",
-        lastName: "Sharma",
-        username: "Priyasharma",
-      },
-    ],
+    followers: [],
   },
   {
     _id: uuid(),
@@ -98,13 +77,6 @@ export const users = [
     link: "https://peerlist.io/stutisk",
     profilePic:
       "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
-    followers: [
-      {
-        _id: uuid(),
-        firstName: "priya",
-        lastName: "Sharma",
-        username: "Priyasharma",
-      },
-    ],
+    followers: [],
   },
 ];

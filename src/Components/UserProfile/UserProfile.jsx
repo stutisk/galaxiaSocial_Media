@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from "react";
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import {
@@ -15,9 +15,11 @@ import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
 import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
+import { getUserPostHandler } from "../../features/post/postSlice";
+
 const UserProfile = () => {
   const [modal, setModal] = useState(false);
 
@@ -27,19 +29,19 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const {users} =useSelector((state) => state.user)
- 
-  const{posts} = useSelector((state)=> state.post)
+  const { users} = useSelector((state) => state.user);
+console.log(user)
+
 
   useEffect(() => {
     dispatch(updateuserHandler(user.username));
-  }, [users,dispatch,user.username]);
+  }, [users, dispatch, user.username]);
 
-  useEffect( () => {
-    dispatch(getAllUsers())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
 
-
+ 
   return (
     <>
       <Box
@@ -55,13 +57,13 @@ const UserProfile = () => {
         </Toolbar>
       </Box>
       <ThemeProvider theme={theme}>
-      <Box
+        <Box
           sx={{
             py: 4,
-            px:2,
-            backgroundColor:"#242526",
-            m:2,
-            borderRadius: '10px' 
+            px: 2,
+            backgroundColor: "#242526",
+            m: 2,
+            borderRadius: "10px",
           }}
         >
           <Grid container lg={12} item spacing={5}>
@@ -71,7 +73,7 @@ const UserProfile = () => {
                 alt="profile "
                 src={user.profilePic}
               />
-              
+
               {/* <Avatar
                 sx={{
                   bgcolor: "primary.main",
@@ -92,7 +94,7 @@ const UserProfile = () => {
                 {user.username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
-               {user.Bio}
+                {user.Bio}
               </Typography>
               <Link href={user.link} target="blank">
                 {" "}
@@ -129,7 +131,6 @@ const UserProfile = () => {
                   Edit Profile
                 </Button>
 
-                
                 <IconButton
                   onClick={() => dispatch(logoutHandler())}
                   aria-label="delete"
@@ -168,21 +169,10 @@ const UserProfile = () => {
             >
               {user.followers.length} followers
             </Button>
-            <Button
-              sx={{
-                color: "common.white",
-             
-              }}
-              variant="text"
-              size="large"
-            >
-              {posts.length} Posts
-            </Button>
-           
+            
           </Box>
         </Box>
-        <EditUserModal modal={modal} setModal={setModal}/>
-        
+        <EditUserModal modal={modal} setModal={setModal} />
       </ThemeProvider>
     </>
   );

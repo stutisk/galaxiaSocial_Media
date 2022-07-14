@@ -20,7 +20,6 @@ const SuggestedUsers = () => {
           <Typography variant="h6" sx={{ color: "common.white" }}>
             Follow requests
           </Typography>
-        </Box>
 
         <Box
           sx={{
@@ -32,6 +31,8 @@ const SuggestedUsers = () => {
         >
           hy
         </Box>
+        </Box>
+
       </ThemeProvider>
     </>
   );
