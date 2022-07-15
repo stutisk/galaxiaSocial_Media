@@ -4,6 +4,7 @@ import {
   getAllPost,
   getUserPost,
   deletePost,
+  editPost
 } from "../../services/postServices";
 
 const initialState = {
@@ -62,6 +63,18 @@ export const deletePostHandler = createAsyncThunk(
     return thunkAPI.rejectWithValue(error);
   }
 });
+export const editPostHandler = createAsyncThunk(
+	"post/editPostHandler",
+	async ({ token, postData }, thunkAPI) => {
+		try {
+			const res = await editPost(token, postData);
+			return res.data.posts;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error);
+		}
+	}
+);
+
 
 export const postSlice = createSlice({
   name: "counter",

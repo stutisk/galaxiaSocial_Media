@@ -25,3 +25,11 @@ export const createPost = (token, postData) => {
       authorization: token,
     },
   });
+
+   export const editPost = (token, postData) =>
+	axios.post(
+		`/api/posts/edit/${postData._id}`,
+		{ postData },
+		{ headers: { authorization: token } }
+	);
+
