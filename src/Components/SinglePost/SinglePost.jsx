@@ -55,7 +55,6 @@ const SinglePost = ({ post }) => {
 
   const editHandler = () => {
     setModalPost((prev) => !prev);
-   
     setModal(false)
   };
   return (
@@ -126,9 +125,7 @@ const SinglePost = ({ post }) => {
                 <Box
                   sx={{
                     borderRadius: 3,
-
                     width: "8rem",
-
                     // py: 2,
                     zIndex: 3,
                     position: "absolute",

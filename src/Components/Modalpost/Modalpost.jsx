@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { useState, useRef } from "react";
 import { createNewPost } from "../../features/post/postSlice";
-const Modalpost = ({ modalpost ,setModalpost}) => {
+const Modalpost = ({ modalpost ,setModalPost}) => {
   
  
   const [postData, setPostData] = useState("");
@@ -24,9 +24,6 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
 
  
 
- 
-
-  
   const postHandler = async (event) => {
     event.preventDefault();
     try {
@@ -41,10 +38,10 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
     
   };
 
-  // const closemodalpost = () => {
-  //   setModalpost(false);
+  const closemodalpost = () => {
+    setModalPost(false);
    
-  // }
+  }
 
  
   const fillFormValue = (event) => {
@@ -52,7 +49,7 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
   };
 
   return (
-    <>
+    <Box >
       {modalpost ? (
         <ThemeProvider theme={theme}>
           <form id="postData" onSubmit={postHandler}>
@@ -65,11 +62,9 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
                 position: "fixed",
                 zIndex: 1,
                 top: "50%",
-                // transform: "translate(-50%, -50%)",
+               
                 p: 3,
-                // zIndex: 3,
-                // position: "absolute",
-
+            
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 bgcolor: "#19191B",
@@ -130,8 +125,8 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
                   Post
                 </Button>
                 <Button
-                
-                onClick={() => setModalpost(false)}
+                onClick={() => modalpost && setModalPost(false)}
+           
                   variant="contained"
                   sx={{ borderRadius: "100px" }}
                 >
@@ -142,7 +137,7 @@ const Modalpost = ({ modalpost ,setModalpost}) => {
           </form>
         </ThemeProvider>
       ) : null}
-    </>
+    </Box>
   );
 };
 export { Modalpost };
