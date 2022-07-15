@@ -12,16 +12,14 @@ import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { updateuserHandler } from "../../features/user/userSlice";
-import React from 'react';
+import React from "react";
 const EditUserModal = ({ modal, setModal }) => {
-
   const initialValue = {
     firstName: "",
-    lastName:"",
+    lastName: "",
     username: "",
-    Bio:"",
-    link:"",
-    
+    Bio: "",
+    link: "",
   };
 
   const [form, setForm] = useState(initialValue);
@@ -35,19 +33,15 @@ const EditUserModal = ({ modal, setModal }) => {
 
   const updateHandler = () => {
     (async () => {
-      await  dispatch(updateuserHandler({...form} ));
-    })()  
+      await dispatch(updateuserHandler({ ...form }));
+    })();
     setModal(false);
   };
 
-
-
   useEffect(() => {
     setForm(user);
-   
   }, [user]);
 
- 
   const closemodal = () => {
     setModal(false);
   };

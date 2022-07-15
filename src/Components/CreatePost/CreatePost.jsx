@@ -21,7 +21,6 @@ const CreatePost = () => {
   const { user, token } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.post);
 
-  // };
   const postHandler = async (event) => {
     event.preventDefault();
     try {
@@ -33,6 +32,8 @@ const CreatePost = () => {
     }
     textInput.current.value = "";
   };
+
+  
 
   const fillFormValue = (event) => {
     setPostData(event.target.value);

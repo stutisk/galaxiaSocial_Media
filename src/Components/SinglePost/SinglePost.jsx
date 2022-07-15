@@ -17,18 +17,22 @@ import {
   BiLike,
   BiBookmark,
   BiDotsVerticalRounded,
-  BsPencilSquare, MdDeleteOutline 
+  BsPencilSquare,
+  MdDeleteOutline,
 } from "../../utils/Icons/Icons";
 import { CommentList } from "../index";
 import { useSelector } from "react-redux";
 import React from "react";
 import { useState } from "react";
-import { deletePostHandler } from "../../features/post/postSlice";
+import {
+  deletePostHandler,
+  editPostHandler,
+} from "../../features/post/postSlice";
 import { useDispatch } from "react-redux";
-
+import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
-  const { user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const {
     content,
     username,
@@ -43,14 +47,21 @@ const SinglePost = ({ post }) => {
     users && users?.find((user) => user.username === username);
 
   const [modal, setModal] = useState(false);
+  const [modalpost, setModalPost] = useState(false);
 
   const openmodal = () => {
     setModal((prev) => !prev);
+  };
+
+  const editHandler = () => {
+    setModalPost((prev) => !prev);
+    setModal(false)
   };
   return (
     <>
       <ThemeProvider theme={theme}>
         <Box
+         onClick={() => modalpost && setModalPost(false)}
           sx={{
             p: 1,
             backgroundColor: "#242526",
@@ -130,6 +141,7 @@ const SinglePost = ({ post }) => {
                         <BsPencilSquare size={20} />
                       </ListItemIcon>
                       <ListItemText
+                          onClick={editHandler}
                         primary={
                           <Typography
                             variant="body1"
@@ -171,7 +183,9 @@ const SinglePost = ({ post }) => {
                 >
                   <BiDotsVerticalRounded />
                 </IconButton>
-              ) : <></>}
+              ) : (
+                <></>
+              )}
             </Grid>
           </Grid>
 
@@ -284,6 +298,7 @@ const SinglePost = ({ post }) => {
             </Grid>
           </Box>
         </Box>
+        <Modalpost modalpost={modalpost} setModalPost={setModalPost}/>
       </ThemeProvider>
     </>
   );
