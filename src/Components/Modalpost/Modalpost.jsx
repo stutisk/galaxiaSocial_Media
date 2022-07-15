@@ -13,16 +13,12 @@ import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { useState, useRef } from "react";
 import { createNewPost } from "../../features/post/postSlice";
-const Modalpost = ({ modalpost ,setModalPost}) => {
-  
- 
+const Modalpost = ({ modalpost, setModalPost }) => {
   const [postData, setPostData] = useState("");
   const textInput = useRef(null);
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.post);
-
- 
 
   const postHandler = async (event) => {
     event.preventDefault();
@@ -30,31 +26,22 @@ const Modalpost = ({ modalpost ,setModalPost}) => {
       const response = await dispatch(
         createNewPost({ token, postData: { content: postData } })
       );
-      
     } catch (error) {
       console.log(error);
     }
     textInput.current.value = "";
-    
   };
 
-  const closemodalpost = () => {
-    setModalPost(false);
-   
-  }
-
- 
   const fillFormValue = (event) => {
     setPostData(event.target.value);
   };
 
   return (
-    <Box >
+    <Box>
       {modalpost ? (
         <ThemeProvider theme={theme}>
           <form id="postData" onSubmit={postHandler}>
             <Box
-            
               sx={{
                 border: 1,
                 borderRadius: 3,
@@ -62,9 +49,9 @@ const Modalpost = ({ modalpost ,setModalPost}) => {
                 position: "fixed",
                 zIndex: 1,
                 top: "50%",
-               
+
                 p: 3,
-            
+
                 left: "50%",
                 transform: "translate(-50%, -50%)",
                 bgcolor: "#19191B",
@@ -117,7 +104,6 @@ const Modalpost = ({ modalpost ,setModalPost}) => {
                   </IconButton>
                 </label>
                 <Button
-             
                   type="submit"
                   variant="contained"
                   sx={{ borderRadius: "100px" }}
@@ -125,8 +111,7 @@ const Modalpost = ({ modalpost ,setModalPost}) => {
                   Post
                 </Button>
                 <Button
-                onClick={() => modalpost && setModalPost(false)}
-           
+                  onClick={() => modalpost && setModalPost(false)}
                   variant="contained"
                   sx={{ borderRadius: "100px" }}
                 >
