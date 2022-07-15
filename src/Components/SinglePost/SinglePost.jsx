@@ -26,7 +26,7 @@ import React from "react";
 import { useState } from "react";
 import {
   deletePostHandler,
-  editPostHandler,
+
 } from "../../features/post/postSlice";
 import { useDispatch } from "react-redux";
 import { Modalpost } from "../index";
@@ -55,6 +55,7 @@ const SinglePost = ({ post }) => {
 
   const editHandler = () => {
     setModalPost((prev) => !prev);
+   
     setModal(false)
   };
   return (

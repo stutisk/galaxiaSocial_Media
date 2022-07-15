@@ -68,6 +68,7 @@ export const editPostHandler = createAsyncThunk(
 	async ({ token, postData }, thunkAPI) => {
 		try {
 			const res = await editPost(token, postData);
+      console.log(res)
 			return res.data.posts;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
@@ -125,6 +126,18 @@ export const postSlice = createSlice({
     [deletePostHandler.rejected]: (state) => {
       state.status = "rejected";
     },
+    [editPostHandler.pending]: (state) => {
+      state.status = "rejected";
+    },
+    [editPostHandler.fulfilled]: (state, { payload }) => {
+      state.status = "fullfilled";
+      state.posts = payload;
+      console.log(state)
+    
+    },
+    [editPostHandler.rejected]: (state) => {
+      state.status = "rejected";
+    }
   },
 });
 
