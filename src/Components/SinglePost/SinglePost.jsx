@@ -26,13 +26,15 @@ import React from "react";
 import { useState } from "react";
 import {
   deletePostHandler,
-
+  addCommentHandler,
 } from "../../features/post/postSlice";
+
 import { useDispatch } from "react-redux";
 import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
+  const [comment, setComment] = useState();
   const { users } = useSelector((state) => state.user);
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
   const {
     content,
     username,
@@ -40,6 +42,7 @@ const SinglePost = ({ post }) => {
     likes: { likeCount, likedBy },
     comments,
     createdAt,
+    text,
   } = post;
   const dispatch = useDispatch();
 
@@ -55,13 +58,31 @@ const SinglePost = ({ post }) => {
 
   const editHandler = () => {
     setModalPost((prev) => !prev);
-    setModal(false)
+    setModal(false);
   };
+  const commentHandler = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await dispatch(
+        addCommentHandler({ postId: _id, commentData: { text: comment } })
+      );
+      // console.log(response)
+    } catch (error) {
+      console.log(error);
+    }
+    // textInput.current.value = "";
+  };
+
+  const fillComment = (event) => {
+    console.log(event.target.value);
+    setComment(event.target.value);
+  };
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <Box
-         onClick={() => modalpost && setModalPost(false)}
+          onClick={() => modalpost && setModalPost(false)}
           sx={{
             p: 1,
             backgroundColor: "#242526",
@@ -139,7 +160,7 @@ const SinglePost = ({ post }) => {
                         <BsPencilSquare size={20} />
                       </ListItemIcon>
                       <ListItemText
-                          onClick={editHandler}
+                        onClick={editHandler}
                         primary={
                           <Typography
                             variant="body1"
@@ -259,9 +280,7 @@ const SinglePost = ({ post }) => {
               </Typography>
             </Box>
           </Box>
-
-          <CommentList />
-
+          <CommentList  />
           <Box
             sx={{
               display: "flex",
@@ -274,13 +293,15 @@ const SinglePost = ({ post }) => {
             <Grid container lg={12} item spacing={2}>
               <Grid item lg={1} sm={1} md={1}>
                 <Avatar
-                  sx={{ width: 37, height: 37 }}
+                  sx={{ width: 40, height: 40 }}
                   alt="profile "
                   src={user.profilePic}
                 />
               </Grid>
               <Grid item lg={9} sm={9} md={9}>
                 <TextField
+                  value={comment}
+                  onChange={fillComment}
                   inputProps={{ style: { color: "white" } }}
                   multiline
                   rows={1}
@@ -289,14 +310,21 @@ const SinglePost = ({ post }) => {
                 ></TextField>
               </Grid>
               <Grid item lg={1} sm={1} md={1}>
-                <Button variant="text" sx={{ padding: 2 }}>
-                  Reply
+                <Button
+                  onClick={(event) => commentHandler(event)}
+                  type="submit"
+                  variant="text"
+                  sx={{ padding: 2 }}
+                  // disabled
+                >
+                  Reply 
                 </Button>
               </Grid>
             </Grid>
+           
           </Box>
         </Box>
-        <Modalpost modalpost={modalpost} setModalPost={setModalPost}/>
+        <Modalpost modalpost={modalpost} setModalPost={setModalPost} />
       </ThemeProvider>
     </>
   );

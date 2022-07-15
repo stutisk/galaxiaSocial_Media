@@ -4,12 +4,14 @@ import {
   getAllPost,
   getUserPost,
   deletePost,
-  editPost
+  editPost,
+  addComment,
 } from "../../services/postServices";
 
 const initialState = {
   posts: [],
   userPosts: [],
+
 };
 
 export const createNewPost = createAsyncThunk(
@@ -18,8 +20,21 @@ export const createNewPost = createAsyncThunk(
     try {
       // const token = localStorage.getItem("token");
       const res = await createPost(token, postData);
-   
+   console.log(res.data.posts)
       return res.data.posts;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+export const addCommentHandler = createAsyncThunk(
+  "post/addCommenthandler",
+  async ({ postId, commentData }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await addComment(postId, commentData, token);
+      console.log(res.data)
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -136,6 +151,18 @@ export const postSlice = createSlice({
     
     },
     [editPostHandler.rejected]: (state) => {
+      state.status = "rejected";
+    },
+    [addCommentHandler.pending]: (state) => {
+      state.status = "rejected";
+    },
+    [addCommentHandler.fulfilled]: (state, { payload }) => {
+      state.status = "fullfilled";
+      state.posts = payload.posts;
+      console.log(state)
+    
+    },
+    [addCommentHandler.rejected]: (state) => {
       state.status = "rejected";
     }
   },
