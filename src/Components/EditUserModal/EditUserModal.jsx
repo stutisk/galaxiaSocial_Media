@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateuserHandler } from "../../features/user/userSlice";
 import React from "react";
 const EditUserModal = ({ modal, setModal }) => {
+  
   const initialValue = {
     firstName: "",
     lastName: "",

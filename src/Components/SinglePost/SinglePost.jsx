@@ -39,9 +39,9 @@ import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
   const [comment, setComment] = useState();
   const { users } = useSelector((state) => state.user);
-  console.log(users)
+
   const { user } = useSelector((state) => state.auth);
-  console.log(user)
+ 
   const {
     content,
     username,

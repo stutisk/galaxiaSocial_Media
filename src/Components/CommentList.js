@@ -9,11 +9,13 @@ import {
   IconButton,
   Typography,
 } from "../utils/material-ui/materialComponents";
-import { useSelector } from "react-redux";
-const CommentList = () => {
+import { useSelector,useDispatch } from "react-redux";
+import { useState } from "react";
+const CommentList = ({ comment, postId }) => {
   const { user } = useSelector((state) => state.auth);
   const { post } = useSelector((state) => state.post);
-
+  const {users} =useSelector((state) => state.user)
+  const [inputComment, setInputComment] = useState();
   return (
     <>
       <Box
