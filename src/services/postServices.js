@@ -47,3 +47,23 @@ export const editPost = (token, postData) =>
     { postData },
     { headers: { authorization: token } }
   );
+
+   export const likePost= (postId, token ) => {
+    return axios.post(
+      `/api/posts/like/${postId}`,
+      {},
+      {
+        headers: { authorization: token },
+      }
+    );
+  };
+  
+   export const dislikePost = (postId, token ) => {
+    return axios.post(
+      `/api/posts/dislike/${postId}`,
+      {},
+      {
+        headers: { authorization: token },
+      }
+    );
+  };

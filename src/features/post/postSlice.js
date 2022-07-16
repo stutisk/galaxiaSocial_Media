@@ -6,12 +6,13 @@ import {
   deletePost,
   editPost,
   addComment,
+  likePost,
+  dislikePost,
 } from "../../services/postServices";
 
 const initialState = {
   posts: [],
   userPosts: [],
-
 };
 
 export const createNewPost = createAsyncThunk(
@@ -20,7 +21,7 @@ export const createNewPost = createAsyncThunk(
     try {
       // const token = localStorage.getItem("token");
       const res = await createPost(token, postData);
-   console.log(res.data.posts)
+      console.log(res.data.posts);
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -33,7 +34,7 @@ export const addCommentHandler = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await addComment(postId, commentData, token);
-      console.log(res.data)
+      console.log(res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -67,30 +68,48 @@ export const getUserPostHandler = createAsyncThunk(
 );
 
 export const deletePostHandler = createAsyncThunk(
-  "post/deletePostHandler", 
+  "post/deletePostHandler",
   async (postId, thunkAPI) => {
-  try {
-    const token = localStorage.getItem("token");
-    const res = await deletePost(postId, token);
-    console.log(res.data.posts)
-    return res.data.posts;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+    try {
+      const token = localStorage.getItem("token");
+      const res = await deletePost(postId, token);
+      console.log(res.data.posts);
+      return res.data.posts;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 export const editPostHandler = createAsyncThunk(
-	"post/editPostHandler",
-	async ({ token, postData }, thunkAPI) => {
-		try {
-			const res = await editPost(token, postData);
-      console.log(res)
-			return res.data.posts;
-		} catch (error) {
-			return thunkAPI.rejectWithValue(error);
-		}
-	}
+  "post/editPostHandler",
+  async ({ token, postData }, thunkAPI) => {
+    try {
+      const res = await editPost(token, postData);
+      console.log(res);
+      return res.data.posts;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
 );
 
+
+
+export const likeAndDislikeHandler = createAsyncThunk(
+  "post/likeAndDislikeHandler",
+  async ({ postId, isLikeByTheUser }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = isLikeByTheUser
+        ? await likePost(postId, token)
+        : await dislikePost(postId, token);
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const postSlice = createSlice({
   name: "counter",
@@ -123,20 +142,18 @@ export const postSlice = createSlice({
     [getUserPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
       state.userPosts = payload;
-    
     },
     [getUserPostHandler.rejected]: (state) => {
       state.status = "rejected";
     },
-    
+
     [deletePostHandler.pending]: (state) => {
       state.status = "rejected";
     },
     [deletePostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
       state.posts = payload;
-      console.log(state)
-    
+      console.log(state);
     },
     [deletePostHandler.rejected]: (state) => {
       state.status = "rejected";
@@ -147,8 +164,7 @@ export const postSlice = createSlice({
     [editPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
       state.posts = payload;
-      console.log(state)
-    
+      console.log(state);
     },
     [editPostHandler.rejected]: (state) => {
       state.status = "rejected";
@@ -159,12 +175,24 @@ export const postSlice = createSlice({
     [addCommentHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
       state.posts = payload.posts;
-      console.log(state)
-    
+      console.log(state);
     },
     [addCommentHandler.rejected]: (state) => {
       state.status = "rejected";
-    }
+    },
+
+   
+    [likeAndDislikeHandler.pending]: (state) => {
+      state.status = "pending";
+    },
+    [likeAndDislikeHandler.fulfilled]:(state, { payload }) => {
+      state.status = "fulfilled";
+      state.posts = payload.posts.reverse();
+    },
+    [likeAndDislikeHandler.rejected]: (state) => {
+      state.status = "rejected";
+   
+    },
   },
 });
 

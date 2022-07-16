@@ -19,6 +19,7 @@ import {
   BiDotsVerticalRounded,
   BsPencilSquare,
   MdDeleteOutline,
+  AiFillLike
 } from "../../utils/Icons/Icons";
 import { CommentList } from "../index";
 import { useSelector } from "react-redux";
@@ -27,6 +28,7 @@ import { useState } from "react";
 import {
   deletePostHandler,
   addCommentHandler,
+  likeAndDislikeHandler,
 } from "../../features/post/postSlice";
 
 import { useDispatch } from "react-redux";
@@ -34,7 +36,7 @@ import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
   const [comment, setComment] = useState();
   const { users } = useSelector((state) => state.user);
-  const { user, token } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const {
     content,
     username,
@@ -49,11 +51,19 @@ const SinglePost = ({ post }) => {
   const currentUser =
     users && users?.find((user) => user.username === username);
 
+  const isLiked = likedBy?.some((like) => like.username === user.username);
+
   const [modal, setModal] = useState(false);
   const [modalpost, setModalPost] = useState(false);
 
   const openmodal = () => {
     setModal((prev) => !prev);
+  };
+
+  const likeDislikeHandler = () => {
+    dispatch(
+      likeAndDislikeHandler({ postId: _id, isLikeByTheUser: isLiked ? false : true })
+    );
   };
 
   const editHandler = () => {
@@ -66,7 +76,6 @@ const SinglePost = ({ post }) => {
       const response = await dispatch(
         addCommentHandler({ postId: _id, commentData: { text: comment } })
       );
-      // console.log(response)
     } catch (error) {
       console.log(error);
     }
@@ -238,11 +247,12 @@ const SinglePost = ({ post }) => {
               }}
             >
               <IconButton
+                onClick={() => likeDislikeHandler()}
                 color="primary"
                 aria-label="upload picture"
                 component="span"
               >
-                <BiLike />
+                {isLiked ? <AiFillLike /> : <BiLike />}
               </IconButton>
               <Typography
                 variant="subtitle1"
@@ -250,7 +260,9 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
-                {likeCount}
+                {likeCount === 0
+                  ? "Be the first to like this"
+                  : `${likeCount} Likes`}
               </Typography>
             </Box>
 
@@ -280,7 +292,7 @@ const SinglePost = ({ post }) => {
               </Typography>
             </Box>
           </Box>
-          <CommentList  />
+          <CommentList />
           <Box
             sx={{
               display: "flex",
@@ -317,11 +329,10 @@ const SinglePost = ({ post }) => {
                   sx={{ padding: 2 }}
                   // disabled
                 >
-                  Reply 
+                  Reply
                 </Button>
               </Grid>
             </Grid>
-           
           </Box>
         </Box>
         <Modalpost modalpost={modalpost} setModalPost={setModalPost} />
