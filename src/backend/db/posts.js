@@ -15,7 +15,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    bookmark:[],
+    bookmark: [],
     username: "adarshbalika",
     firstName: "adarsh",
     lastName: "balika",
@@ -45,19 +45,21 @@ export const posts = [
   },
   {
     _id: uuid(),
-    content: "And God said 'let there be cutenes on Earth ' . Thats when Dogs came on this planet   ",
+    content:
+      "And God said 'let there be cutenes on Earth ' . Thats when Dogs came on this planet   ",
     likes: {
       likeCount: 4,
       likedBy: [],
       dislikedBy: [],
     },
-    bookmark:[],
+    bookmark: [],
     username: "kailey",
     firstName: "kailey",
 
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    profilePic: "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
+    profilePic:
+      "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
     comments: [
       {
         _id: uuid(),
@@ -88,7 +90,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    bookmark:[],
+    bookmark: [],
     username: "shaurya",
     firstName: "shaurya",
     lastName: "kumar",
@@ -120,11 +122,27 @@ export const posts = [
     _id: uuid(),
     content: "Almost nobody dances sober, unless they happen to be insane.",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "stuti",
+          lastName: "Skk",
+          username: "stutiSk",
+          password: "StutiSk123",
+          email: "stuti1799@gmail.com",
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+          Bio: "Frontend Developer ",
+          link: "https://peerlist.io/stutisk",
+          profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
+
+          followers: [],
+        },
+      ],
       dislikedBy: [],
     },
-    bookmark:[],
+    bookmark: [],
     firstName: "shreya",
     lastName: "thakur",
     username: "ShreyaT",
@@ -164,7 +182,142 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
-    bookmark:[],
+    bookmark: [],
+    firstName: "stuti",
+    lastName: "Skk",
+    username: "stutiSk",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+
+    profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "Dance is the hidden language of the soul.",
+    likes: {
+      likeCount: 5,
+      likedBy: [
+        {
+          _id: uuid(),
+          firstName: "stuti",
+          lastName: "Skk",
+          username: "stutiSk",
+          password: "StutiSk123",
+          email: "stuti1799@gmail.com",
+          createdAt: formatDate(),
+          updatedAt: formatDate(),
+          Bio: "Frontend Developer ",
+          link: "https://peerlist.io/stutisk",
+          profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
+
+          followers: [],
+        },
+      ],
+      dislikedBy: [],
+    },
+    bookmark: [],
+    firstName: "shreya",
+    lastName: "thakur",
+    username: "ShreyaT",
+
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+
+    link: "https://peerlist.io/stutisk",
+    profilePic:
+      "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "Nobody cares if you can’t dance well. Just get up and dance. Great dancers are great because of their passion.",
+    likes: {
+      likeCount: 0,
+      likedBy: [
+
+      ],
+      dislikedBy: [],
+    },
+    bookmark: [],
+    firstName: "shreya",
+    lastName: "thakur",
+    username: "ShreyaT",
+
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+
+    link: "https://peerlist.io/stutisk",
+    profilePic:
+      "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
+    comments: [
+      {
+        _id: uuid(),
+        username: "shubhamsoni",
+        text: "Interesting",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+      {
+        _id: uuid(),
+        username: "sohamshah",
+        text: "Wow!",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: [],
+        },
+      },
+    ],
+  },
+  {
+    _id: uuid(),
+    content: "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    bookmark: [],
     firstName: "stuti",
     lastName: "Skk",
     username: "stutiSk",

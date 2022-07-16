@@ -273,6 +273,7 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
+            
                 {likeCount === 0
                   ? "Be the first to like this"
                   : `${likeCount} Likes`}
