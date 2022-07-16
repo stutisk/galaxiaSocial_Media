@@ -9,6 +9,7 @@ import {
   likePost,
   dislikePost,
 } from "../../services/postServices";
+import { addBookmarks,removeBookmark } from "../../services/userServices";
 
 const initialState = {
   posts: [],
@@ -110,6 +111,21 @@ export const likeAndDislikeHandler = createAsyncThunk(
     }
   }
 );
+export const addAndremoveBookmarks = createAsyncThunk(
+  "post/addAndremoveBookmarks",
+  async ({ postId, isBookmarkedByTheUser }, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = isBookmarkedByTheUser
+        ? await addBookmarks(postId, token)
+        : await removeBookmark(postId, token);
+      console.log(res);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const postSlice = createSlice({
   name: "counter",
@@ -193,6 +209,19 @@ export const postSlice = createSlice({
       state.status = "rejected";
    
     },
+    [addAndremoveBookmarks.pending]: (state) => {
+      state.status = "pending";
+    },
+    [addAndremoveBookmarks.fulfilled]: (state, { payload }) => {
+      state.status = "fullfilled";
+      state.posts = payload.posts;
+  
+     
+    },
+    [addAndremoveBookmarks.rejected]:(state)=> {
+      state.status="rejected"
+     
+    }
   },
 });
 

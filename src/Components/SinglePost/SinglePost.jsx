@@ -20,6 +20,7 @@ import {
   BsPencilSquare,
   MdDeleteOutline,
   AiFillLike
+  ,BsFillBookmarkCheckFill
 } from "../../utils/Icons/Icons";
 import { CommentList } from "../index";
 import { useSelector } from "react-redux";
@@ -29,14 +30,18 @@ import {
   deletePostHandler,
   addCommentHandler,
   likeAndDislikeHandler,
+  addAndremoveBookmarks
 } from "../../features/post/postSlice";
+
 
 import { useDispatch } from "react-redux";
 import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
   const [comment, setComment] = useState();
   const { users } = useSelector((state) => state.user);
+  console.log(users)
   const { user } = useSelector((state) => state.auth);
+  console.log(user)
   const {
     content,
     username,
@@ -45,6 +50,7 @@ const SinglePost = ({ post }) => {
     comments,
     createdAt,
     text,
+    bookmark
   } = post;
   const dispatch = useDispatch();
 
@@ -52,6 +58,7 @@ const SinglePost = ({ post }) => {
     users && users?.find((user) => user.username === username);
 
   const isLiked = likedBy?.some((like) => like.username === user.username);
+  const isBookmarked = bookmark?.some((bookmarkPost) => bookmarkPost.username === user.username);
 
   const [modal, setModal] = useState(false);
   const [modalpost, setModalPost] = useState(false);
@@ -63,6 +70,11 @@ const SinglePost = ({ post }) => {
   const likeDislikeHandler = () => {
     dispatch(
       likeAndDislikeHandler({ postId: _id, isLikeByTheUser: isLiked ? false : true })
+    );
+  };
+  const bookMarkHandler = () => {
+    dispatch(
+      addAndremoveBookmarks({ postId: _id,  isBookmarkedByTheUser: isBookmarked? false : true })
     );
   };
 
@@ -253,6 +265,7 @@ const SinglePost = ({ post }) => {
                 component="span"
               >
                 {isLiked ? <AiFillLike /> : <BiLike />}
+               
               </IconButton>
               <Typography
                 variant="subtitle1"
@@ -276,11 +289,13 @@ const SinglePost = ({ post }) => {
               }}
             >
               <IconButton
+               onClick={() => bookMarkHandler()}
                 color="primary"
                 aria-label="upload picture"
                 component="span"
               >
-                <BiBookmark />
+                    {isBookmarked ? <BsFillBookmarkCheckFill /> : <BiBookmark/>}
+    
               </IconButton>
               <Typography
                 variant="subtitle1"
@@ -288,7 +303,7 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
-                3
+    {user.Bookmarks}
               </Typography>
             </Box>
           </Box>

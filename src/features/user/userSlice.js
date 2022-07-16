@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { useEffect } from "react";
-import { getAllUser } from "../../services/userServices";
-import { editUser } from "../../services/userServices";
+import { getAllUser ,editUser,addBookmarks,removeBookmark } from "../../services/userServices";
+
+
 
 export const getAllUsers = createAsyncThunk(
   "users/getAllUsers",
@@ -37,6 +38,7 @@ export const updateuserHandler = createAsyncThunk(
   }
 );
 
+
 export const userSlice = createSlice({
   name: "user",
   initialState,
@@ -68,7 +70,7 @@ export const userSlice = createSlice({
     [updateuserHandler.rejected]:(state)=> {
       state.status="rejected"
      
-    }
+     } 
   },
 });
 export default userSlice.reducer;

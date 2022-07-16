@@ -18,3 +18,23 @@ export const editUser = (token, userData) => {
     }
   );
 };
+
+export const addBookmarks= (postId, token ) => {
+  return axios.post(
+    `/api/users/bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+ export const removeBookmark = (postId, token ) => {
+  return axios.post(
+    `/api/users/remove-bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
