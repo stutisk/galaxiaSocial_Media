@@ -22,7 +22,7 @@ export const createNewPost = createAsyncThunk(
     try {
       // const token = localStorage.getItem("token");
       const res = await createPost(token, postData);
-      console.log(res.data.posts);
+      // console.log(res.data.posts);
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -137,7 +137,7 @@ export const postSlice = createSlice({
     },
     [createNewPost.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload.reverse();
+      state.posts = payload;
     },
     [createNewPost.rejected]: (state) => {
       state.status = "rejected";
@@ -147,7 +147,7 @@ export const postSlice = createSlice({
     },
     [getAllPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload.reverse();
+      state.posts = payload;
     },
     [getAllPostHandler.rejected]: (state) => {
       state.status = "rejected";

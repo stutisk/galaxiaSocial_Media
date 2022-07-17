@@ -18,6 +18,7 @@ const Homepage = () => {
   const { token } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.post);
 
+  console.log(posts)
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
@@ -33,6 +34,15 @@ const Homepage = () => {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
+
+
+  const sortByTrending = () => {
+    return(
+      <>
+      </>
+    )
+  }
+
 
   return (
     <Box>
@@ -56,9 +66,10 @@ const Homepage = () => {
       <CreatePost />
       {/* <PostsList posts={posts} /> */}
       {
-      posts && posts.map((post) => (
+   posts&& posts.map((post) => (
         <SinglePost key={post._id} post={post} />
-      ),).sort((a,b)=> a.createdAt - b.createdAt)
+      ),)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       }
      
     </Box>

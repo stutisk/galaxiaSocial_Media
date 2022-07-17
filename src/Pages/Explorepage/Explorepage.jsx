@@ -4,8 +4,7 @@ import {
   Typography,
   Toolbar,
 } from "../../utils/material-ui/materialComponents";
-
-import { PostsList } from "../../Components/PostList";
+import { SinglePost } from "../../Components";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPostHandler } from "../../features/post/postSlice";
 const Explorepage = () => {
@@ -40,7 +39,11 @@ const Explorepage = () => {
         </Toolbar>
       </Box>
 
-      <PostsList posts={posts} />
+      {
+     posts.map((post) => (
+        <SinglePost key={post._id} post={post} />
+      ),).sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+      }
     </Box>
   );
 };
