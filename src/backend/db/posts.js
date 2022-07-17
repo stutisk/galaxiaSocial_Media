@@ -19,7 +19,7 @@ export const posts = [
     username: "adarshbalika",
     firstName: "adarsh",
     lastName: "balika",
-    createdAt: "Jul-17-20",
+    createdAt: "2021/06/Su 11:12:21ec",
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/1027/200/300",
     comments: [
@@ -59,7 +59,7 @@ export const posts = [
     username: "kailey",
     firstName: "kailey",
 
-    createdAt: "Jul-15-22",
+    createdAt: "2021/07/Su 11:12:21ec",
     updatedAt: formatDate(),
     profilePic:
       "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
@@ -123,7 +123,7 @@ export const posts = [
         id: uuid(),
       },
     ],
-    createdAt: "Jun-17-21",
+    createdAt: "2021/08/Su 11:12:21ec",
     updatedAt: formatDate(),
   },
   {
@@ -154,7 +154,7 @@ export const posts = [
     firstName: "shreya",
     lastName: "thakur",
     username: "ShreyaT",
-    createdAt: "Jul-17-22",
+    createdAt: "2021/09/Su 11:12:21ec",
     updatedAt: formatDate(),
     link: "https://peerlist.io/stutisk",
     profilePic:
@@ -192,7 +192,7 @@ export const posts = [
     firstName: "scooby ",
     lastName: "Boss",
     username: "scooby",
-    createdAt: "Jan-17-20",
+    createdAt: "2021/10/Su 11:12:21ec",
     updatedAt: formatDate(),
 
     profilePic:
@@ -238,7 +238,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt: "Jul-17-19",
+    createdAt: "2021/11/Su 11:12:21ec",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -270,7 +270,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt:"Mar-17-19",
+    createdAt:"2021/12/Su 11:12:21ec",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -301,7 +301,7 @@ export const posts = [
     firstName: "stuti",
     lastName: "Skk",
     username: "stutiSk",
-    createdAt: "Jul-1-19",
+    createdAt: "2022/01/Su 11:12:21ec",
     updatedAt: formatDate(),
 
     profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
