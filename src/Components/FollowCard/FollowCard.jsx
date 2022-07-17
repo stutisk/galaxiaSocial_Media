@@ -31,7 +31,7 @@ const FollowCard = () => {
 
         }}
       >
-        <Grid container lg={12} item spacing={5}>
+        <Grid container lg={12} item spacing={6}>
           <Grid item lg={3} sm={1} md={1}>
             <Avatar
               sx={{ width: 50, height: 50 }}
