@@ -5,7 +5,7 @@ import {
   Toolbar,
 } from "../../utils/material-ui/materialComponents";
 import { CreatePost } from "../../Components";
-import { PostsList } from "../../Components/PostList";
+// import { PostsList } from "../../Components/PostList";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPostHandler } from "../../features/post/postSlice";
 import { getAllUsers } from "../../features/user/userSlice";
