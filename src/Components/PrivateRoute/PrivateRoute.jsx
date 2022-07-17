@@ -4,7 +4,7 @@ import { theme } from "../../styes/theme/index"
 import { Grid} from "../../utils/material-ui/materialComponents";
 import { Sidebar, SuggestedUsers } from "../index";
 import { useSelector } from "react-redux";
-;
+import React  from 'react';
 const PrivateRoute = () => {
 
   const {token } = useSelector((state)=> state.auth)
@@ -14,7 +14,7 @@ const PrivateRoute = () => {
     
     <>
 
-      <Grid container spacing={3} className="App">
+      <Grid container spacing={1} className="App">
         <ThemeProvider theme={theme}>
           <Grid item  lg={3} xs={12}>
             <Sidebar />

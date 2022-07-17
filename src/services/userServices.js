@@ -1,4 +1,40 @@
-import axios from "axios"
-export const getUser = () => {
-  return axios.get("/api/users");
+import axios from "axios";
+
+export const getAllUser = (token) =>
+  axios.get("/api/users", { headers: { authorization: token } });
+  
+
+
+export const editUser = (token, userData) => {
+  return axios.post(
+    "/api/users/edit",
+    {
+      userData,
+    },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+};
+
+export const addBookmarks= (postId, token ) => {
+  return axios.post(
+    `/api/users/bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
+};
+
+ export const removeBookmark = (postId, token ) => {
+  return axios.post(
+    `/api/users/remove-bookmark/${postId}`,
+    {},
+    {
+      headers: { authorization: token },
+    }
+  );
 };

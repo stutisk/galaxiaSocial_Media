@@ -1,38 +1,35 @@
-import {  UserProfile } from "../../Components";
+import { SinglePost, UserProfile } from "../../Components";
 import React, { useEffect } from "react";
 import { Box } from "../../utils/material-ui/materialComponents";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch} from "react-redux";
+import { getUserPostHandler } from "../../features/post/postSlice";
 
 
 const Profilepage = () => {
   const { user } = useSelector((state) => state.auth);
+  const {userPosts } = useSelector((state) => state.post);
+
+const dispatch =useDispatch();
+
   useEffect(() => {
-    document.title = `${user.firstName} ${user.lastName} || Galaxia`  ;
-  }, [user.firstName,user.lastName]);
+    document.title = `${user.firstName} ${user.lastName} || Galaxia`;
+  }, [user.firstName, user.lastName]);
+
+  useEffect(() => {
+    dispatch(getUserPostHandler (user.username));
+  }, [dispatch,user.username]);
 
   return (
     <>
-      <Box
-        sx={{
-          border: 1,
-          borderColor: "border.main",
-        }}
-      >
+      <Box>
         <UserProfile />
-
-        <p>
-          loreWhy do we use it? It is a long established fact that a reader will
-          be distracted by the readable content of a page when looking at its
-          layout. The point of using Lorem Ipsum is that it has a more-or-less
-          normal distribution of letters, as opposed to using 'Content here,
-          content her Contrary to popular belief, Lorem Ipsum is not simply
-          random text. It has roots in a piece of classical Latin literature
-          from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
-          professor at Hampden-Sydney College in Virginia, s, combined with a
-          handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is v
-        </p>
-        {/* <EditUserModal></EditUserModal> */}
+        <Box>
+          {userPosts.length > 0 ? (
+            userPosts.map((post) => <SinglePost key={post._id} post={post} />)
+          ) : (
+            <Box>No posts yet</Box>
+          )}
+        </Box>
       </Box>
     </>
   );

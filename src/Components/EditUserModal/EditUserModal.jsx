@@ -7,16 +7,46 @@ import {
   Badge,
   IconButton,
 } from "../../utils/material-ui/materialComponents";
-
+import { useState, useEffect } from "react";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { updateuserHandler } from "../../features/user/userSlice";
+import React from "react";
 const EditUserModal = ({ modal, setModal }) => {
-  const{user} = useSelector((state) => state.auth)
+  
+  const initialValue = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    Bio: "",
+    link: "",
+  };
+
+  const [form, setForm] = useState(initialValue);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const fillFormValue = (event, fieldName) => {
+    console.log(event.target.value, [fieldName]);
+    setForm((input) => ({ ...input, [fieldName]: event.target.value }));
+  };
+
+  const updateHandler = () => {
+    (async () => {
+      await dispatch(updateuserHandler({ ...form }));
+    })();
+    setModal(false);
+  };
+
+  useEffect(() => {
+    setForm(user);
+  }, [user]);
+
   const closemodal = () => {
     setModal(false);
   };
+
   return (
     <>
       {modal ? (
@@ -60,6 +90,7 @@ const EditUserModal = ({ modal, setModal }) => {
                 }}
               >
                 <Button
+                  onClick={() => updateHandler()}
                   sx={{
                     mx: "auto",
                     width: "50%",
@@ -94,87 +125,109 @@ const EditUserModal = ({ modal, setModal }) => {
               alignItems: "center",
             }}
           >
-            <Badge
-              sx={{
-                mb: 2,
-              }}
-              overlap="circular"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              badgeContent={
-                
-                 <label htmlFor="icon-button-file">
-              <input
-                hidden
-                accept="image/*"
-                id="icon-button-file"
-                type="file"
-              />
-              <IconButton
-              sx={{
-                color:"common.white"
-              }}
-                aria-label="upload picture"
-                component="span"
-              >
-                <MdPhotoCamera color="common.white" />
-              </IconButton>
-            </label>
-                
-              }
-            >
-              <Avatar
+            <form>
+              <Badge
                 sx={{
-                  bgcolor: "primary.main",
-                  width: 90,
-                  height: 90,
-                  fontSize: 50,
+                  mb: 2,
                 }}
+                overlap="circular"
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                badgeContent={
+                  <label htmlFor="icon-button-file">
+                    <input
+                      hidden
+                      accept="image/*"
+                      id="icon-button-file"
+                      type="file"
+                    />
+                    <IconButton
+                      sx={{
+                        color: "common.white",
+                      }}
+                      aria-label="upload picture"
+                      component="span"
+                    >
+                      <MdPhotoCamera color="common.white" />
+                    </IconButton>
+                  </label>
+                }
               >
-              
-                {user.firstName.charAt(0)}{user.lastName.charAt(0)}
-              </Avatar>
-            </Badge>
+                <Avatar
+                  sx={{
+                    bgcolor: "primary.main",
+                    width: 90,
+                    height: 90,
+                    fontSize: 50,
+                  }}
+                >
+                  {user.firstName.charAt(0)}
+                  {user.lastName.charAt(0)}
+                </Avatar>
+              </Badge>
 
-            <TextField
-              sx={{
-                mb: 2,
-                input: { color: "common.white" },
-              }}
-              type="text"
-              label="FirstName"
-              fullWidth
-              focused
-            />
-            <TextField
-              sx={{
-                mb: 2,
-                input: { color: "common.white" },
-              }}
-              type="text"
-              label="userName"
-              fullWidth
-              focused
-            />
-            <TextField
-              sx={{
-                mb: 2,
-                input: { color: "common.white" },
-              }}
-              type="text"
-              label="Bio"
-              fullWidth
-              focused
-            />
-            <TextField
-              sx={{
-                mb: 2,
-                input: { color: "common.white" },
-              }}
-              type="text"
-              label="website"
-              fullWidth
-              focused
-            />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                name="firstName"
+                value={form.firstName}
+                onChange={(e) => fillFormValue(e, "firstName")}
+                type="text"
+                label="FirstName"
+                fullWidth
+                focused
+              />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                name="lastName"
+                value={form.lastName}
+                onChange={(e) => fillFormValue(e, "lastName")}
+                type="text"
+                label="lastName"
+                fullWidth
+                focused
+              />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                value={form.username}
+                onChange={(e) => fillFormValue(e, "username")}
+                type="text"
+                label="userName"
+                fullWidth
+                focused
+              />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                value={form.Bio}
+                onChange={(e) => fillFormValue(e, "Bio")}
+                type="text"
+                label="Bio"
+                fullWidth
+                focused
+              />
+              <TextField
+                sx={{
+                  mb: 2,
+                  input: { color: "common.white" },
+                }}
+                value={form.link}
+                onChange={(e) => fillFormValue(e, "link")}
+                type="url"
+                label="website"
+                fullWidth
+                focused
+              />
+            </form>
           </Box>
         </Box>
       ) : null}

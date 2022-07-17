@@ -1,3 +1,4 @@
+import React from "react";
 import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import {
@@ -14,8 +15,10 @@ import { BiLink, MdLogout } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
 import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
+import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
+
 
 const UserProfile = () => {
   const [modal, setModal] = useState(false);
@@ -26,18 +29,25 @@ const UserProfile = () => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  // const {users} =useSelector((state) => state.user)
-  console.log(user);
+  const { users} = useSelector((state) => state.user);
+
+
+  useEffect(() => {
+    dispatch(updateuserHandler(user.username));
+  }, [users, dispatch, user.username]);
+
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+ 
   return (
     <>
       <Box
         sx={{
           position: "sticky",
           top: 0,
-          bgcolor: "#19191B",
-          border: 1,
-          borderTop: 0,
-          borderColor: "border.main",
+          bgcolor: "#18191A",
           zIndex: 2,
         }}
       >
@@ -48,19 +58,22 @@ const UserProfile = () => {
       <ThemeProvider theme={theme}>
         <Box
           sx={{
-            border: 1,
-            borderColor: "border.main",
-            p: 1,
+            py: 4,
+            px: 2,
+            backgroundColor: "#242526",
+            m: 2,
+            borderRadius: "10px",
           }}
         >
           <Grid container lg={12} item spacing={5}>
             <Grid item lg={2} xs={2}>
-              {/* <Avatar
+              <Avatar
                 sx={{ width: 90, height: 90 }}
                 alt="profile "
-                src="https://stutikumari17.netlify.app/images/my.jpg"
-              /> */}
-              <Avatar
+                src={user.profilePic}
+              />
+
+              {/* <Avatar
                 sx={{
                   bgcolor: "primary.main",
                   width: 90,
@@ -69,8 +82,8 @@ const UserProfile = () => {
                 }}
               >
                 {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)}
-              </Avatar>
+                {user.lastName.charAt(0)} */}
+              {/* </Avatar> */}
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
@@ -80,11 +93,11 @@ const UserProfile = () => {
                 {user.username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
-                Web Developer
+                {user.Bio}
               </Typography>
-              <Link href="https://stutikumari17.netlify.app/" target="blank">
+              <Link href={user.link} target="blank">
                 {" "}
-                <BiLink /> stutikumari17.netlify
+                <BiLink /> {user.link}
               </Link>
               <Box
                 sx={{
@@ -117,7 +130,6 @@ const UserProfile = () => {
                   Edit Profile
                 </Button>
 
-                
                 <IconButton
                   onClick={() => dispatch(logoutHandler())}
                   aria-label="delete"
@@ -156,21 +168,10 @@ const UserProfile = () => {
             >
               {user.followers.length} followers
             </Button>
-            <Button
-              sx={{
-                color: "common.white",
-                borderBottom: 1,
-              }}
-              variant="text"
-              size="large"
-            >
-              0 Posts
-            </Button>
-           
+            
           </Box>
         </Box>
-        <EditUserModal modal={modal} setModal={setModal}/>
-        
+        <EditUserModal modal={modal} setModal={setModal} />
       </ThemeProvider>
     </>
   );

@@ -56,8 +56,8 @@ export const addPostCommentHandler = function (schema, request) {
       fullName: user.fullName,
       profileAvatar: user.profileAvatar,
       votes: { upvotedBy: [], downvotedBy: [] },
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
+      // createdAt: formatDate(),
+      // updatedAt: formatDate(),
     };
     const post = schema.posts.findBy({ _id: postId }).attrs;
     post.comments.push(comment);

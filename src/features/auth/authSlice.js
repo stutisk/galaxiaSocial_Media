@@ -70,18 +70,18 @@ export const authSlice = createSlice({
     // login
     [loginHandler.pending]:(state) => {
       state.status="pending";
-      console.log((state))
+
     
     },
     [loginHandler.fulfilled]: (state,{payload}) => {
       state.status = "fullfilled";
       localStorage.setItem("token", payload.encodedToken);
       localStorage.setItem("user", JSON.stringify(payload.foundUser));
-      console.log((state))
+     
     },
     [loginHandler.rejected]: (state,{payload}) => {
       state.authStatus = "rejected";    
-      console.log((state))
+    
      
      
     },
@@ -89,4 +89,5 @@ export const authSlice = createSlice({
 });
 
 export const {logoutHandler} = authSlice.actions;
+export const getAuthState = (state) => state.auth;
 export default authSlice.reducer;
