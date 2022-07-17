@@ -4,12 +4,13 @@ import {
   Typography,
   Toolbar,
 } from "../../utils/material-ui/materialComponents";
-import { CreatePost} from "../../Components";
+import { CreatePost } from "../../Components";
 import { PostsList } from "../../Components/PostList";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPostHandler } from "../../features/post/postSlice";
 import { getAllUsers } from "../../features/user/userSlice";
 import { SortandFilter } from "../../Components/SortandFilter/SortandFilter";
+import { SinglePost } from "../../Components";
 const Homepage = () => {
   useEffect(() => {
     document.title = "Galaxia  ";
@@ -17,22 +18,21 @@ const Homepage = () => {
   const { token } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.post);
 
-  
   const dispatch = useDispatch();
   useEffect(() => {
     (async () => {
       try {
         const res = await dispatch(getAllPostHandler(token));
-        return res
+        return res;
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [dispatch,token]);
+  }, [dispatch, token]);
 
-  useEffect( () => {
-    dispatch(getAllUsers())
-  },[dispatch])
+  useEffect(() => {
+    dispatch(getAllUsers());
+  }, [dispatch]);
 
   return (
     <Box>
@@ -43,21 +43,24 @@ const Homepage = () => {
           bgcolor: "#18191A",
           zIndex: 2,
           display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
         <Toolbar>
           <Typography variant="h6">Home</Typography>
-        
         </Toolbar>
 
-        <SortandFilter/>
+        <SortandFilter />
       </Box>
       <CreatePost />
+      {/* <PostsList posts={posts} /> */}
+      {
+      posts && posts.map((post) => (
+        <SinglePost key={post._id} post={post} />
+      ),).sort((a,b)=> a.createdAt - b.createdAt)
+      }
      
-
-      <PostsList posts={posts} />
     </Box>
   );
 };

@@ -19,7 +19,7 @@ export const posts = [
     username: "adarshbalika",
     firstName: "adarsh",
     lastName: "balika",
-    createdAt: formatDate(),
+    createdAt: "Jul-17-20",
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/1027/200/300",
     comments: [
@@ -59,7 +59,7 @@ export const posts = [
     username: "kailey",
     firstName: "kailey",
 
-    createdAt: formatDate(),
+    createdAt: "Jul-15-22",
     updatedAt: formatDate(),
     profilePic:
       "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
@@ -123,7 +123,7 @@ export const posts = [
         id: uuid(),
       },
     ],
-    createdAt: formatDate(),
+    createdAt: "Jun-17-21",
     updatedAt: formatDate(),
   },
   {
@@ -154,7 +154,7 @@ export const posts = [
     firstName: "shreya",
     lastName: "thakur",
     username: "ShreyaT",
-    createdAt: formatDate(),
+    createdAt: "Jul-17-22",
     updatedAt: formatDate(),
     link: "https://peerlist.io/stutisk",
     profilePic:
@@ -192,7 +192,7 @@ export const posts = [
     firstName: "scooby ",
     lastName: "Boss",
     username: "scooby",
-    createdAt: formatDate(),
+    createdAt: "Jan-17-20",
     updatedAt: formatDate(),
 
     profilePic:
@@ -222,7 +222,7 @@ export const posts = [
           username: "stutiSk",
           password: "StutiSk123",
           email: "stuti1799@gmail.com",
-          createdAt: formatDate(),
+          createdAt: "Jul-17-19",
           updatedAt: formatDate(),
           Bio: "Frontend Developer ",
           link: "https://peerlist.io/stutisk",
@@ -238,7 +238,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt: formatDate(),
+    createdAt: "Jul-17-19",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -270,7 +270,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt: formatDate(),
+    createdAt:"Mar-17-19",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -301,7 +301,7 @@ export const posts = [
     firstName: "stuti",
     lastName: "Skk",
     username: "stutiSk",
-    createdAt: formatDate(),
+    createdAt: "Jul-1-19",
     updatedAt: formatDate(),
 
     profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
