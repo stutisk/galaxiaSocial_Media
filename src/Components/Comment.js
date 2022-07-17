@@ -9,13 +9,17 @@ import {
   IconButton,
   Typography,
 } from "../utils/material-ui/materialComponents";
-import { useSelector,useDispatch } from "react-redux";
-import { useState } from "react";
-const CommentList = ({ comment, postId }) => {
-  const { user } = useSelector((state) => state.auth);
-  const { post } = useSelector((state) => state.post);
-  const {users} =useSelector((state) => state.user)
-  const [inputComment, setInputComment] = useState();
+import { useSelector } from "react-redux";
+
+export function Comment({ comment }) {
+  // const { user } = useSelector((state) => state.auth);
+  // const { posts } = useSelector((state) => state.post);
+  const { users } = useSelector((state) => state.user);
+
+  const userInfo =
+    users &&
+    users?.find((commentUser) => comment.username === commentUser.username);
+
   return (
     <>
       <Box
@@ -28,7 +32,7 @@ const CommentList = ({ comment, postId }) => {
             <Avatar
               sx={{ width: 37, height: 37 }}
               alt="profile "
-              src={user.profilePic}
+              src={userInfo?.profilePic}
             />
           </Grid>
 
@@ -51,8 +55,8 @@ const CommentList = ({ comment, postId }) => {
                   gutterBottom
                   sx={{ fontWeight: 900, letterSpacing: 1, lineHeight: 2 }}
                 >
-                  {user?.firstName}
-                  {user?.lastName}
+                  {userInfo?.firstName}
+                  {userInfo?.lastName}
                 </Typography>
               </Box>
               <Box>
@@ -64,7 +68,7 @@ const CommentList = ({ comment, postId }) => {
                   component="div"
                   gutterBottom
                 >
-                  Yesss
+                  {comment.text}
                 </Typography>
               </Box>
             </Box>
@@ -73,6 +77,4 @@ const CommentList = ({ comment, postId }) => {
       </Box>
     </>
   );
-};
-
-export { CommentList };
+}

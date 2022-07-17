@@ -26,6 +26,12 @@ const Bookmarkpage = () => {
           ) === true
       )
     );
+    console.log(posts.filter(
+      (post) =>
+        post.bookmark.some(
+          (bookmarkPost) => bookmarkPost.username === user.username
+        ) === true)
+    )
   }, [posts]);
 
   return (

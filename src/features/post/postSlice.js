@@ -35,7 +35,7 @@ export const addCommentHandler = createAsyncThunk(
     try {
       const token = localStorage.getItem("token");
       const res = await addComment(postId, commentData, token);
-      console.log(res.data);
+      console.log(res.data.posts);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -190,7 +190,7 @@ export const postSlice = createSlice({
     },
     [addCommentHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload.posts;
+      state.posts = payload.posts.reverse();
       console.log(state);
     },
     [addCommentHandler.rejected]: (state) => {

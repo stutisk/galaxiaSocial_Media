@@ -25,21 +25,24 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
+        firstName: "shaurya",
+        lastName: "kuamr",
+        username: "shaurya",
+        text: "Yes 😍😍",
+        profilePic:
+          "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
         },
       },
       {
+        text: "😍",
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "stuti",
+        lastName: "Skk",
+        username: "stutiSk",
+        profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
       },
     ],
   },
@@ -63,21 +66,25 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
+        firstName: "shaurya",
+        lastName: "kuamr",
+        username: "shaurya",
+        text: "Yes 😍😍",
+        profilePic:
+          "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
         },
       },
       {
+        text: "Right!! 🤩🐶",
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "adarsh",
+        lastName: "balika",
+        username: "adarshbalika",
+        profilePic: "https://picsum.photos/id/1027/200/300",
+        id: uuid(),
       },
     ],
   },
@@ -97,22 +104,23 @@ export const posts = [
     profilePic: "https://picsum.photos/id/27/200/300",
     comments: [
       {
-        _id: uuid(),
-        username: "shubhamsoni",
         text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "shreya",
+        lastName: "thakur",
+        username: "ShreyaT",
+        profilePic:
+          "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
+      },
+
+      {
+        text: "Right!!",
+        _id: uuid(),
+        firstName: "adarsh",
+        lastName: "balika",
+        username: "adarshbalika",
+        profilePic: "https://picsum.photos/id/1027/200/300",
+        id: uuid(),
       },
     ],
     createdAt: formatDate(),
@@ -146,31 +154,29 @@ export const posts = [
     firstName: "shreya",
     lastName: "thakur",
     username: "ShreyaT",
-
     createdAt: formatDate(),
     updatedAt: formatDate(),
-
     link: "https://peerlist.io/stutisk",
     profilePic:
       "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
     comments: [
       {
+        text: "😍",
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "stuti",
+        lastName: "Skk",
+        username: "stutiSk",
+        profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
       },
+
       {
+        text: "Right!!",
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "adarsh",
+        lastName: "balika",
+        username: "adarshbalika",
+        profilePic: "https://picsum.photos/id/1027/200/300",
+        id: uuid(),
       },
     ],
   },
@@ -183,31 +189,23 @@ export const posts = [
       dislikedBy: [],
     },
     bookmark: [],
-    firstName: "stuti",
-    lastName: "Skk",
-    username: "stutiSk",
+    firstName: "scooby ",
+    lastName: "Boss",
+    username: "scooby",
     createdAt: formatDate(),
     updatedAt: formatDate(),
 
-    profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
+    profilePic:
+      "https://scontent.fluh1-2.fna.fbcdn.net/v/t1.18169-9/20992941_10156238556155961_119237620566999832_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kvzimG9PKeEAX86fd_6&_nc_ht=scontent.fluh1-2.fna&oh=00_AT8mYah0yGGk5AALzDph4uGb77fxoLwQ49fBi6GKw51JYw&oe=62F7F197",
+
     comments: [
       {
+        text: "indeed",
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "stuti",
+        lastName: "Skk",
+        username: "stutiSk",
+        profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
       },
     ],
   },
@@ -248,33 +246,23 @@ export const posts = [
       "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
     comments: [
       {
+        text: "Right!!",
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "adarsh",
+        lastName: "balika",
+        username: "adarshbalika",
+        profilePic: "https://picsum.photos/id/1027/200/300",
+        id: uuid(),
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Nobody cares if you can’t dance well. Just get up and dance. Great dancers are great because of their passion.",
+    content:
+      "Nobody cares if you can’t dance well. Just get up and dance. Great dancers are great because of their passion.",
     likes: {
       likeCount: 0,
-      likedBy: [
-
-      ],
+      likedBy: [],
       dislikedBy: [],
     },
     bookmark: [],
@@ -290,28 +278,20 @@ export const posts = [
       "https://i.pinimg.com/originals/ae/78/04/ae780460656b0f63788cf5ff47812398.jpg",
     comments: [
       {
+        text: "Right!!",
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
-      },
-      {
-        _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
+        firstName: "adarsh",
+        lastName: "balika",
+        username: "adarshbalika",
+        profilePic: "https://picsum.photos/id/1027/200/300",
+        id: uuid(),
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. ",
+    content:
+      "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. ",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -328,8 +308,12 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        username: "shubhamsoni",
-        text: "Interesting",
+        firstName: "scooby ",
+        username: "scooby",
+        password: "scooby123",
+        text: "🧸😂",
+        profilePic:
+          "https://scontent.fluh1-2.fna.fbcdn.net/v/t1.18169-9/20992941_10156238556155961_119237620566999832_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kvzimG9PKeEAX86fd_6&_nc_ht=scontent.fluh1-2.fna&oh=00_AT8mYah0yGGk5AALzDph4uGb77fxoLwQ49fBi6GKw51JYw&oe=62F7F197",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -337,8 +321,12 @@ export const posts = [
       },
       {
         _id: uuid(),
-        username: "sohamshah",
-        text: "Wow!",
+        firstName: "shaurya",
+        lastName: "kuamr",
+        username: "shaurya",
+        text: "Kuch Jayda hi gyaan nhi hogya 😂",
+        profilePic:
+          "https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
         votes: {
           upvotedBy: [],
           downvotedBy: [],

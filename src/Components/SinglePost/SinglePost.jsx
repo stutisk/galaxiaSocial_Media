@@ -19,21 +19,20 @@ import {
   BiDotsVerticalRounded,
   BsPencilSquare,
   MdDeleteOutline,
-  AiFillLike
-  ,BsFillBookmarkCheckFill
+  AiFillLike,
+  BsFillBookmarkCheckFill,
 } from "../../utils/Icons/Icons";
-import { CommentList } from "../index";
+
 import { useSelector } from "react-redux";
 import React from "react";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import {
   deletePostHandler,
   addCommentHandler,
   likeAndDislikeHandler,
-  addAndremoveBookmarks
+  addAndremoveBookmarks,
 } from "../../features/post/postSlice";
-
-
+import { Comment } from "../Comment";
 import { useDispatch } from "react-redux";
 import { Modalpost } from "../index";
 const SinglePost = ({ post }) => {
@@ -41,7 +40,7 @@ const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
 
   const { user } = useSelector((state) => state.auth);
- 
+
   const {
     content,
     username,
@@ -50,15 +49,20 @@ const SinglePost = ({ post }) => {
     comments,
     createdAt,
     text,
-    bookmark
+    bookmark,
   } = post;
   const dispatch = useDispatch();
 
   const currentUser =
     users && users?.find((user) => user.username === username);
+  
 
   const isLiked = likedBy?.some((like) => like.username === user.username);
-  const isBookmarked = bookmark?.some((bookmarkPost) => bookmarkPost.username === user.username);
+
+  const isBookmarked = bookmark?.some(
+    (bookmarkPost) => bookmarkPost.username === user.username
+  );
+  const textInput = useRef(null);
 
   const [modal, setModal] = useState(false);
   const [modalpost, setModalPost] = useState(false);
@@ -69,12 +73,18 @@ const SinglePost = ({ post }) => {
 
   const likeDislikeHandler = () => {
     dispatch(
-      likeAndDislikeHandler({ postId: _id, isLikeByTheUser: isLiked ? false : true })
+      likeAndDislikeHandler({
+        postId: _id,
+        isLikeByTheUser: isLiked ? false : true,
+      })
     );
   };
   const bookMarkHandler = () => {
     dispatch(
-      addAndremoveBookmarks({ postId: _id,  isBookmarkedByTheUser: isBookmarked? false : true })
+      addAndremoveBookmarks({
+        postId: _id,
+        isBookmarkedByTheUser: isBookmarked ? false : true,
+      })
     );
   };
 
@@ -91,7 +101,7 @@ const SinglePost = ({ post }) => {
     } catch (error) {
       console.log(error);
     }
-    // textInput.current.value = "";
+    textInput.current.value = "";
   };
 
   const fillComment = (event) => {
@@ -265,7 +275,6 @@ const SinglePost = ({ post }) => {
                 component="span"
               >
                 {isLiked ? <AiFillLike /> : <BiLike />}
-               
               </IconButton>
               <Typography
                 variant="subtitle1"
@@ -273,7 +282,6 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
-            
                 {likeCount === 0
                   ? "Be the first to like this"
                   : `${likeCount} Likes`}
@@ -290,13 +298,12 @@ const SinglePost = ({ post }) => {
               }}
             >
               <IconButton
-               onClick={() => bookMarkHandler()}
+                onClick={() => bookMarkHandler()}
                 color="primary"
                 aria-label="upload picture"
                 component="span"
               >
-                    {isBookmarked ? <BsFillBookmarkCheckFill /> : <BiBookmark/>}
-    
+                {isBookmarked ? <BsFillBookmarkCheckFill /> : <BiBookmark />}
               </IconButton>
               <Typography
                 variant="subtitle1"
@@ -304,11 +311,12 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
-    {user.Bookmarks}
+                {user.Bookmarks}
               </Typography>
             </Box>
           </Box>
-          <CommentList />
+          {comments.length > 0 &&
+            comments.map((comment) => <Comment key={comment._id} comment={comment} postId={_id} />)}
           <Box
             sx={{
               display: "flex",
@@ -328,6 +336,7 @@ const SinglePost = ({ post }) => {
               </Grid>
               <Grid item lg={9} sm={9} md={9}>
                 <TextField
+                inputRef={textInput}
                   value={comment}
                   onChange={fillComment}
                   inputProps={{ style: { color: "white" } }}
@@ -347,6 +356,7 @@ const SinglePost = ({ post }) => {
                 >
                   Reply
                 </Button>
+                
               </Grid>
             </Grid>
           </Box>
