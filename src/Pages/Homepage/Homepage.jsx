@@ -9,6 +9,7 @@ import { PostsList } from "../../Components/PostList";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPostHandler } from "../../features/post/postSlice";
 import { getAllUsers } from "../../features/user/userSlice";
+import { SortandFilter } from "../../Components/SortandFilter/SortandFilter";
 const Homepage = () => {
   useEffect(() => {
     document.title = "Galaxia  ";
@@ -41,13 +42,20 @@ const Homepage = () => {
           top: 0,
           bgcolor: "#18191A",
           zIndex: 2,
+          display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
         }}
       >
         <Toolbar>
           <Typography variant="h6">Home</Typography>
+        
         </Toolbar>
+        
+        <SortandFilter/>
       </Box>
       <CreatePost />
+     
 
       <PostsList posts={posts} />
     </Box>

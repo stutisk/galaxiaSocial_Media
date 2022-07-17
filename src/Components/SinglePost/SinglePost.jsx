@@ -35,6 +35,7 @@ import {
 import { Comment } from "../Comment";
 import { useDispatch } from "react-redux";
 import { Modalpost } from "../index";
+
 const SinglePost = ({ post }) => {
   const [comment, setComment] = useState();
   const { users } = useSelector((state) => state.user);
@@ -222,6 +223,7 @@ const SinglePost = ({ post }) => {
                 </Box>
               ) : null}
             </Grid>
+            
             <Grid item lg={1} sm={1} md={1}>
               {user.username === username ? (
                 <IconButton
