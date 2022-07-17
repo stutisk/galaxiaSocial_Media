@@ -4,7 +4,6 @@ import {
   MdExplore,
   MdBookmark,
   FaUserAlt,
-  MdNotifications,
   BsPlusLg,
 } from "../../utils/Icons/Icons";
 import { ThemeProvider } from "@mui/system";

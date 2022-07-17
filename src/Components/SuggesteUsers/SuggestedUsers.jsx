@@ -6,7 +6,7 @@ import { FollowCard } from "../FollowCard/FollowCard";
 import { useSelector } from "react-redux";
 const SuggestedUsers = () => {
   const { users } = useSelector((state) => state.user);
-  const { posts } = useSelector((state) => state.post);
+
   return (
     <>
       <ThemeProvider theme={theme}>

@@ -49,7 +49,6 @@ const SinglePost = ({ post }) => {
     likes: { likeCount, likedBy },
     comments,
     createdAt,
-    text,
     bookmark,
   } = post;
   const dispatch = useDispatch();
@@ -96,9 +95,10 @@ const SinglePost = ({ post }) => {
   const commentHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await dispatch(
+      const res = await dispatch(
         addCommentHandler({ postId: _id, commentData: { text: comment } })
       );
+      return res
     } catch (error) {
       console.log(error);
     }
@@ -223,7 +223,7 @@ const SinglePost = ({ post }) => {
                 </Box>
               ) : null}
             </Grid>
-            
+
             <Grid item lg={1} sm={1} md={1}>
               {user.username === username ? (
                 <IconButton

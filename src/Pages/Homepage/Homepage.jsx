@@ -4,7 +4,7 @@ import {
   Typography,
   Toolbar,
 } from "../../utils/material-ui/materialComponents";
-import { CreatePost, SinglePost } from "../../Components";
+import { CreatePost} from "../../Components";
 import { PostsList } from "../../Components/PostList";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPostHandler } from "../../features/post/postSlice";
@@ -16,7 +16,7 @@ const Homepage = () => {
   }, []);
   const { token } = useSelector((state) => state.auth);
   const { posts } = useSelector((state) => state.post);
-  const { users} = useSelector((state) => state.user);
+
   
   const dispatch = useDispatch();
   useEffect(() => {
@@ -28,7 +28,7 @@ const Homepage = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [dispatch,token]);
 
   useEffect( () => {
     dispatch(getAllUsers())
@@ -51,7 +51,7 @@ const Homepage = () => {
           <Typography variant="h6">Home</Typography>
         
         </Toolbar>
-        
+
         <SortandFilter/>
       </Box>
       <CreatePost />

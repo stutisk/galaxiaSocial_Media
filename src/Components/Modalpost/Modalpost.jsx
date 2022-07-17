@@ -18,14 +18,13 @@ const Modalpost = ({ modalpost, setModalPost }) => {
   const textInput = useRef(null);
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
-  const { posts } = useSelector((state) => state.post);
-
   const postHandler = async (event) => {
     event.preventDefault();
     try {
-      const response = await dispatch(
+      const res = await dispatch(
         createNewPost({ token, postData: { content: postData } })
       );
+      console.log(res);
     } catch (error) {
       console.log(error);
     }

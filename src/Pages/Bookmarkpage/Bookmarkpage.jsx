@@ -32,7 +32,7 @@ const Bookmarkpage = () => {
           (bookmarkPost) => bookmarkPost.username === user.username
         ) === true)
     )
-  }, [posts]);
+  }, [posts,user.username]);
 
   return (
     <Box>

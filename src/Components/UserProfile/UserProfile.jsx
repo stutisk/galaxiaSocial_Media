@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
 import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
-import { getUserPostHandler } from "../../features/post/postSlice";
+
 
 const UserProfile = () => {
   const [modal, setModal] = useState(false);

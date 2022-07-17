@@ -4,16 +4,10 @@ import { theme } from "../../styes/theme/index";
 
 import {
   Button,
-  TextField,
   Grid,
   Box,
   Avatar,
-  IconButton,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
 } from "../../utils/material-ui/materialComponents";
 import { useSelector } from "react-redux";
 const FollowCard = () => {
@@ -25,10 +19,8 @@ const FollowCard = () => {
       <Box
         sx={{
           p: 1,
-       
-          
-          borderRadius: "10px",
 
+          borderRadius: "10px",
         }}
       >
         <Grid container lg={12} item spacing={6}>
@@ -72,15 +64,14 @@ const FollowCard = () => {
             </Box>
           </Grid>
           <Grid item lg={4} sm={4} md={4}>
-          <Button
-               
-                  type="submit"
-                  variant="text"
-                  sx={{ padding: 1 }}
-                  // disabled
-                >
-                  FOLLOW
-                </Button>
+            <Button
+              type="submit"
+              variant="text"
+              sx={{ padding: 1 }}
+              // disabled
+            >
+              FOLLOW
+            </Button>
           </Grid>
         </Grid>
       </Box>

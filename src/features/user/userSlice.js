@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useEffect } from "react";
-import { getAllUser ,editUser,addBookmarks,removeBookmark } from "../../services/userServices";
+
+import { getAllUser ,editUser} from "../../services/userServices";
 
 
 

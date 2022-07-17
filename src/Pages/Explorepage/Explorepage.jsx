@@ -24,7 +24,7 @@ const Explorepage = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [dispatch,token]);
   return (
     <Box>
       <Box

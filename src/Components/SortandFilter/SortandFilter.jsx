@@ -2,18 +2,14 @@ import { ThemeProvider } from "@mui/system";
 import { theme } from "../../styes/theme/index";
 import {
   Button,
-  TextField,
-  Grid,
   Box,
-  Avatar,
   IconButton,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
 } from "../../utils/material-ui/materialComponents";
-import { BsSliders,AiOutlineFire,AiOutlineArrowUp } from "../../utils/Icons/Icons";
+import {
+  BsSliders,
+  AiOutlineFire,
+  AiOutlineArrowUp,
+} from "../../utils/Icons/Icons";
 import { useState } from "react";
 const SortandFilter = () => {
   const [modal, setModal] = useState(false);
@@ -47,16 +43,17 @@ const SortandFilter = () => {
                 transform: "translate(-50%, -50%)",
                 bgcolor: "#19191B",
                 boxShadow: 24,
-                textAlign: 'center' 
+                textAlign: "center",
               }}
             >
-             
-              <Button type="submit" variant="text"  size="medium">
-                trending<AiOutlineFire/>
+              <Button type="submit" variant="text" size="medium">
+                trending
+                <AiOutlineFire />
               </Button>
-             
-              <Button type="submit" variant="text"  size="medium">
-                Latest<AiOutlineArrowUp/>
+
+              <Button type="submit" variant="text" size="medium">
+                Latest
+                <AiOutlineArrowUp />
               </Button>
             </Box>
           ) : null}
