@@ -10,10 +10,8 @@ import {
   Typography,
 } from "../utils/material-ui/materialComponents";
 import { useSelector } from "react-redux";
-
-export function Comment({ comment }) {
-  // const { user } = useSelector((state) => state.auth);
-  // const { posts } = useSelector((state) => state.post);
+const Comment = ({ comment }) => {
+ 
   const { users } = useSelector((state) => state.user);
 
   const userInfo =
@@ -77,4 +75,6 @@ export function Comment({ comment }) {
       </Box>
     </>
   );
-}
+};
+
+export { Comment };
