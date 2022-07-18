@@ -110,6 +110,15 @@ const SinglePost = ({ post }) => {
     setComment(event.target.value);
   };
 
+  const date = new Date(createdAt);
+  const [month, day, year, hour, minutes] = [
+    date.getMonth(),
+    date.getDate(),
+    date.getFullYear(),
+    date.getHours(),
+    date.getMinutes(),
+  ];
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -169,7 +178,10 @@ const SinglePost = ({ post }) => {
                 component="div"
                 gutterBottom
               >
-                {createdAt}
+                {/* {createdAt} */}
+                {`${year}/${
+              +month + 1
+            }/${day} ${hour}:${minutes}`}
               </Typography>
             </Grid>
 

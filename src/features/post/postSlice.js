@@ -137,7 +137,7 @@ export const postSlice = createSlice({
     },
     [createNewPost.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.posts = payload.reverse();
     },
     [createNewPost.rejected]: (state) => {
       state.status = "rejected";
@@ -147,7 +147,7 @@ export const postSlice = createSlice({
     },
     [getAllPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.posts = payload.reverse();
     },
     [getAllPostHandler.rejected]: (state) => {
       state.status = "rejected";
