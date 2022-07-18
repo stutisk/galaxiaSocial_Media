@@ -19,7 +19,7 @@ import { getAllPostHandler } from "../../features/post/postSlice";
 import { getAllUsers } from "../../features/user/userSlice";
 
 import { SinglePost } from "../../Components";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const Homepage = () => {
   useEffect(() => {

@@ -56,7 +56,7 @@ const Bookmarkpage = () => {
       ) : (
         <Typography sx={{ fontSize: 30, textAlign: "center", lineHeight: 20 }}>
           Save Posts For Later{" "}
-          <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_38/v1658181283/skwj0r1lnsqrfu5we7bx.png" />
+          <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_38/v1658181283/skwj0r1lnsqrfu5we7bx.png" alt="bookamrk" />
         </Typography>
       )}
     </Box>
