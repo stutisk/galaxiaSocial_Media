@@ -22,6 +22,7 @@ import {
   AiFillLike,
   BsFillBookmarkCheckFill,
 } from "../../utils/Icons/Icons";
+import { useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import React from "react";
@@ -41,7 +42,7 @@ const SinglePost = ({ post }) => {
   const { users } = useSelector((state) => state.user);
 
   const { user } = useSelector((state) => state.auth);
-
+  const navigate = useNavigate();
   const {
     content,
     username,
@@ -134,6 +135,9 @@ const SinglePost = ({ post }) => {
           <Grid container lg={12} item>
             <Grid item lg={1} sm={1} md={1}>
               <Avatar
+               onClick={() =>
+                 navigate(`/profile/${currentUser?.username}`)}
+               
                 sx={{ width: 47, height: 47 }}
                 alt="profile "
                 src={currentUser?.profilePic}
@@ -148,6 +152,8 @@ const SinglePost = ({ post }) => {
                 }}
               >
                 <Typography
+                 onClick={() =>
+                  navigate(`/profile/${currentUser?.username}`)}
                   variant="subtitle1"
                   mb="0"
                   component="div"

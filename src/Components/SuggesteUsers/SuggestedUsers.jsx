@@ -12,13 +12,14 @@ import {
 import { followUnFollowUser } from "../../features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SuggestedUsers = () => {
   const { users } = useSelector((state) => state.user);
   const { user} = useSelector((state) => state.auth);
   const [suggestedusers, setSuggestedusers] = useState([]);
   const dispatch = useDispatch();
-
+const navigate = useNavigate();
 
 
   useEffect(
@@ -62,6 +63,8 @@ const SuggestedUsers = () => {
               <Grid container lg={12} item spacing={6}>
                 <Grid item lg={2} sm={1} md={1}>
                   <Avatar
+                   onClick={() =>
+                    navigate(`/profile/${suggestedUser?.username}`)}
                     sx={{ width: 40, height: 40 }}
                     alt="profile "
                     src={suggestedUser.profilePic}

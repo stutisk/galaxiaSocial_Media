@@ -19,7 +19,6 @@ import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
 import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
 
-
 const UserProfile = ({ currentUser }) => {
   const [modal, setModal] = useState(false);
 
@@ -27,22 +26,21 @@ const UserProfile = ({ currentUser }) => {
     setModal((prev) => !prev);
   };
   const {
-    // id,
+    id,
     username,
     // fullName,
-   link = "",
+    link = "",
     Bio = "",
     following,
     followers,
     profilePic,
     firstName,
-    lastName
+    lastName,
   } = currentUser;
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { users} = useSelector((state) => state.user);
-
+  const { users } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(updateuserHandler(user.username));
@@ -52,7 +50,6 @@ const UserProfile = ({ currentUser }) => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
- 
   return (
     <>
       <Box
@@ -121,38 +118,67 @@ const UserProfile = ({ currentUser }) => {
                 }}
               ></Box>
             </Grid>
-            <Grid item lg={5} xs={5}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                  gap: 1,
-                }}
-              >
-                <Button
-                  onClick={openmodal}
-                  sx={{
-                    width: "70%",
-                    color: "common.white",
-                  }}
-                  variant="outlined"
-                  size="large"
-                >
-                  Edit Profile
-                </Button>
 
-                <IconButton
-                  onClick={() => dispatch(logoutHandler())}
-                  aria-label="delete"
-                  sx={{
-                    color: "primary.main",
-                  }}
-                >
-                  <MdLogout />
-                </IconButton>
-              </Box>
-            </Grid>
+            {id === user.id ? (
+              <>
+                <Grid item lg={5} xs={5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                      gap: 1,
+                    }}
+                  >
+                    <Button
+                      onClick={openmodal}
+                      sx={{
+                        width: "70%",
+                        color: "common.white",
+                      }}
+                      variant="outlined"
+                      size="large"
+                    >
+                      Edit Profile
+                    </Button>
+
+                    <IconButton
+                      onClick={() => dispatch(logoutHandler())}
+                      aria-label="delete"
+                      sx={{
+                        color: "primary.main",
+                      }}
+                    >
+                      <MdLogout />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </>
+            ) : (
+              <>
+                <Grid item lg={5} xs={5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                      gap: 1,
+                    }}
+                  >
+                    <Button
+                      sx={{
+                        width: "70%",
+                        color: "common.white",
+                      }}
+                      variant="outlined"
+                      size="large"
+                    >
+                      Follow
+                    </Button>
+                  </Box>
+                </Grid>
+              </>
+            )}
           </Grid>
           <Box
             sx={{
@@ -180,7 +206,6 @@ const UserProfile = ({ currentUser }) => {
             >
               {followers.length} followers
             </Button>
-            
           </Box>
         </Box>
         <EditUserModal modal={modal} setModal={setModal} />
