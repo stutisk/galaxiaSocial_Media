@@ -27,9 +27,9 @@ const UserProfile = ({ currentUser }) => {
     setModal((prev) => !prev);
   };
   const {
-    id,
+    // id,
     username,
-    fullName,
+    // fullName,
    link = "",
     Bio = "",
     following,

@@ -1,4 +1,4 @@
-import { SinglePost, UserProfile } from "../../Components";
+import {  UserProfile } from "../../Components";
 import React, { useEffect } from "react";
 import { Box } from "../../utils/material-ui/materialComponents";
 import { useSelector ,useDispatch} from "react-redux";
@@ -9,7 +9,7 @@ const Profilepage = () => {
   const { username } = useParams();
   const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
-  const {userPosts } = useSelector((state) => state.post);
+  // const {userPosts } = useSelector((state) => state.post);
   const currentUser = users?.find((user) => user.username === username);
 const dispatch =useDispatch();
 
