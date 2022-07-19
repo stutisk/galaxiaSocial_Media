@@ -19,10 +19,12 @@ import {
 } from "../../utils/material-ui/materialComponents";
 import React, { useState } from "react";
 import { Modalpost } from "../Modalpost/Modalpost";
-
+import { useSelector } from "react-redux";
 const Dsidebar = () => {
   const [modalpost, setModalPost] = useState(false);
-
+  const { user } = useSelector((state) => state.auth);
+  const { users} = useSelector((state) => state.user);
+  const currentUser = users.find((dbUser) => dbUser.username === user.username)
   const openmodal = () => {
     setModalPost((prev) => !prev);
   };
@@ -101,7 +103,7 @@ const Dsidebar = () => {
               />
             </ListItem>
 
-            <ListItem component={Link} to="profile">
+            <ListItem component={Link} to={`/profile/${currentUser?.username}`}>
               <ListItemIcon sx={{ color: "primary.main" }}>
                 <FaUserAlt size={30} />
               </ListItemIcon>

@@ -11,49 +11,53 @@ import {
   Link,
   Toolbar,
 } from "../../utils/material-ui/materialComponents";
-import { BiLink, MdLogout } from "../../utils/Icons/Icons";
+import { BiLink } from "../../utils/Icons/Icons";
 import { useDispatch } from "react-redux";
-import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { EditUserModal } from "../EditUserModal/EditUserModal";
-import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
+import { getAllUsers } from "../../features/user/userSlice";
+import { useParams } from "react-router-dom";
+import { getAllPostHandler, getUserPostHandler } from "../../features/post/postSlice";
 
-
-const UserProfile = ({ currentUser }) => {
+const SingleUserProfile = () => {
   const [modal, setModal] = useState(false);
-
-  const openmodal = () => {
-    setModal((prev) => !prev);
-  };
-  const {
-    id,
-    username,
-    fullName,
-   link = "",
-    Bio = "",
-    following,
-    followers,
-    profilePic,
-    firstName,
-    lastName
-  } = currentUser;
-
+  const [singleUser, setSingleUser] = useState({});
+  const userId = useParams();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { users} = useSelector((state) => state.user);
-
+  const { user,token } = useSelector((state) => state.auth);
+  const { users } = useSelector((state) => state.user);
+  const { posts} = useSelector((state) => state.post);
+console.log(users)
 
   useEffect(() => {
-    dispatch(updateuserHandler(user.username));
-  }, [users, dispatch, user.username]);
+    setSingleUser(users.find((user) => user.username === userId));
+  }, [users, userId]);
+
+  useEffect(
+    () =>
+    //  setSingleUser(users.filter((ele) => ele.username  === userId)),
+    console.log(users.find((ele) => ele.username === userId))
+    // [
+    //   (user, users)
+    // ]
+  );
 
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
- 
-  return (
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await dispatch(getUserPostHandler(singleUser?.username));
+        return res;
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [dispatch,singleUser?.username]);
+
+  return singleUser?.username ?(
     <>
       <Box
         sx={{
@@ -82,34 +86,22 @@ const UserProfile = ({ currentUser }) => {
               <Avatar
                 sx={{ width: 90, height: 90 }}
                 alt="profile "
-                src={profilePic}
+                src={user.profilePic}
               />
-
-              {/* <Avatar
-                sx={{
-                  bgcolor: "primary.main",
-                  width: 90,
-                  height: 90,
-                  fontSize: 50,
-                }}
-              >
-                {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)} */}
-              {/* </Avatar> */}
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                {firstName} {lastName}
+                {singleUser.firstName} {user.lastName}
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
-                {username}
+                {user.username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
-                {Bio}
+                {user.Bio}
               </Typography>
-              <Link href={link} target="blank">
+              <Link href={user.link} target="blank">
                 {" "}
-                <BiLink /> {link}
+                <BiLink /> {user.link}
               </Link>
               <Box
                 sx={{
@@ -131,7 +123,6 @@ const UserProfile = ({ currentUser }) => {
                 }}
               >
                 <Button
-                  onClick={openmodal}
                   sx={{
                     width: "70%",
                     color: "common.white",
@@ -139,18 +130,8 @@ const UserProfile = ({ currentUser }) => {
                   variant="outlined"
                   size="large"
                 >
-                  Edit Profile
+                  Follow User
                 </Button>
-
-                <IconButton
-                  onClick={() => dispatch(logoutHandler())}
-                  aria-label="delete"
-                  sx={{
-                    color: "primary.main",
-                  }}
-                >
-                  <MdLogout />
-                </IconButton>
               </Box>
             </Grid>
           </Grid>
@@ -169,7 +150,7 @@ const UserProfile = ({ currentUser }) => {
               }}
               size="large"
             >
-              {following.length} following
+              {user.following.length} following
             </Button>
             <Button
               sx={{
@@ -178,14 +159,12 @@ const UserProfile = ({ currentUser }) => {
               variant="text"
               size="large"
             >
-              {followers.length} followers
+              {user.followers.length} followers
             </Button>
-            
           </Box>
         </Box>
-        <EditUserModal modal={modal} setModal={setModal} />
       </ThemeProvider>
     </>
-  );
+  ):(<></>)
 };
-export { UserProfile };
+export { SingleUserProfile };

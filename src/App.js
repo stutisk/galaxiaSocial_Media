@@ -19,7 +19,7 @@ function App() {
            <Route path="explore" element={<Explorepage />} />
            <Route path="bookmarks" element={<Bookmarkpage />} />
         
-           <Route path="profile" element={<Profilepage/>} />
+           <Route path="/profile/:username" element={<Profilepage/>} />
            {/* <Route path="users-profile/:userId" element={<SingleUserProfile/>} /> */}
         </Route>
       </Routes>

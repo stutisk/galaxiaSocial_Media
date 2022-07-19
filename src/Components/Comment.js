@@ -15,6 +15,8 @@ const Comment = ({ comment }) => {
     users &&
     users?.find((commentUser) => comment.username === commentUser.username);
 
+   
+
   return (
     <>
   
@@ -30,7 +32,8 @@ const Comment = ({ comment }) => {
             onClick={() =>
               comment.username === user.username
                 ? navigate("/profile")
-                : navigate(`/users-profile/${userInfo?.firstName}`)
+                : navigate(`/profile/${userInfo?.username}`)
+             
             }
               sx={{ width: 37, height: 37 }}
               alt="profile "
