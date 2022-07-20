@@ -11,7 +11,7 @@ export const posts = [
     _id: uuid(),
     content: "Haar kar jeetne waale ko hi baazigar kehte hai.",
     likes: {
-      likeCount: 0,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
@@ -51,7 +51,7 @@ export const posts = [
     content:
       "And God said 'let there be cutenes on Earth ' . Thats when Dogs came on this planet   ",
     likes: {
-      likeCount: 0,
+      likeCount: 6,
       likedBy: [],
       dislikedBy: [],
     },
@@ -93,7 +93,7 @@ export const posts = [
     content:
       "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking",
     likes: {
-      likeCount: 0,
+      likeCount: 10,
       likedBy: [],
       dislikedBy: [],
     },
@@ -263,7 +263,7 @@ export const posts = [
     content:
       "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. ",
     likes: {
-      likeCount: 0,
+      likeCount: 50,
       likedBy: [],
       dislikedBy: [],
     },
