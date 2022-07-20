@@ -4,16 +4,23 @@ import {
   Avatar,
   Typography,
 } from "../utils/material-ui/materialComponents";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Comment = ({ comment }) => {
   const { users } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const userInfo =
     users &&
     users?.find((commentUser) => comment.username === commentUser.username);
 
+   
+
   return (
     <>
+  
+    
       <Box
         sx={{
           m: 1,
@@ -22,6 +29,12 @@ const Comment = ({ comment }) => {
         <Grid container lg={12} item spacing={4}>
           <Grid item lg={1} sm={1} md={1}>
             <Avatar
+            onClick={() =>
+              comment.username === user.username
+                ? navigate("/profile")
+                : navigate(`/profile/${userInfo?.username}`)
+             
+            }
               sx={{ width: 37, height: 37 }}
               alt="profile "
               src={userInfo?.profilePic}

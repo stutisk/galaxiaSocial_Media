@@ -22,7 +22,7 @@ export const createNewPost = createAsyncThunk(
     try {
       // const token = localStorage.getItem("token");
       const res = await createPost(token, postData);
-      console.log(res.data.posts);
+      // console.log(res.data.posts);
       return res.data.posts;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

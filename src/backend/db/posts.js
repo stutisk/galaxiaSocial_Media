@@ -11,7 +11,7 @@ export const posts = [
     _id: uuid(),
     content: "Haar kar jeetne waale ko hi baazigar kehte hai.",
     likes: {
-      likeCount: 4,
+      likeCount: 5,
       likedBy: [],
       dislikedBy: [],
     },
@@ -19,7 +19,7 @@ export const posts = [
     username: "adarshbalika",
     firstName: "adarsh",
     lastName: "balika",
-    createdAt: "Jul-17-20",
+    createdAt: "2021-02-23T10:38:12+05:30",
     updatedAt: formatDate(),
     profilePic: "https://picsum.photos/id/1027/200/300",
     comments: [
@@ -51,7 +51,7 @@ export const posts = [
     content:
       "And God said 'let there be cutenes on Earth ' . Thats when Dogs came on this planet   ",
     likes: {
-      likeCount: 4,
+      likeCount: 6,
       likedBy: [],
       dislikedBy: [],
     },
@@ -59,7 +59,7 @@ export const posts = [
     username: "kailey",
     firstName: "kailey",
 
-    createdAt: "Jul-15-22",
+    createdAt: "2021-03-23T10:38:12+05:30",
     updatedAt: formatDate(),
     profilePic:
       "https://res.cloudinary.com/dvbw8xujd/image/upload/v1657787764/y7yiyiogvkanju8hyzwq.jpg",
@@ -93,7 +93,7 @@ export const posts = [
     content:
       "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma - which is living with the results of other people's thinking",
     likes: {
-      likeCount: 5,
+      likeCount: 10,
       likedBy: [],
       dislikedBy: [],
     },
@@ -123,30 +123,15 @@ export const posts = [
         id: uuid(),
       },
     ],
-    createdAt: "Jun-17-21",
+    createdAt: "2021-04-23T10:38:12+05:30",
     updatedAt: formatDate(),
   },
   {
     _id: uuid(),
     content: "Almost nobody dances sober, unless they happen to be insane.",
     likes: {
-      likeCount: 1,
+      likeCount: 0,
       likedBy: [
-        {
-          _id: uuid(),
-          firstName: "stuti",
-          lastName: "Skk",
-          username: "stutiSk",
-          password: "StutiSk123",
-          email: "stuti1799@gmail.com",
-          createdAt: formatDate(),
-          updatedAt: formatDate(),
-          Bio: "Frontend Developer ",
-          link: "https://peerlist.io/stutisk",
-          profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
-
-          followers: [],
-        },
       ],
       dislikedBy: [],
     },
@@ -154,7 +139,7 @@ export const posts = [
     firstName: "shreya",
     lastName: "thakur",
     username: "ShreyaT",
-    createdAt: "Jul-17-22",
+    createdAt: "2022-01-23T10:38:12+05:30",
     updatedAt: formatDate(),
     link: "https://peerlist.io/stutisk",
     profilePic:
@@ -184,7 +169,7 @@ export const posts = [
     _id: uuid(),
     content: "Code is like humor. When you have to explain it, its bad. ",
     likes: {
-      likeCount: 20,
+      likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
@@ -192,7 +177,7 @@ export const posts = [
     firstName: "scooby ",
     lastName: "Boss",
     username: "scooby",
-    createdAt: "Jan-17-20",
+    createdAt: "2022-02-23T10:38:12+05:30",
     updatedAt: formatDate(),
 
     profilePic:
@@ -213,23 +198,8 @@ export const posts = [
     _id: uuid(),
     content: "Dance is the hidden language of the soul.",
     likes: {
-      likeCount: 5,
+      likeCount: 0,
       likedBy: [
-        {
-          _id: uuid(),
-          firstName: "stuti",
-          lastName: "Skk",
-          username: "stutiSk",
-          password: "StutiSk123",
-          email: "stuti1799@gmail.com",
-          createdAt: "Jul-17-19",
-          updatedAt: formatDate(),
-          Bio: "Frontend Developer ",
-          link: "https://peerlist.io/stutisk",
-          profilePic: "https://stutikumari17.netlify.app/images/my.jpg",
-
-          followers: [],
-        },
       ],
       dislikedBy: [],
     },
@@ -238,7 +208,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt: "Jul-17-19",
+    createdAt: "2022-03-23T10:38:12+05:30",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -270,7 +240,7 @@ export const posts = [
     lastName: "thakur",
     username: "ShreyaT",
 
-    createdAt:"Mar-17-19",
+    createdAt:"2022-04-23T10:38:12+05:30",
     updatedAt: formatDate(),
 
     link: "https://peerlist.io/stutisk",
@@ -293,7 +263,7 @@ export const posts = [
     content:
       "Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away. ",
     likes: {
-      likeCount: 0,
+      likeCount: 50,
       likedBy: [],
       dislikedBy: [],
     },
@@ -301,7 +271,7 @@ export const posts = [
     firstName: "stuti",
     lastName: "Skk",
     username: "stutiSk",
-    createdAt: "Jul-1-19",
+    createdAt: "2022-05-23T10:38:12+05:30",
     updatedAt: formatDate(),
 
     profilePic: "https://stutikumari17.netlify.app/images/my.jpg",

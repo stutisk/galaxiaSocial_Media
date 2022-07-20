@@ -26,13 +26,15 @@ const Bookmarkpage = () => {
           ) === true
       )
     );
-    console.log(posts.filter(
-      (post) =>
-        post.bookmark.some(
-          (bookmarkPost) => bookmarkPost.username === user.username
-        ) === true)
-    )
-  }, [posts,user.username]);
+    console.log(
+      posts.filter(
+        (post) =>
+          post.bookmark.some(
+            (bookmarkPost) => bookmarkPost.username === user.username
+          ) === true
+      )
+    );
+  }, [posts, user.username]);
 
   return (
     <Box>
@@ -52,7 +54,10 @@ const Bookmarkpage = () => {
       {bookmark.length > 0 ? (
         bookmark.map((post) => <SinglePost key={post._id} post={post} />)
       ) : (
-        <Typography variant="h6">  No Bookmarks</Typography>
+        <Typography sx={{ fontSize: 30, textAlign: "center", lineHeight: 20 }}>
+          Save Posts For Later{" "}
+          <img src="https://res.cloudinary.com/dvbw8xujd/image/upload/c_scale,h_38/v1658181283/skwj0r1lnsqrfu5we7bx.png" alt="bookamrk" />
+        </Typography>
       )}
     </Box>
   );

@@ -19,18 +19,28 @@ import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
 import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
 
-
-const UserProfile = () => {
+const UserProfile = ({ currentUser }) => {
   const [modal, setModal] = useState(false);
 
   const openmodal = () => {
     setModal((prev) => !prev);
   };
+  const {
+    id,
+    username,
+    // fullName,
+    link = "",
+    Bio = "",
+    following,
+    followers,
+    profilePic,
+    firstName,
+    lastName,
+  } = currentUser;
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { users} = useSelector((state) => state.user);
-
+  const { users } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(updateuserHandler(user.username));
@@ -40,7 +50,6 @@ const UserProfile = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
- 
   return (
     <>
       <Box
@@ -70,7 +79,7 @@ const UserProfile = () => {
               <Avatar
                 sx={{ width: 90, height: 90 }}
                 alt="profile "
-                src={user.profilePic}
+                src={profilePic}
               />
 
               {/* <Avatar
@@ -87,17 +96,17 @@ const UserProfile = () => {
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
-                {user.firstName} {user.lastName}
+                {firstName} {lastName}
               </Typography>
               <Typography variant="body2" component="div" gutterBottom>
-                {user.username}
+                {username}
               </Typography>
               <Typography variant="body1" component="div" gutterBottom>
-                {user.Bio}
+                {Bio}
               </Typography>
-              <Link href={user.link} target="blank">
+              <Link href={link} target="blank">
                 {" "}
-                <BiLink /> {user.link}
+                <BiLink /> {link}
               </Link>
               <Box
                 sx={{
@@ -109,38 +118,67 @@ const UserProfile = () => {
                 }}
               ></Box>
             </Grid>
-            <Grid item lg={5} xs={5}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "flex-end",
-                  gap: 1,
-                }}
-              >
-                <Button
-                  onClick={openmodal}
-                  sx={{
-                    width: "70%",
-                    color: "common.white",
-                  }}
-                  variant="outlined"
-                  size="large"
-                >
-                  Edit Profile
-                </Button>
 
-                <IconButton
-                  onClick={() => dispatch(logoutHandler())}
-                  aria-label="delete"
-                  sx={{
-                    color: "primary.main",
-                  }}
-                >
-                  <MdLogout />
-                </IconButton>
-              </Box>
-            </Grid>
+            {id === user.id ? (
+              <>
+                <Grid item lg={5} xs={5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                      gap: 1,
+                    }}
+                  >
+                    <Button
+                      onClick={openmodal}
+                      sx={{
+                        width: "70%",
+                        color: "common.white",
+                      }}
+                      variant="outlined"
+                      size="large"
+                    >
+                      Edit Profile
+                    </Button>
+
+                    <IconButton
+                      onClick={() => dispatch(logoutHandler())}
+                      aria-label="delete"
+                      sx={{
+                        color: "primary.main",
+                      }}
+                    >
+                      <MdLogout />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </>
+            ) : (
+              <>
+                <Grid item lg={5} xs={5}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                      gap: 1,
+                    }}
+                  >
+                    <Button
+                      sx={{
+                        width: "70%",
+                        color: "common.white",
+                      }}
+                      variant="outlined"
+                      size="large"
+                    >
+                      Follow
+                    </Button>
+                  </Box>
+                </Grid>
+              </>
+            )}
           </Grid>
           <Box
             sx={{
@@ -157,7 +195,7 @@ const UserProfile = () => {
               }}
               size="large"
             >
-              {user.following.length} following
+              {following.length} following
             </Button>
             <Button
               sx={{
@@ -166,9 +204,8 @@ const UserProfile = () => {
               variant="text"
               size="large"
             >
-              {user.followers.length} followers
+              {followers.length} followers
             </Button>
-            
           </Box>
         </Box>
         <EditUserModal modal={modal} setModal={setModal} />

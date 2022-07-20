@@ -1,31 +1,35 @@
-import { SinglePost, UserProfile } from "../../Components";
+import { UserProfile } from "../../Components";
 import React, { useEffect } from "react";
 import { Box } from "../../utils/material-ui/materialComponents";
-import { useSelector ,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { getUserPostHandler } from "../../features/post/postSlice";
-
-
+import { SinglePost } from "../../Components";
+import { useParams } from "react-router-dom";
 const Profilepage = () => {
+  const { username } = useParams();
   const { user } = useSelector((state) => state.auth);
-  const {userPosts } = useSelector((state) => state.post);
+  const { users } = useSelector((state) => state.user);
+  const { posts } = useSelector((state) => state.post);
 
-const dispatch =useDispatch();
+  const currentUser = users?.find((user) => user.username === username);
+  const dispatch = useDispatch();
+  const currentUserPosts = posts?.filter((post) => post.username === username);
+  useEffect(() => {
+    document.title = `${currentUser.username} || Galaxia`;
+  }, [currentUser.username]);
 
   useEffect(() => {
-    document.title = `${user.firstName} ${user.lastName} || Galaxia`;
-  }, [user.firstName, user.lastName]);
+    dispatch(getUserPostHandler(user.username));
 
-  useEffect(() => {
-    dispatch(getUserPostHandler (user.username));
-  }, [dispatch,user.username]);
+  }, [dispatch, user.username]);
 
   return (
     <>
       <Box>
-        <UserProfile />
+        {currentUser ? <UserProfile currentUser={currentUser} /> : null}
         <Box>
-          {userPosts.length > 0 ? (
-            userPosts.map((post) => <SinglePost key={post._id} post={post} />)
+          {currentUserPosts.length > 0 ? (
+            currentUserPosts.map((post) => <SinglePost key={post._id} post={post} />)
           ) : (
             <Box>No posts yet</Box>
           )}

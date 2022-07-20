@@ -1,9 +1,10 @@
-import { Homepage, Bookmarkpage, Explorepage, Login ,Signup,Profilepage } from "../src/Pages/index";
+import { Homepage, Bookmarkpage, Explorepage, Login ,Signup,Profilepage,} from "../src/Pages/index";
 import {PrivateRoute} from "../src/Components/index"
 import {  Container } from "./utils/material-ui/materialComponents";
 import { Routes, Route } from "react-router-dom";
 import Mockman from "mockman-js";
 import React  from 'react';
+
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
            <Route path="explore" element={<Explorepage />} />
            <Route path="bookmarks" element={<Bookmarkpage />} />
         
-           <Route path="profile" element={<Profilepage/>} />
+           <Route path="/profile/:username" element={<Profilepage/>} />
+           {/* <Route path="users-profile/:userId" element={<SingleUserProfile/>} /> */}
         </Route>
       </Routes>
     </Container>

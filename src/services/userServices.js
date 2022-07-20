@@ -38,3 +38,27 @@ export const addBookmarks= (postId, token ) => {
     }
   );
 };
+
+export const followUser= (token, userId) => {
+  return axios.post(
+    `/api/users/follow/${userId}`,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+};
+
+export const unFollowUser = (token, userId) => {
+  return axios.post(
+    `/api/users/unfollow/${userId}`,
+    {},
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+};
