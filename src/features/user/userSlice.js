@@ -39,14 +39,15 @@ export const updateuserHandler = createAsyncThunk(
     }
   }
 );
+
 export const followUnFollowUser = createAsyncThunk(
   "post/followUnFollowUser",
-  async ({followuserId, dispatch, isFollow }, thunkAPI) => {
+  async ({ userId, dispatch, isFollow }, thunkAPI) => {
     try {
       const token = localStorage.getItem("token");
       const res = !isFollow
-        ? await unFollowUser(token, followuserId)
-        : await followUser(token, followuserId);
+        ? await unFollowUser(token, userId)
+        : await followUser(token, userId);
       dispatch(updateuserHandler(res.data.user));
       return res.data;
     } catch (error) {
@@ -54,6 +55,7 @@ export const followUnFollowUser = createAsyncThunk(
     }
   }
 );
+
 
 
 
@@ -84,21 +86,20 @@ export const userSlice = createSlice({
       state.status = "rejected";
     },
     [followUnFollowUser.pending]: (state) => {
-      state.users= "pending";
+      state.status = "pending";
     },
     [followUnFollowUser.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.users = [...state.users].map((user) => {
         if (action.payload.followUser.username === user.username) {
-          console.log(state)
           return action.payload.followUser;
         }
         return user;
       });
     },
-    [followUnFollowUser.rejected]: (state, action) => {
-      state.userStatus = "rejected";
-      state.users = action.payload;
+    [followUnFollowUser.rejected]: (state) => {
+      state.status = "rejected";
+     
     },
   },
   });

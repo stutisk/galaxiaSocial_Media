@@ -39,9 +39,9 @@ export const addBookmarks= (postId, token ) => {
   );
 };
 
-export const followUser= (token, followuserId) => {
+export const followUser= (token, userId) => {
   return axios.post(
-    `/api/users/follow/${followuserId}`,
+    `/api/users/follow/${userId}`,
     {},
     {
       headers: {
@@ -51,9 +51,9 @@ export const followUser= (token, followuserId) => {
   );
 };
 
-export const unFollowUser = (token, followuserId) => {
+export const unFollowUser = (token, userId) => {
   return axios.post(
-    `/api/users/unfollow/${followuserId}`,
+    `/api/users/unfollow/${userId}`,
     {},
     {
       headers: {
