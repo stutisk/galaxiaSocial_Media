@@ -43,13 +43,14 @@ export const addCommentHandler = createAsyncThunk(
   }
 );
 
+
 export const getAllPostHandler = createAsyncThunk(
-  "posts/ getAllPostHandler",
+  "post/getAllPostHandler",
   async (token, thunkAPI) => {
     try {
-      const res = await getAllPost(token);
-
-      return res.data.posts;
+      const res = await getAllPost();
+console.log(res.data)
+    return res.data.posts
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }

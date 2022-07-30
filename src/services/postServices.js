@@ -14,8 +14,12 @@ export const createPost = (token, postData) => {
   );
 };
 
-export const getAllPost = (token) =>
-  axios.get("/api/posts", { headers: { authorization: token } });
+// export const getAllPost = (token) =>
+//   axios.get("/api/posts", { headers: { authorization: token } });
+
+   export const getAllPost = () => {
+    return axios.get("/api/posts");
+  };
 
 export const getUserPost = (username) =>
   axios.get(`/api/posts/user/${username}`);
