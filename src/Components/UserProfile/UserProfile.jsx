@@ -49,7 +49,7 @@ const UserProfile = ({ currentUser }) => {
   }, [users, dispatch, user.username]);
 
   useEffect(() => {
-    dispatch(updateuserHandler());
+    // dispatch(updateuserHandler());
     dispatch(getAllUsers());
   }, []);
  

@@ -14,7 +14,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateuserHandler } from "../../features/auth/authSlice";
 import React from "react";
 const EditUserModal = ({ modal, setModal }) => {
-  
   const initialValue = {
     firstName: "",
     lastName: "",
@@ -157,7 +156,7 @@ const EditUserModal = ({ modal, setModal }) => {
                     bgcolor: "primary.main",
                     width: 90,
                     height: 90, */}
-                    {/* fontSize: 50,
+              {/* fontSize: 50,
                   }}
                 >
                   {user.firstName.charAt(0)}
@@ -191,18 +190,7 @@ const EditUserModal = ({ modal, setModal }) => {
                 fullWidth
                 focused
               />
-              <TextField
-                sx={{
-                  mb: 2,
-                  input: { color: "common.white" },
-                }}
-                value={form.username}
-                onChange={(e) => fillFormValue(e, "username")}
-                type="text"
-                label="userName"
-                fullWidth
-                focused
-              />
+
               <TextField
                 sx={{
                   mb: 2,
