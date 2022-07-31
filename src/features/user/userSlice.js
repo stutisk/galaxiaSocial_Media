@@ -26,20 +26,7 @@ const initialState = {
  
 };
 
-// export const updateuserHandler = createAsyncThunk(
-//   "users/updateuserHandler",
-//   async (userData, thunkAPI) => {
-//     try {
-//       const token = localStorage.getItem("token");
-//       const res = await editUser(token, userData);
-//       // console.log(res.data.user);
-//       return res.data.user;
-//     } catch (error) {
 
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
 
 export const followUnFollowUser = createAsyncThunk(
   "post/followUnFollowUser",
@@ -75,17 +62,7 @@ export const userSlice = createSlice({
     [getAllUsers.rejected]: (state) => {
       state.status = "rejected";
     },
-    // [updateuserHandler.pending]: (state) => {
-    //   state.status = "pending";
-    // },
-    // [updateuserHandler.fulfilled]: (state, { payload }) => {
-    //   state.status = "fullfilled";
-    //   state.user = payload;
-    //   localStorage.setItem("user", JSON.stringify(payload));
-    // },
-    // [updateuserHandler.rejected]: (state) => {
-    //   state.status = "rejected";
-    // },
+  
     [followUnFollowUser.pending]: (state) => {
       state.status = "pending";
     },
