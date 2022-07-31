@@ -6,9 +6,7 @@ import {
   Grid,
   Box,
   Avatar,
-  IconButton,
 } from "../../utils/material-ui/materialComponents";
-import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { createNewPost } from "../../features/post/postSlice";

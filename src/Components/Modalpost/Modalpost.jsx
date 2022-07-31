@@ -6,18 +6,16 @@ import {
   Grid,
   Box,
   Avatar,
-  IconButton,
 } from "../../utils/material-ui/materialComponents";
-import { MdPhotoCamera } from "../../utils/Icons/Icons";
+
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { useState, useRef } from "react";
 import { createNewPost, editPostHandler } from "../../features/post/postSlice";
-import { useEffect } from "react";
 
 const Modalpost = ({ modalpost, setModalPost, post }) => {
   const [postData, setPostData] = useState("");
-  
+
   const textInput = useRef(null);
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
@@ -26,28 +24,16 @@ const Modalpost = ({ modalpost, setModalPost, post }) => {
     event.preventDefault();
 
     if (post) {
-      dispatch(
-        
-        editPostHandler({ token, postData: { content: postData } })
-     
-      );
+      dispatch(editPostHandler({ token, postData: { content: postData } }));
     } else {
-      dispatch(
-          createNewPost({ token, postData: { content: postData } })
-        );
-        
+      dispatch(createNewPost({ token, postData: { content: postData } }));
     }
     setModalPost(false);
-
   };
 
   const fillFormValue = (event) => {
     setPostData(event.target.value);
   };
-
-
-
- 
 
   return (
     <Box>

@@ -3,12 +3,8 @@ import {
   Grid,
   Button,
   TextField,
-  Avatar,
-  Badge,
-  IconButton,
 } from "../../utils/material-ui/materialComponents";
 import { useState, useEffect } from "react";
-import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { updateuserHandler } from "../../features/auth/authSlice";

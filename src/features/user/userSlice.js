@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import {
   getAllUser,
-  editUser,
   followUser,
   unFollowUser,
 } from "../../services/userServices";

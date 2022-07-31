@@ -41,13 +41,13 @@ const UserProfile = ({ currentUser }) => {
 
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { users } = useSelector((state) => state.user);
+
 
 
   useEffect(() => {
     dispatch(updateuserHandler());
     dispatch(getAllUsers());
-  }, []);
+  }, [ dispatch]);
  
   const userBeingFollowed = followers?.find(
     (follower) => follower.username === user.username
