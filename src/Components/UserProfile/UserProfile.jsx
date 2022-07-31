@@ -43,13 +43,9 @@ const UserProfile = ({ currentUser }) => {
   const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    console.log("hey");
-    dispatch(updateuserHandler(user.username));
-  }, [users, dispatch, user.username]);
 
   useEffect(() => {
-    // dispatch(updateuserHandler());
+    dispatch(updateuserHandler());
     dispatch(getAllUsers());
   }, []);
  
