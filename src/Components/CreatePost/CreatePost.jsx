@@ -80,7 +80,7 @@ const CreatePost = () => {
                 p: 1,
               }}
             >
-              <label htmlFor="icon-button-file">
+              {/* <label htmlFor="icon-button-file">
                 <input
                   hidden
                   accept="image/*"
@@ -94,7 +94,7 @@ const CreatePost = () => {
                 >
                   <MdPhotoCamera />
                 </IconButton>
-              </label>
+              </label> */}
               <Button
                 type="submit"
                 variant="contained"

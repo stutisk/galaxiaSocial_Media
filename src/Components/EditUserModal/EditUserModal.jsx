@@ -126,7 +126,7 @@ const EditUserModal = ({ modal, setModal }) => {
             }}
           >
             <form>
-              <Badge
+              {/* <Badge
                 sx={{
                   mb: 2,
                 }}
@@ -156,14 +156,14 @@ const EditUserModal = ({ modal, setModal }) => {
                   sx={{
                     bgcolor: "primary.main",
                     width: 90,
-                    height: 90,
-                    fontSize: 50,
+                    height: 90, */}
+                    {/* fontSize: 50,
                   }}
                 >
                   {user.firstName.charAt(0)}
                   {user.lastName.charAt(0)}
                 </Avatar>
-              </Badge>
+              </Badge> */}
 
               <TextField
                 sx={{

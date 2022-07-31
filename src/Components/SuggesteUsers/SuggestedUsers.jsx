@@ -130,12 +130,12 @@ const SuggestedUsers = () => {
               <Typography
                 variant="subtitle1"
                 sx={{
-                  color: "border.main",
+                  color: "primary.main",
                 }}
                 component="div"
                 gutterBottom
               >
-             NO users to Follow
+             No users to Follow
               </Typography>
             </>
           )}

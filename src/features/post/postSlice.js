@@ -180,7 +180,7 @@ export const postSlice = createSlice({
     },
     [editPostHandler.fulfilled]: (state, { payload }) => {
       state.status = "fullfilled";
-      state.posts = payload;
+      state.posts = payload.reverse();
       console.log(state);
     },
     [editPostHandler.rejected]: (state) => {

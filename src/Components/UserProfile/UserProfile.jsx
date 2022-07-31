@@ -19,6 +19,7 @@ import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
 import { getAllUsers } from "../../features/user/userSlice";
 import { updateuserHandler } from "../../features/auth/authSlice";
+import { followUnFollowUser } from "../../features/user/userSlice";
 const UserProfile = ({ currentUser }) => {
   const [modal, setModal] = useState(false);
 
@@ -42,16 +43,19 @@ const UserProfile = ({ currentUser }) => {
   const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   console.log("hey")
-  //   dispatch(updateuserHandler(user.username));
-  // }, [users, dispatch, user.username]);
+  useEffect(() => {
+    console.log("hey");
+    dispatch(updateuserHandler(user.username));
+  }, [users, dispatch, user.username]);
 
   useEffect(() => {
-  
-    dispatch(updateuserHandler())
+    dispatch(updateuserHandler());
     dispatch(getAllUsers());
   }, []);
+ 
+  const userBeingFollowed = followers?.find(
+    (follower) => follower.username === user.username
+  );
 
   return (
     <>
@@ -84,18 +88,6 @@ const UserProfile = ({ currentUser }) => {
                 alt="profile "
                 src={profilePic}
               />
-
-              {/* <Avatar
-                sx={{
-                  bgcolor: "primary.main",
-                  width: 90,
-                  height: 90,
-                  fontSize: 50,
-                }}
-              >
-                {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)} */}
-              {/* </Avatar> */}
             </Grid>
             <Grid item lg={5} xs={5}>
               <Typography variant="h5" component="div" gutterBottom>
@@ -168,7 +160,35 @@ const UserProfile = ({ currentUser }) => {
                       gap: 1,
                     }}
                   >
-                    <Button
+                    
+                    {userBeingFollowed? (  <Button
+                      onClick={() =>
+                        dispatch(
+                          followUnFollowUser({
+                            userId: currentUser._id,
+                            dispatch: dispatch,
+                            isFollow: false,
+                          })
+                        )
+                      }
+                      sx={{
+                        width: "70%",
+                        color: "common.white",
+                      }}
+                      variant="outlined"
+                      size="large"
+                    >
+                      unFollow
+                    </Button>):( <Button
+                      onClick={() =>
+                        dispatch(
+                          followUnFollowUser({
+                            userId: currentUser._id,
+                            dispatch: dispatch,
+                            isFollow: true,
+                          })
+                        )
+                      }
                       sx={{
                         width: "70%",
                         color: "common.white",
@@ -177,7 +197,8 @@ const UserProfile = ({ currentUser }) => {
                       size="large"
                     >
                       Follow
-                    </Button>
+                    </Button>)}
+                  
                   </Box>
                 </Grid>
               </>

@@ -12,28 +12,42 @@ import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import { useState, useRef } from "react";
-import { createNewPost } from "../../features/post/postSlice";
-const Modalpost = ({ modalpost, setModalPost }) => {
+import { createNewPost, editPostHandler } from "../../features/post/postSlice";
+import { useEffect } from "react";
+
+const Modalpost = ({ modalpost, setModalPost, post }) => {
   const [postData, setPostData] = useState("");
+  
   const textInput = useRef(null);
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
+
   const postHandler = async (event) => {
     event.preventDefault();
-    try {
-      const res = await dispatch(
-        createNewPost({ token, postData: { content: postData } })
+
+    if (post) {
+      dispatch(
+        
+        editPostHandler({ token, postData: { content: postData } })
+     
       );
-      console.log(res);
-    } catch (error) {
-      console.log(error);
+    } else {
+      dispatch(
+          createNewPost({ token, postData: { content: postData } })
+        );
+        
     }
-    textInput.current.value = "";
+    setModalPost(false);
+
   };
 
   const fillFormValue = (event) => {
     setPostData(event.target.value);
   };
+
+
+
+ 
 
   return (
     <Box>
@@ -87,7 +101,7 @@ const Modalpost = ({ modalpost, setModalPost }) => {
                   p: 1,
                 }}
               >
-                <label htmlFor="icon-button-file">
+                {/* <label htmlFor="icon-button-file">
                   <input
                     hidden
                     accept="image/*"
@@ -101,20 +115,13 @@ const Modalpost = ({ modalpost, setModalPost }) => {
                   >
                     <MdPhotoCamera />
                   </IconButton>
-                </label>
+                </label> */}
                 <Button
                   type="submit"
                   variant="contained"
                   sx={{ borderRadius: "100px" }}
                 >
-                  Post
-                </Button>
-                <Button
-                  onClick={() => modalpost && setModalPost(false)}
-                  variant="contained"
-                  sx={{ borderRadius: "100px" }}
-                >
-                  cancel
+                  {post ? "Update" : "Post"}
                 </Button>
               </Box>
             </Box>

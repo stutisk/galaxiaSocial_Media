@@ -381,7 +381,7 @@ const SinglePost = ({ post }) => {
             </Grid>
           </Box>
         </Box>
-        <Modalpost modalpost={modalpost} setModalPost={setModalPost} />
+        <Modalpost modalpost={modalpost} setModalPost={setModalPost} post={post}/>
       </ThemeProvider>
     </>
   );
