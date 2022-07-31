@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { MdPhotoCamera } from "../../utils/Icons/Icons";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
-import { updateuserHandler } from "../../features/user/userSlice";
+import { updateuserHandler } from "../../features/auth/authSlice";
 import React from "react";
 const EditUserModal = ({ modal, setModal }) => {
   

@@ -17,8 +17,8 @@ import { logoutHandler } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { EditUserModal } from "../EditUserModal/EditUserModal";
-import { getAllUsers, updateuserHandler } from "../../features/user/userSlice";
-
+import { getAllUsers } from "../../features/user/userSlice";
+import { updateuserHandler } from "../../features/auth/authSlice";
 const UserProfile = ({ currentUser }) => {
   const [modal, setModal] = useState(false);
 
@@ -42,13 +42,16 @@ const UserProfile = ({ currentUser }) => {
   const { user } = useSelector((state) => state.auth);
   const { users } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(updateuserHandler(user.username));
-  }, [users, dispatch, user.username]);
+  // useEffect(() => {
+  //   console.log("hey")
+  //   dispatch(updateuserHandler(user.username));
+  // }, [users, dispatch, user.username]);
 
   useEffect(() => {
+  
+    dispatch(updateuserHandler())
     dispatch(getAllUsers());
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { signUpService, loginService } from "../../services/authServices";
-
+import { editUser } from "../../services/userServices";
 
 
 export const signUpHandler = createAsyncThunk(
@@ -34,6 +34,21 @@ export const loginHandler = createAsyncThunk(
     }
   }
 );
+export const updateuserHandler = createAsyncThunk(
+  "users/updateuserHandler",
+  async (userData, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await editUser(token, userData);
+      // console.log(res.data.user);
+      return res.data.user;
+    } catch (error) {
+
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 
 
 export const authSlice = createSlice({
@@ -50,6 +65,8 @@ export const authSlice = createSlice({
       
     }
   },
+
+  
   extraReducers: {
     // signup
     [signUpHandler.pending]: (state) => {
@@ -84,6 +101,17 @@ export const authSlice = createSlice({
     
      
      
+    },
+    [updateuserHandler.pending]: (state) => {
+      state.status = "pending";
+    },
+    [updateuserHandler.fulfilled]: (state, { payload }) => {
+      state.status = "fullfilled";
+      state.user = payload;
+      localStorage.setItem("user", JSON.stringify(payload));
+    },
+    [updateuserHandler.rejected]: (state) => {
+      state.status = "rejected";
     },
   },
 });

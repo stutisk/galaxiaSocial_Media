@@ -31,7 +31,7 @@ const SuggestedUsers = () => {
     [user, users]
   );
 
-  console.log(suggestedusers);
+  // console.log(suggestedusers);
 
   return (
     <>
