@@ -31,11 +31,13 @@ const EditUserModal = ({ modal, setModal }) => {
     (async () => {
       await dispatch(updateuserHandler({ ...form }));
     })();
+    // dispatch(updateuserHandler({...form}))
     setModal(false);
   };
 
   useEffect(() => {
     setForm(user);
+
   }, [user]);
 
   const closemodal = () => {

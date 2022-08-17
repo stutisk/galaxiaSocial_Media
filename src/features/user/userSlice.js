@@ -5,7 +5,7 @@ import {
   followUser,
   unFollowUser,
 } from "../../services/userServices";
-import { updateuserHandler } from "../auth/authSlice";
+import { updateuserHandler } from "../auth/authSlice"
 
 export const getAllUsers = createAsyncThunk(
   "users/getAllUsers",

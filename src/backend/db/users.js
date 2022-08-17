@@ -90,7 +90,7 @@ export const users = [
     Bio: "Making Hoomans smile since 20' ",
     link: "https://peerlist.io/stutisk",
     profilePic:
-      "https://scontent.fluh1-2.fna.fbcdn.net/v/t1.18169-9/20992941_10156238556155961_119237620566999832_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kvzimG9PKeEAX86fd_6&_nc_ht=scontent.fluh1-2.fna&oh=00_AT8mYah0yGGk5AALzDph4uGb77fxoLwQ49fBi6GKw51JYw&oe=62F7F197",
+      "https://res.cloudinary.com/dvbw8xujd/image/upload/v1660706641/mkyropreytxc6joeqmcb.jpg",
     followers: [],
   },
 ];

@@ -29,7 +29,6 @@ const UserProfile = ({ currentUser }) => {
   const {
     id,
     username,
-    // fullName,
     link = "",
     Bio = "",
     following,
