@@ -89,10 +89,10 @@ const SinglePost = ({ post }) => {
     );
   };
 
-  const editHandler = () => {
-    setModalPost((prev) => !prev);
-    setModal(false);
-  };
+  // const editHandler = () => {
+  //   setModalPost((prev) => !prev);
+  //   setModal(false);
+  // };
   const commentHandler = async (event) => {
     event.preventDefault();
     try {
@@ -205,7 +205,7 @@ const SinglePost = ({ post }) => {
                   }}
                 >
                   <List>
-                    <ListItem to="/">
+                    {/* <ListItem to="/">
                       <ListItemIcon sx={{ color: "primary.main" }}>
                         <BsPencilSquare size={20} />
                       </ListItemIcon>
@@ -220,7 +220,7 @@ const SinglePost = ({ post }) => {
                           </Typography>
                         }
                       />
-                    </ListItem>
+                    </ListItem> */}
                     <ListItem to="/">
                       <ListItemIcon sx={{ color: "primary.main" }}>
                         <MdDeleteOutline size={25} />
