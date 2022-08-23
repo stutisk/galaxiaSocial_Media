@@ -17,7 +17,7 @@ import {
   BiLike,
   BiBookmark,
   BiDotsVerticalRounded,
-  BsPencilSquare,
+  // BsPencilSquare,
   MdDeleteOutline,
   AiFillLike,
   BsFillBookmarkCheckFill,
